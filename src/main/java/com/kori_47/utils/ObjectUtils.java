@@ -13,6 +13,54 @@ import static java.util.Objects.*;
 public final class ObjectUtils {
 
 	/**
+	 * Checks if an integer is negative, i.e, less than 0 and returns <code>true</code> 
+	 * if the integer is negative, otherwise returns <code>false</code>
+	 * 
+	 * @param value the integer to check
+	 * @return <code>true</code> if the integer is negative, otherwise returns <code>false</code>
+	 */
+	public final static boolean isNegative(int value) {
+		if (value < 0) return true;
+		return false;
+	}
+
+	/**
+	 * Checks if a long is negative, i.e, less than 0 and returns <code>true</code> 
+	 * if the long is negative, otherwise returns <code>false</code>
+	 * 
+	 * @param value the long to check
+	 * @return <code>true</code> if the long is negative, otherwise returns <code>false</code>
+	 */
+	public final static boolean isNegative(long value) {
+		if (value < 0l) return true;
+		return false;
+	}
+
+	/**
+	 * Checks if a float is negative, i.e, less than 0 and returns <code>true</code> 
+	 * if the float is negative, otherwise returns <code>false</code>
+	 * 
+	 * @param value the float to check
+	 * @return <code>true</code> if the float is negative, otherwise returns <code>false</code>
+	 */
+	public final static boolean isNegative(float value) {
+		if (value < 0f) return true;
+		return false;
+	}
+
+	/**
+	 * Checks if a double is negative, i.e, less than 0 and returns <code>true</code> 
+	 * if the double is negative, otherwise returns <code>false</code>
+	 * 
+	 * @param value the double to check
+	 * @return <code>true</code> if the double is negative, otherwise returns <code>false</code>
+	 */
+	public final static boolean isNegative(double value) {
+		if (value < 0.0) return true;
+		return false;
+	}
+
+	/**
 	 * Checks that the supplied string is not empty or null. If the string is null, 
 	 * a {@link NullPointerException} is thrown and if the string is empty, a 
 	 * {@link IllegalArgumentException} is thrown. An invocation to this method behaves
