@@ -99,31 +99,34 @@ public final class ObjectUtils {
 	 * ------------------------------------------------------------------------------------
 	 */
 	/**
-	 * Checks if a given {@link Class} is serializable, i.e implements the {@link Serializable} interface. Returns
-	 * <code>true</code> if the class is serializable, otherwise returns <code>false</code>.
+	 * Checks if a given instance is serializable, i.e implements the {@link Serializable} interface. Returns
+	 * <code>true</code> if the instance is serializable, otherwise returns <code>false</code>.
 	 * 
-	 * @param value the class to check for serializability
+	 * @param <T> the type of the instance to be checked for serializability
+	 * 
+	 * @param value the instance to check for serializability
 	 * @return <code>true</code> if value is serializable or <code>false</code> otherwise.
 	 * 
 	 * @throws NullPointerException if value is null.
 	 * 
 	 * @see Serializable
 	 */
-	public final static boolean isSerializable(Class<?> value) {
-		if (requireNonNull(value) instanceof Serializable)
+	public final static <T> boolean isSerializable(T value) {
+		if (Serializable.class.isInstance(requireNonNull(value)))
 			return true;
-		else return false;
+		return false;
 	}
 
 	/**
-	 * Checks if a given {@link Class} is serializable, i.e implements the {@link Serializable} interface. If the
-	 * given <code>Class</code> is serializable, the method returns the <code>Class</code>. Otherwise, an 
-	 * {@link IllegalArgumentException} is thrown. Also a {@link NullPointerException} will also be thrown if the 
-	 * supplied <code>Class</code> is <code>null</code>.
+	 * Checks if a given instance is serializable, i.e implements the {@link Serializable} interface. If the
+	 * given instance is serializable, the method returns the instance. Otherwise, an {@link IllegalArgumentException} 
+	 * is thrown. Also a {@link NullPointerException} will also be thrown if the supplied instance is <code>null</code>.
 	 * 
-	 * @param value the class to check for serializability
+	 * @param <T> the type of the instance to be checked for serializability
 	 * 
-	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
+	 * @param value the instance to check for serializability
+	 * 
+	 * @return value if it's not <i>null <b>AND</b> is serializable</i>.
 	 * 
 	 * @throws NullPointerException if value is null.
 	 * @throws IllegalArgumentException if value is not serializable.
@@ -131,31 +134,32 @@ public final class ObjectUtils {
 	 * @see #requireSerializable(Class, String)
 	 * @see Serializable
 	 */
-	public final static Class<?> requireSerializable(Class<?> value) {
+	public final static <T> T requireSerializable(T value) {
 		return requireSerializable(value, null);
 	}
 
 	/**
-	 * Checks if a given {@link Class} is serializable, i.e implements the {@link Serializable} interface. If the
-	 * given <code>Class</code> is serializable, the method returns the <code>Class</code>. Otherwise, an 
-	 * {@link IllegalArgumentException} is thrown. Also a {@link NullPointerException} will also be thrown if the 
-	 * supplied <code>Class</code> is <code>null</code>. A message can optionally be passed to be used in the construction 
-	 * of the <code>IllegalArgumentException</code>.
+	 * Checks if a given instance is serializable, i.e implements the {@link Serializable} interface. If the
+	 * given instance is serializable, the method returns the instance. Otherwise, an {@link IllegalArgumentException} 
+	 * is thrown. Also a {@link NullPointerException} will also be thrown if the supplied instance is <code>null</code>.
+	 * A message can optionally be passed to be used in the construction of the <code>IllegalArgumentException</code>.
 	 * 
-	 * @param value the class to check for serializability
+	 * @param <T> the type of the instance to be checked for serializability
+	 * 
+	 * @param value the instance to check for serializability
 	 * @param message an optional message to be used in the construction of the <code>IllegalArgumentException</code>
 	 * 
-	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
+	 * @return value if it's not <i>null <b>AND</b> is serializable</i>.
 	 * 
 	 * @throws NullPointerException if value is null.
 	 * @throws IllegalArgumentException if value is not serializable.
 	 * 
 	 * @see Serializable
 	 */
-	public final static Class<?> requireSerializable(Class<?> value, String message) {
+	public final static <T> T requireSerializable(T value, String message) {
 		if (!isSerializable(value))
 			throw new IllegalArgumentException(isNull(message)?
-					value.getCanonicalName() + " must be serializable." : message);
+					value.toString() + " must be serializable." : message);
 		return value;
 	}
 
