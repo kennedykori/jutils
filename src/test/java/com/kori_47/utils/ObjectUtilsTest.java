@@ -1,12 +1,54 @@
 package com.kori_47.utils;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.Serializable;
+
+import org.junit.jupiter.api.Test;
+
 public class ObjectUtilsTest {
+	/*-------------------------------------------------------------------------------------
+	 * 
+	 * SERIALIZABLES
+	 *
+	 * ------------------------------------------------------------------------------------
+	 */
+	@Test
+	public void testIsSerializable() {
+		assertFalse(ObjectUtils.isSerializable(new NonSerializableClass()));
+		assertTrue(ObjectUtils.isSerializable(new SerializableClass()));
+	}
 
 	@Test
-	public void testStringRequireNonNullReturnValue() {
+	public void testRequireSerializableReturnValues() {
+		// Test the methods returns the expected value
+		SerializableClass instance = new SerializableClass();
+		assertEquals(instance, ObjectUtils.requireSerializable(instance));
+		assertEquals(instance, ObjectUtils.requireSerializable(instance, null));
+	}
+
+	@Test
+	public void testRequireSerializableExceptions() {
+		NonSerializableClass instance = new NonSerializableClass();
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireSerializable(instance));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireSerializable(instance, null));
+	}
+
+	@Test
+	public void testRequireSerializableExceptionMessages() {
+		NonSerializableClass instance = new NonSerializableClass();
+		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireSerializable(instance, "instance must be serializable."));
+		assertEquals("instance must be serializable.", ex.getMessage());
+	}
+
+	/*-------------------------------------------------------------------------------------
+	 * 
+	 * STRINGS
+	 *
+	 * ------------------------------------------------------------------------------------
+	 */
+	@Test
+	public void testStringRequireNonNullReturnValues() {
 		// Test the methods returns the expected value
 		assertEquals("name", ObjectUtils.requireNonEmptyString("name"));
 		assertEquals("name", ObjectUtils.requireNonEmptyString("name", null));
@@ -49,5 +91,16 @@ public class ObjectUtilsTest {
 		assertEquals("value cannot be empty.", ex7.getMessage());
 		IllegalArgumentException ex8 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonEmptyString("", null, "firstName cannot be empty."));
 		assertEquals("firstName cannot be empty.", ex8.getMessage());
+	}
+	
+	static class NonSerializableClass {}
+	
+	static class SerializableClass implements Serializable {
+
+		/**
+		 * SUID
+		 */
+		private static final long serialVersionUID = -8077617538474793989L;
+		
 	}
 }
