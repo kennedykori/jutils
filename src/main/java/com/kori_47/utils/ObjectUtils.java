@@ -131,7 +131,7 @@ public final class ObjectUtils {
 	 * @throws NullPointerException if value is null.
 	 * @throws IllegalArgumentException if value is not serializable.
 	 * 
-	 * @see #requireSerializable(Class, String)
+	 * @see #requireSerializable(Object, String)
 	 * @see Serializable
 	 */
 	public final static <T> T requireSerializable(T value) {
@@ -181,7 +181,7 @@ public final class ObjectUtils {
 	 * @throws NullPointerException if value is null.
 	 * @throws IllegalArgumentException if value is empty.
 	 * 
-	 * @see {@link #requireNonEmptyString(String, String)}
+	 * @see #requireNonEmptyString(String, String)
 	 */
 	public static final String requireNonEmptyString(String value) {
 		return requireNonEmptyString(value, null);
@@ -214,7 +214,7 @@ public final class ObjectUtils {
 	 * @throws NullPointerException if value is null.
 	 * @throws IllegalArgumentException if value is empty.
 	 * 
-	 * @see {@link #requireNonEmptyString(String)}
+	 * @see #requireNonEmptyString(String, String, String)
 	 */
 	public static final String requireNonEmptyString(String value, String name) {
 		name = (isNull(name))? "value" : name;
