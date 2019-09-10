@@ -5,12 +5,22 @@ package com.kori_47.utils;
 
 import static java.util.Objects.*;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * @author Kennedy Kori
  *
  * @since Sep 9, 2019, 6:31:47 PM
  */
 public final class ObjectUtils {
+
+	/*-------------------------------------------------------------------------------------
+	 * 
+	 * NUMBERS
+	 *
+	 * ------------------------------------------------------------------------------------
+	 */
 
 	/**
 	 * Checks if an integer is negative, i.e, less than 0 and returns <code>true</code> 
@@ -60,6 +70,101 @@ public final class ObjectUtils {
 		return false;
 	}
 
+	/**
+	 * Checks if a {@link BigDecimal} is negative, i.e, less than 0 and returns <code>true</code>, 
+	 * otherwise returns <code>false</code>
+	 * 
+	 * @param value the <code>BigDecimal</code> to check
+	 * @return <code>true</code> if the <code>BigDecimal</code> is negative, otherwise returns <code>false</code>
+	 */
+	public final static boolean isNegative(BigDecimal value) {
+		// TODO test to see which sign to use, greater than or less than
+		if (value.signum() < 0) return true;
+		return false;
+	}
+
+	public final static double requireNonNegative(double value) {
+		return requireNonNegative(value, null);
+	}
+	
+	public final static double requireNonNegative(double value, String message) {
+		if (isNegative(value)) throw new IllegalArgumentException(isNull(message)? "value cannot be negative." : message);
+		return value;
+	}
+
+	/*-------------------------------------------------------------------------------------
+	 * 
+	 * SERIALIZABLES
+	 *
+	 * ------------------------------------------------------------------------------------
+	 */
+	/**
+	 * Checks if a given {@link Class} is serializable, i.e implements the {@link Serializable} interface. Returns
+	 * <code>true</code> if the class is serializable, otherwise returns <code>false</code>.
+	 * 
+	 * @param value the class to check for serializability
+	 * @return <code>true</code> if value is serializable or <code>false</code> otherwise.
+	 * 
+	 * @throws NullPointerException if value is null.
+	 * 
+	 * @see Serializable
+	 */
+	public final static boolean isSerializable(Class<?> value) {
+		if (requireNonNull(value) instanceof Serializable)
+			return true;
+		else return false;
+	}
+
+	/**
+	 * Checks if a given {@link Class} is serializable, i.e implements the {@link Serializable} interface. If the
+	 * given <code>Class</code> is serializable, the method returns the <code>Class</code>. Otherwise, an 
+	 * {@link IllegalArgumentException} is thrown. Also a {@link NullPointerException} will also be thrown if the 
+	 * supplied <code>Class</code> is <code>null</code>.
+	 * 
+	 * @param value the class to check for serializability
+	 * 
+	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
+	 * 
+	 * @throws NullPointerException if value is null.
+	 * @throws IllegalArgumentException if value is not serializable.
+	 * 
+	 * @see #requireSerializable(Class, String)
+	 * @see Serializable
+	 */
+	public final static Class<?> requireSerializable(Class<?> value) {
+		return requireSerializable(value, null);
+	}
+
+	/**
+	 * Checks if a given {@link Class} is serializable, i.e implements the {@link Serializable} interface. If the
+	 * given <code>Class</code> is serializable, the method returns the <code>Class</code>. Otherwise, an 
+	 * {@link IllegalArgumentException} is thrown. Also a {@link NullPointerException} will also be thrown if the 
+	 * supplied <code>Class</code> is <code>null</code>. A message can optionally be passed to be used in the construction 
+	 * of the <code>IllegalArgumentException</code>.
+	 * 
+	 * @param value the class to check for serializability
+	 * @param message an optional message to be used in the construction of the <code>IllegalArgumentException</code>
+	 * 
+	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
+	 * 
+	 * @throws NullPointerException if value is null.
+	 * @throws IllegalArgumentException if value is not serializable.
+	 * 
+	 * @see Serializable
+	 */
+	public final static Class<?> requireSerializable(Class<?> value, String message) {
+		if (!isSerializable(value))
+			throw new IllegalArgumentException(isNull(message)?
+					value.getCanonicalName() + " must be serializable." : message);
+		return value;
+	}
+
+	/*-------------------------------------------------------------------------------------
+	 * 
+	 * STRINGS
+	 *
+	 * ------------------------------------------------------------------------------------
+	 */
 	/**
 	 * Checks that the supplied string is not empty or null. If the string is null, 
 	 * a {@link NullPointerException} is thrown and if the string is empty, a 
