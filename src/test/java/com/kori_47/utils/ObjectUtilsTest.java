@@ -31,6 +31,52 @@ public class ObjectUtilsTest {
 		assertFalse(ObjectUtils.isNegative(new BigDecimal("344.78")));
 	}
 
+	@Test
+	public void testNonNegativeReturnValues() {
+		assertEquals(36, ObjectUtils.requireNonNegative(36));
+		assertEquals(64l, ObjectUtils.requireNonNegative(64l));
+		assertEquals(56f, ObjectUtils.requireNonNegative(56f));
+		assertEquals(98.09d, ObjectUtils.requireNonNegative(98.09d));
+		assertEquals(new BigDecimal("872.23"), ObjectUtils.requireNonNegative(new BigDecimal("872.23")));
+		
+		assertEquals(574, ObjectUtils.requireNonNegative(574, null));
+		assertEquals(934l, ObjectUtils.requireNonNegative(934l, null));
+		assertEquals(2.56f, ObjectUtils.requireNonNegative(2.56f, null));
+		assertEquals(490.50d, ObjectUtils.requireNonNegative(490.50d, null));
+		assertEquals(new BigDecimal("0.50"), ObjectUtils.requireNonNegative(new BigDecimal("0.50"), null));
+	}
+
+	@Test
+	public void testNonNegativeExceptions() {
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-36));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64l));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56f));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09d));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(new BigDecimal("-872.23")));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireNonNegative(null));
+		
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-36, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64l, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56f, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09d, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(new BigDecimal("-872.23"), null));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireNonNegative(null, null));
+	}
+
+	@Test
+	public void testNonNegativeExceptionMessages() {
+		IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-36, "given integer must not be negative."));
+		assertEquals("given integer must not be negative.", ex1.getMessage());
+		IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64l, "given long must not be negative."));
+		assertEquals("given long must not be negative.", ex2.getMessage());
+		IllegalArgumentException ex3 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56f, "given float must not be negative."));
+		assertEquals("given float must not be negative.", ex3.getMessage());
+		IllegalArgumentException ex4 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09d, "given decimal must not be negative."));
+		assertEquals("given decimal must not be negative.", ex4.getMessage());
+		IllegalArgumentException ex5 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(new BigDecimal("-872.23"), "given BigDecimal must not be negative."));
+		assertEquals("given BigDecimal must not be negative.", ex5.getMessage());
+	}
+
 	/*-------------------------------------------------------------------------------------
 	 * 
 	 * SERIALIZABLES
