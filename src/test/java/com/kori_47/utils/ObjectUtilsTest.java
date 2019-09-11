@@ -3,10 +3,34 @@ package com.kori_47.utils;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
 public class ObjectUtilsTest {
+	/*-------------------------------------------------------------------------------------
+	 * 
+	 * NUMBERS
+	 *
+	 * ------------------------------------------------------------------------------------
+	 */
+	@Test
+	public void testIsNegative() {
+		// Test returns true when a number is negative
+		assertTrue(ObjectUtils.isNegative(-5));
+		assertTrue(ObjectUtils.isNegative(-9l));
+		assertTrue(ObjectUtils.isNegative(-78.0f));
+		assertTrue(ObjectUtils.isNegative(-123.676673893277843d));
+		assertTrue(ObjectUtils.isNegative(new BigDecimal("-94.45")));
+		
+		// Test returns false when a number is positive
+		assertFalse(ObjectUtils.isNegative(56));
+		assertFalse(ObjectUtils.isNegative(1l));
+		assertFalse(ObjectUtils.isNegative(85.56f));
+		assertFalse(ObjectUtils.isNegative(213.6539643849432438547d));
+		assertFalse(ObjectUtils.isNegative(new BigDecimal("344.78")));
+	}
+
 	/*-------------------------------------------------------------------------------------
 	 * 
 	 * SERIALIZABLES
