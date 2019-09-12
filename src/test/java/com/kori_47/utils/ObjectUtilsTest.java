@@ -32,6 +32,42 @@ public class ObjectUtilsTest {
 	}
 
 	@Test
+	public void testInRange() {
+		// Test returns true when number is in range
+		assertTrue(ObjectUtils.inRange(2, 2, 3));
+		assertTrue(ObjectUtils.inRange(223l, 10l, 3792l));
+		assertTrue(ObjectUtils.inRange(-32.99f, -100.90f, 0.00f));
+		assertTrue(ObjectUtils.inRange(-1.788738737d, -1.8673763d, 1.6d));
+		assertTrue(ObjectUtils.inRange(new BigDecimal("45.10"), new BigDecimal("45.09"), new BigDecimal("45.11")));
+		
+		// Test returns false when number is not in range and value < minValue
+		assertFalse(ObjectUtils.inRange(-43, -30, -13));
+		assertFalse(ObjectUtils.inRange(-2898898l, -300l, 0l));		
+		assertFalse(ObjectUtils.inRange(1277.9999f, 1278.0000f, 1278.0000f));
+		assertFalse(ObjectUtils.inRange(7.175455d, 7.175456d, 7.175457d));
+		assertFalse(ObjectUtils.inRange(new BigDecimal("-0.10"), new BigDecimal("-0.01"), new BigDecimal("0.01")));
+		
+		// Test returns false when number is not in range and value > maxValue
+		assertFalse(ObjectUtils.inRange(-12, -30, -13));
+		assertFalse(ObjectUtils.inRange(2898898l, -300l, 0l));
+		assertFalse(ObjectUtils.inRange(1278.0001f, 1278.0000f, 1278.0000f));
+		assertFalse(ObjectUtils.inRange(7.175458d, 7.175456d, 7.175457d));
+		assertFalse(ObjectUtils.inRange(new BigDecimal("0.01"), new BigDecimal("-0.01"), new BigDecimal("0.01")));
+	}
+
+	@Test
+	public void testInRangeExceptions() {
+		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(-43, -13, -30)));
+		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(-2898898l, 0l, -300l)));
+		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(1278.0001f, 1279.0000f, 1278.0000f)));
+		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(7.175455d, 8.175456d, 7.175457d)));
+		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(new BigDecimal("0.01"), new BigDecimal("0.015"), new BigDecimal("0.01"))));
+		assertThrows(NullPointerException.class, () -> assertFalse(ObjectUtils.inRange(null, new BigDecimal("0.01"), new BigDecimal("0.01"))));
+		assertThrows(NullPointerException.class, () -> assertFalse(ObjectUtils.inRange(new BigDecimal("0.01"), null, new BigDecimal("0.01"))));
+		assertThrows(NullPointerException.class, () -> assertFalse(ObjectUtils.inRange(new BigDecimal("0.01"), new BigDecimal("0.015"), null)));
+	}
+
+	@Test
 	public void testNonNegativeReturnValues() {
 		assertEquals(36, ObjectUtils.requireNonNegative(36));
 		assertEquals(64l, ObjectUtils.requireNonNegative(64l));
