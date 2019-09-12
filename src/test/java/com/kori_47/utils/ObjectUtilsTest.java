@@ -68,6 +68,50 @@ public class ObjectUtilsTest {
 	}
 
 	@Test
+	public void testRequireInRangeReturnValues() {
+		assertEquals(2, ObjectUtils.requireInRange(2, 2, 3));
+		assertEquals(223l, ObjectUtils.requireInRange(223l, 10l, 3792l));
+		assertEquals(-32.99f, ObjectUtils.requireInRange(-32.99f, -100.90f, 0.00f));
+		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.788738737d, -1.8673763d, 1.6d));
+		assertEquals(new BigDecimal("45.10"), ObjectUtils.requireInRange(new BigDecimal("45.10"), new BigDecimal("45.09"), new BigDecimal("45.11")));
+		
+		assertEquals(2, ObjectUtils.requireInRange(2, 2, 3, null));
+		assertEquals(223l, ObjectUtils.requireInRange(223l, 10l, 3792l, null));
+		assertEquals(-32.99f, ObjectUtils.requireInRange(-32.99f, -100.90f, 0.00f, null));
+		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.788738737d, -1.8673763d, 1.6d, null));
+		assertEquals(new BigDecimal("45.10"), ObjectUtils.requireInRange(new BigDecimal("45.10"), new BigDecimal("45.09"), new BigDecimal("45.11"), null));
+	}
+	
+	@Test
+	public void testRequireInRangeExceptions() {
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(3, 0, 1));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(2l, 10l, 3792l));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(32.99f, -100.90f, 0.00f));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(1.788738737d, -1.8673763d, 1.6d));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(new BigDecimal("45.15"), new BigDecimal("45.09"), new BigDecimal("45.11")));
+		
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(3, 0, 1, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(2l, 10l, 3792l, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(32.99f, -100.90f, 0.00f, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(1.788738737d, -1.8673763d, 1.6d, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(new BigDecimal("45.15"), new BigDecimal("45.09"), new BigDecimal("45.11"), null));
+	}
+	
+	@Test
+	public void testRequireInRangeExceptionMessages() {
+		IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(3, 0, 1, "Error: 3 is greater than 1"));
+		assertEquals("Error: 3 is greater than 1", ex1.getMessage());
+		IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(2l, 10l, 3792l, "Error: 2 is less than 10"));
+		assertEquals("Error: 2 is less than 10", ex2.getMessage());
+		IllegalArgumentException ex3 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(32.99f, -100.90f, 0.00f, "Error: 32.99 is greater than 0.00"));
+		assertEquals("Error: 32.99 is greater than 0.00", ex3.getMessage());
+		IllegalArgumentException ex4 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(1.788738737d, -1.8673763d, 1.6d, "Error: 1.788738737 is greater than 1.6"));
+		assertEquals("Error: 1.788738737 is greater than 1.6", ex4.getMessage());
+		IllegalArgumentException ex5 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(new BigDecimal("45.15"), new BigDecimal("45.09"), new BigDecimal("45.11"), "Error: 45.15 is greater than 45.09"));
+		assertEquals("Error: 45.15 is greater than 45.09", ex5.getMessage());
+	}
+
+	@Test
 	public void testNonNegativeReturnValues() {
 		assertEquals(36, ObjectUtils.requireNonNegative(36));
 		assertEquals(64l, ObjectUtils.requireNonNegative(64l));
