@@ -21,6 +21,9 @@ public final class ObjectUtils {
 	 *
 	 * ------------------------------------------------------------------------------------
 	 */
+	/*
+	 * ------------------------------------ IS NEGATIVE ------------------------------------
+	 */
 	/**
 	 * Checks if an integer is negative, i.e, less than 0 and returns <code>true</code> 
 	 * if the integer is negative, otherwise returns <code>false</code>
@@ -84,6 +87,123 @@ public final class ObjectUtils {
 		return false;
 	}
 
+	/*
+	 * ------------------------------------ IN RANGE ------------------------------------
+	 */
+	/**
+	 * Checks that the specified <code>Integer</code> is in range of the specified minimum value (inclusive)
+	 * and maximum value (exclusive). Returns <code>true</code> if <code>value</code> is greater than or equal to 
+	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
+	 * will be thrown if the maximum value is less than the minimum value.
+	 * 
+	 * @param value the integer to check
+	 * 
+	 * @param minValue the minimum value(inclusive) of the range
+	 * @param maxValue the maximum value(exclusive) of the range
+	 * 
+	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
+	 * <code>maxValue</code>, <code>false</code> otherwise.
+	 * 
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
+	 */
+	public final static boolean inRange(int value, int minValue, int maxValue) {
+		if (maxValue < minValue)
+			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
+		return value >= minValue && value < maxValue;
+	}
+
+	/**
+	 * Checks that the specified <code>Long</code> is in range of the specified minimum value (inclusive)
+	 * and maximum value (exclusive). Returns <code>true</code> if <code>value</code> is greater than or equal to 
+	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
+	 * will be thrown if the maximum value is less than the minimum value.
+	 * 
+	 * @param value the long to check
+	 * 
+	 * @param minValue the minimum value(inclusive) of the range
+	 * @param maxValue the maximum value(exclusive) of the range
+	 * 
+	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
+	 * <code>maxValue</code>, <code>false</code> otherwise.
+	 * 
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
+	 */
+	public final static boolean inRange(long value, long minValue, long maxValue) {
+		if (maxValue < minValue)
+			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
+		return value >= minValue && value < maxValue;
+	}
+
+	/**
+	 * Checks that the specified <code>Float</code> is in range of the specified minimum value (inclusive)
+	 * and maximum value (exclusive). Returns <code>true</code> if <code>value</code> is greater than or equal to 
+	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
+	 * will be thrown if the maximum value is less than the minimum value.
+	 * 
+	 * @param value the float to check
+	 * 
+	 * @param minValue the minimum value(inclusive) of the range
+	 * @param maxValue the maximum value(exclusive) of the range
+	 * 
+	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
+	 * <code>maxValue</code>, <code>false</code> otherwise.
+	 * 
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
+	 */
+	public final static boolean inRange(float value, float minValue, float maxValue) {
+		if (maxValue < minValue)
+			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
+		return value >= minValue && value < maxValue;
+	}
+
+	/**
+	 * Checks that the specified <code>Double</code> is in range of the specified minimum value (inclusive)
+	 * and maximum value (exclusive). Returns <code>true</code> if <code>value</code> is greater than or equal to 
+	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
+	 * will be thrown if the maximum value is less than the minimum value.
+	 * 
+	 * @param value the double to check
+	 * 
+	 * @param minValue the minimum value(inclusive) of the range
+	 * @param maxValue the maximum value(exclusive) of the range
+	 * 
+	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
+	 * <code>maxValue</code>, <code>false</code> otherwise.
+	 * 
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
+	 */
+	public final static boolean inRange(double value, double minValue, double maxValue) {
+		if (maxValue < minValue)
+			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
+		return value >= minValue && value < maxValue;
+	}
+
+	/**
+	 * Checks that the specified {@link BigDecimal} is in range of the specified minimum value (inclusive)
+	 * and maximum value (exclusive). Returns <code>true</code> if <code>value</code> is greater than or equal to 
+	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
+	 * will be thrown if the maximum value is less than the minimum value.
+	 * 
+	 * @param value the <code>BigDecimal</code> to check
+	 * 
+	 * @param minValue the minimum value(inclusive) of the range
+	 * @param maxValue the maximum value(exclusive) of the range
+	 * 
+	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
+	 * <code>maxValue</code>, <code>false</code> otherwise.
+	 * 
+	 * @throws NullPointerException if any of the arguments passed are <code>null</code>.
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
+	 */
+	public final static boolean inRange(BigDecimal value, BigDecimal minValue, BigDecimal maxValue) {
+		if (requireNonNull(maxValue).compareTo(requireNonNull(minValue)) < 0)
+			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
+		return requireNonNull(value).compareTo(minValue) >= 0 && value.compareTo(maxValue) < 0;
+	}
+
+	/*
+	 * ------------------------------------ REQUIRE NON NEGATIVE ------------------------------------
+	 */
 	/**
 	 * Checks that the specified <code>Integer</code> is not negative, i.e less than zero. If the <code>Integer</code> 
 	 * is negative, an {@link IllegalArgumentException} is thrown, otherwise, value is returned.
