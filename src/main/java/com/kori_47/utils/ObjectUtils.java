@@ -683,6 +683,70 @@ public final class ObjectUtils {
 	 * ------------------------------------------------------------------------------------
 	 */
 	/**
+	 * Checks that the given <code>String</code> has characters between the given minimum chars (inclusive) 
+	 * and the given maximum chars (exclusive). Returns <code>true</code> if the given <code>String</code>'s length 
+	 * (no of characters) falls within the given range, otherwise, returns <code>false</code>. An 
+	 * {@link IllegalArgumentException} will be thrown if:
+	 * 		<ul>
+	 * 			<li><code>minChars</code> is negative.</li>
+	 * 			<li><code>maxChars</code> is negative.</li>
+	 * 			<li><code>maxChars</code> is less than <code>minChars</code>.</li>
+	 * 			<li><code>maxChars</code> is equal to <code>minChars</code></li>
+	 * 		</ul>
+	 * 
+	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
+	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check
+	 * 
+	 * @return <code>true</code> if the given <code>String</code>'s length falls within the specified range,  
+	 * <code>false</code> otherwise.
+	 * 
+	 * @throws NullPointerException if <code>value</code> is <code>null</code>.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is met.
+	 */
+	public final static boolean hasCharsInRange(int minChars, int maxChars, String value) {
+		if (requireNonNegative(maxChars) <= requireNonNegative(minChars))
+			throw new IllegalArgumentException(String.format("maxChars(%d) cannot be less than or equal to minChars(%d).", maxChars, minChars));
+		return requireNonNull(value).length() >= minChars && value.length() < maxChars;
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has less characters than the stated maximum chars (exclusive).
+	 * Returns <code>true</code> if the given <code>String</code>'s length (number of characters) is less than 
+	 * the given <code>maxChars</code>, else returns <code>false</code>. An {@link IllegalArgumentException} will 
+	 * be thrown if <code>maxChars</code> is negative. 
+	 * 
+	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check
+	 * 
+	 * @return <code>true</code> if the given <code>String</code>'s length is less than <code>maxChars</code>, 
+	 * <code>false</code> otherwise.
+	 * 
+	 * @throws IllegalArgumentException if <code>maxChars</code> is negative.
+	 */
+	public final static boolean hasLessThanChars(int maxChars, String value) {
+		return requireNonNull(value).length() < requireNonNegative(maxChars);
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has more characters than the stated minimum chars (inclusive).
+	 * Returns <code>true</code> if the given <code>String</code>'s length (number of characters) is greater than 
+	 * or equal to the given <code>minChars</code>, else returns <code>false</code>. An {@link IllegalArgumentException} 
+	 * will be thrown if <code>minChars</code> is negative. 
+	 * 
+	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check
+	 * 
+	 * @return <code>true</code> if the given <code>String</code>'s length is greater than or equal to <code>minChars</code>,
+	 * <code>false</code> otherwise.
+	 * 
+	 * @throws IllegalArgumentException if <code>minChars</code> is negative.
+	 */
+	public final static boolean hasMoreThanChars(int minChars, String value) {
+		return requireNonNull(value).length() >= requireNonNegative(minChars);
+	}
+
+	/**
 	 * Checks that the supplied string is not empty or null. If the string is null, 
 	 * a {@link NullPointerException} is thrown and if the string is empty, a 
 	 * {@link IllegalArgumentException} is thrown. An invocation to this method behaves
