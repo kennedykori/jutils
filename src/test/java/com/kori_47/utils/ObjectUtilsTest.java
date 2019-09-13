@@ -197,6 +197,79 @@ public class ObjectUtilsTest {
 	 *
 	 * ------------------------------------------------------------------------------------
 	 */
+
+	@Test
+	public void testHasCharsInRange() {
+		assertTrue(ObjectUtils.hasCharsInRange(2, 3, "Hi")); // 2 chars
+		assertTrue(ObjectUtils.hasCharsInRange(0, 1, "")); // 0 chars
+		assertTrue(ObjectUtils.hasCharsInRange(10, 20, "Hello World!")); // 12 chars
+		assertTrue(ObjectUtils.hasCharsInRange(3, 5, "    ")); // 4 chars
+		
+		assertFalse(ObjectUtils.hasCharsInRange(3, 4, "Hi")); // 2 chars
+		assertFalse(ObjectUtils.hasCharsInRange(1, 10, "")); // 0 chars
+		assertFalse(ObjectUtils.hasCharsInRange(7, 9, "Hello World!")); // 12 chars
+		assertFalse(ObjectUtils.hasCharsInRange(2, 4, "    ")); // 4 chars
+	}
+
+	@Test
+	public void testHasCharsInRangeExceptions() {
+		// Test throws IllegalArgumentException when minChar is negative
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.hasCharsInRange(-1, 1, "Hello World!"));
+		// Test throws IllegalArgumentException when maxChar is negative
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.hasCharsInRange(1, -1, "Hello World!"));
+		// Test throws IllegalArgumentException when maxChar is less than minChar
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.hasCharsInRange(2, 1, "Hello World!"));
+		// Test throws IllegalArgumentException when maxChar is equal to minChar
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.hasCharsInRange(1, 1, "Hello World!"));
+		
+		// Test throws NullPointerException when value is null
+		assertThrows(NullPointerException.class, () -> ObjectUtils.hasCharsInRange(0, 1, null));
+	}
+
+	@Test
+	public void testHasLessThanChars() {
+		assertTrue(ObjectUtils.hasLessThanChars(3, "Hi")); // 2 chars
+		assertTrue(ObjectUtils.hasLessThanChars(1, "")); // 0 chars
+		assertTrue(ObjectUtils.hasLessThanChars(20, "Hello World!")); // 12 chars
+		assertTrue(ObjectUtils.hasLessThanChars(5, "    ")); // 4 chars
+		
+		assertFalse(ObjectUtils.hasLessThanChars(2, "Hi")); // 2 chars
+		assertFalse(ObjectUtils.hasLessThanChars(0, "")); // 0 chars
+		assertFalse(ObjectUtils.hasLessThanChars(10, "Hello World!")); // 12 chars
+		assertFalse(ObjectUtils.hasLessThanChars(3, "    ")); // 4 chars
+	}
+
+	@Test
+	public void testHasLessThanCharsExceptions() {
+		// Test throws when maxChar is negative
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.hasLessThanChars(-3, "Hi"));
+		
+		// Test throws NullPointerException when value is null
+		assertThrows(NullPointerException.class, () -> ObjectUtils.hasLessThanChars(3, null));
+	}
+
+	@Test
+	public void testHasMoreThanChars() {
+		assertTrue(ObjectUtils.hasMoreThanChars(1, "Hi")); // 2 chars
+		assertTrue(ObjectUtils.hasMoreThanChars(0, "")); // 0 chars
+		assertTrue(ObjectUtils.hasMoreThanChars(10, "Hello World!")); // 12 chars
+		assertTrue(ObjectUtils.hasMoreThanChars(3, "    ")); // 4 chars
+		
+		assertFalse(ObjectUtils.hasMoreThanChars(3, "Hi")); // 2 chars
+		assertFalse(ObjectUtils.hasMoreThanChars(2, "")); // 0 chars
+		assertFalse(ObjectUtils.hasMoreThanChars(20, "Hello World!")); // 12 chars
+		assertFalse(ObjectUtils.hasMoreThanChars(5, "    ")); // 4 chars
+	}
+
+	@Test
+	public void testHasMoreThanCharsExceptions() {
+		// Test throws when maxChar is negative
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.hasMoreThanChars(-3, "Hi"));
+		
+		// Test throws NullPointerException when value is null
+		assertThrows(NullPointerException.class, () -> ObjectUtils.hasMoreThanChars(3, null));
+	}
+
 	@Test
 	public void testStringRequireNonNullReturnValues() {
 		// Test the methods returns the expected value
