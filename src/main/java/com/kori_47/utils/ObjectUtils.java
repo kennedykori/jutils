@@ -7,8 +7,14 @@ import static java.util.Objects.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
+ * This class consists of static utility methods for operating on objects, similar to {@link Objects} 
+ * and static utility methods for operating on primitives. These utilities include methods for checking a 
+ * <code>String</code>'s length, methods for checking the negativity of a number and methods for checking 
+ * if a number falls in a given range.
+ * 
  * @author Kennedy Kori
  *
  * @since Sep 9, 2019, 6:31:47 PM
