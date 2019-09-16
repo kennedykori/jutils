@@ -102,17 +102,16 @@ public final class ObjectUtils {
 	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
 	 * will be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the integer to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the integer to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
 	 * <code>maxValue</code>, <code>false</code> otherwise.
 	 * 
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
-	public final static boolean inRange(int value, int minValue, int maxValue) {
+	public final static boolean inRange(int minValue, int maxValue, int value) {
 		if (maxValue < minValue)
 			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
 		return value >= minValue && value < maxValue;
@@ -124,17 +123,16 @@ public final class ObjectUtils {
 	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
 	 * will be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the long to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the long to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
 	 * <code>maxValue</code>, <code>false</code> otherwise.
 	 * 
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
-	public final static boolean inRange(long value, long minValue, long maxValue) {
+	public final static boolean inRange(long minValue, long maxValue, long value) {
 		if (maxValue < minValue)
 			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
 		return value >= minValue && value < maxValue;
@@ -146,17 +144,16 @@ public final class ObjectUtils {
 	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
 	 * will be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the float to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the float to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
 	 * <code>maxValue</code>, <code>false</code> otherwise.
 	 * 
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
-	public final static boolean inRange(float value, float minValue, float maxValue) {
+	public final static boolean inRange(float minValue, float maxValue, float value) {
 		if (maxValue < minValue)
 			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
 		return value >= minValue && value < maxValue;
@@ -168,17 +165,16 @@ public final class ObjectUtils {
 	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
 	 * will be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the double to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the double to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
 	 * <code>maxValue</code>, <code>false</code> otherwise.
 	 * 
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
-	public final static boolean inRange(double value, double minValue, double maxValue) {
+	public final static boolean inRange(double minValue, double maxValue, double value) {
 		if (maxValue < minValue)
 			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
 		return value >= minValue && value < maxValue;
@@ -190,10 +186,9 @@ public final class ObjectUtils {
 	 * <code>minValue</code> and less than <code>maxValue</code>, <code>false</code> otherwise. An {@link IllegalArgumentException} 
 	 * will be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the <code>BigDecimal</code> to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the <code>BigDecimal</code> to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to <code>minValue</code> and less than 
 	 * <code>maxValue</code>, <code>false</code> otherwise.
@@ -201,7 +196,7 @@ public final class ObjectUtils {
 	 * @throws NullPointerException if any of the arguments passed are <code>null</code>.
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
-	public final static boolean inRange(BigDecimal value, BigDecimal minValue, BigDecimal maxValue) {
+	public final static boolean inRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value) {
 		if (requireNonNull(maxValue).compareTo(requireNonNull(minValue)) < 0)
 			throw new IllegalArgumentException("maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
 		return requireNonNull(value).compareTo(minValue) >= 0 && value.compareTo(maxValue) < 0;
@@ -217,18 +212,17 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An {@link IllegalArgumentException} will also be thrown if the maximum 
 	 * value is less than the minimum value.
 	 * 
-	 * @param value the integer to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the integer to check.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static int requireInRange(int value, int minValue, int maxValue) {
-		return requireInRange(value, minValue, maxValue, null);
+	public final static int requireInRange(int minValue, int maxValue, int value) {
+		return requireInRange(minValue, maxValue, value, null);
 	}
 
 	/**
@@ -238,19 +232,18 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An optional message can also be given to be used as the expection message. 
 	 * An {@link IllegalArgumentException} will also be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the integer to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
-	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the integer to check.
+	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message. 
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static int requireInRange(int value, int minValue, int maxValue, String message) {
-		if (!inRange(value, minValue, maxValue))
+	public final static int requireInRange(int minValue, int maxValue, int value, String message) {
+		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message))? message :
 						String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue, maxValue));
 		return value;
@@ -263,18 +256,17 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An {@link IllegalArgumentException} will also be thrown if the 
 	 * maximum value is less than the minimum value.
 	 * 
-	 * @param value the long to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the long to check.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static long requireInRange(long value, long minValue, long maxValue) {
-		return requireInRange(value, minValue, maxValue, null);
+	public final static long requireInRange(long minValue, long maxValue, long value) {
+		return requireInRange(minValue, maxValue, value, null);
 	}
 
 	/**
@@ -284,19 +276,18 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An optional message can also be given to be used as the expection message. 
 	 * An {@link IllegalArgumentException} will also be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the long to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
-	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the long to check.
+	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static long requireInRange(long value, long minValue, long maxValue, String message) {
-		if (!inRange(value, minValue, maxValue))
+	public final static long requireInRange(long minValue, long maxValue, long value, String message) {
+		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message))? message :
 						String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue, maxValue));
 		return value;
@@ -309,18 +300,17 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An {@link IllegalArgumentException} will also be thrown if the 
 	 * maximum value is less than the minimum value.
 	 * 
-	 * @param value the float to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the float to check.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static float requireInRange(float value, float minValue, float maxValue) {
-		return requireInRange(value, minValue, maxValue, null);
+	public final static float requireInRange(float minValue, float maxValue, float value) {
+		return requireInRange(minValue, maxValue, value, null);
 	}
 
 	/**
@@ -330,19 +320,18 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An optional message can also be given to be used as the expection message. 
 	 * An {@link IllegalArgumentException} will also be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the float to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
-	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the float to check.
+	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static float requireInRange(float value, float minValue, float maxValue, String message) {
-		if (!inRange(value, minValue, maxValue))
+	public final static float requireInRange(float minValue, float maxValue, float value, String message) {
+		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message))? message :
 						String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue, maxValue));
 		return value;
@@ -355,18 +344,17 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An {@link IllegalArgumentException} will also be thrown if the 
 	 * maximum value is less than the minimum value.
 	 * 
-	 * @param value the double to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the double to check.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static double requireInRange(double value, double minValue, double maxValue) {
-		return requireInRange(value, minValue, maxValue, null);
+	public final static double requireInRange(double minValue, double maxValue, double value) {
+		return requireInRange(minValue, maxValue, value, null);
 	}
 
 	/**
@@ -376,19 +364,18 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An optional message can also be given to be used as the expection message. 
 	 * An {@link IllegalArgumentException} will also be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the double to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
-	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the double to check.
+	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message. 
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException if <code>value</code> is not in the specified range or if <code>maxValue</code> is less 
 	 * than <code>minValue</code>
 	 */
-	public final static double requireInRange(double value, double minValue, double maxValue, String message) {
-		if (!inRange(value, minValue, maxValue))
+	public final static double requireInRange(double minValue, double maxValue, double value, String message) {
+		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message))? message :
 						String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue, maxValue));
 		return value;
@@ -401,10 +388,9 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An {@link IllegalArgumentException} will also be thrown if the maximum 
 	 * value is less than the minimum value.
 	 * 
-	 * @param value the <code>BigDecimal</code> to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the <code>BigDecimal</code> to check.
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
@@ -414,8 +400,8 @@ public final class ObjectUtils {
 	 * 
 	 * @see BigDecimal
 	 */
-	public final static BigDecimal requireInRange(BigDecimal value, BigDecimal minValue, BigDecimal maxValue) {
-		return requireInRange(value, minValue, maxValue, null);
+	public final static BigDecimal requireInRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value) {
+		return requireInRange(minValue, maxValue, value, null);
 	}
 
 	/**
@@ -425,11 +411,10 @@ public final class ObjectUtils {
 	 * an {@link IllegalArgumentException} is thrown. An optional message can also be given to be used as the expection message. 
 	 * An {@link IllegalArgumentException} will also be thrown if the maximum value is less than the minimum value.
 	 * 
-	 * @param value the <code>BigDecimal</code> to check
-	 * 
-	 * @param minValue the minimum value(inclusive) of the range
-	 * @param maxValue the maximum value(exclusive) of the range
-	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message 
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value the <code>BigDecimal</code> to check.
+	 * @param message an optional message to be used as as the <code>IllegalArgumentException</code> message. 
 	 * 
 	 * @return value if it is in the specified range.
 	 * 
@@ -439,8 +424,8 @@ public final class ObjectUtils {
 	 * 
 	 * @see BigDecimal
 	 */
-	public final static BigDecimal requireInRange(BigDecimal value, BigDecimal minValue, BigDecimal maxValue, String message) {
-		if (!inRange(value, minValue, maxValue))
+	public final static BigDecimal requireInRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value, String message) {
+		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message))? message :
 						String.format("value(%s) should be more than or equal to %s and less than %s.", value, minValue, maxValue));
 		return value;
