@@ -702,7 +702,7 @@ public final class ObjectUtils {
 	 * 
 	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
 	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
-	 * @param value the <code>String</code> to check
+	 * @param value the <code>String</code> to check.
 	 * 
 	 * @return <code>true</code> if the given <code>String</code>'s length falls within the specified range,  
 	 * <code>false</code> otherwise.
@@ -723,7 +723,7 @@ public final class ObjectUtils {
 	 * be thrown if <code>maxChars</code> is negative. 
 	 * 
 	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
-	 * @param value the <code>String</code> to check
+	 * @param value the <code>String</code> to check.
 	 * 
 	 * @return <code>true</code> if the given <code>String</code>'s length is less than <code>maxChars</code>, 
 	 * <code>false</code> otherwise.
@@ -741,7 +741,7 @@ public final class ObjectUtils {
 	 * will be thrown if <code>minChars</code> is negative. 
 	 * 
 	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
-	 * @param value the <code>String</code> to check
+	 * @param value the <code>String</code> to check.
 	 * 
 	 * @return <code>true</code> if the given <code>String</code>'s length is greater than or equal to <code>minChars</code>,
 	 * <code>false</code> otherwise.
@@ -750,6 +750,161 @@ public final class ObjectUtils {
 	 */
 	public final static boolean hasMoreThanChars(int minChars, String value) {
 		return requireNonNull(value).length() >= requireNonNegative(minChars);
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has characters between the given minimum chars (inclusive) 
+	 * and the given maximum chars (exclusive). Returns <code>value</code> if the given <code>String</code>'s length 
+	 * (no of characters) falls within the given range, otherwise, an {@link IllegalArgumentException} will be thrown.<br>
+	 * <br>
+	 * <i><b>NOTE:</b> This method internally uses {@link #hasCharsInRange(int, int, String)}, so an <code>IllegalArgumentException</code> 
+	 * might be thrown if any of that methods requirements are not met.</i>
+	 * 
+	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
+	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check.
+	 * 
+	 * @return <code>value</code> if <code>value</code>'s length falls within the specified range.
+	 * 
+	 * @throws NullPointerException if <code>value</code> is <code>null</code>.
+	 * @throws IllegalArgumentException  if any of the conditions stated above are/is met. 
+	 * 
+	 * @see #hasCharsInRange(int, int, String)
+	 */
+	public final static String requireCharsInRange(int minChars, int maxChars, String value) {
+		return requireCharsInRange(minChars, maxChars, value, null);
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has characters between the given minimum chars (inclusive) 
+	 * and the given maximum chars (exclusive). Returns <code>value</code> if the given <code>String</code>'s length 
+	 * (no of characters) falls within the given range, otherwise, an {@link IllegalArgumentException} will be thrown.
+	 * An optional message may be passed to be used in the construction of the <code>IllegalArgumentException</code>.
+	 * <br>
+	 * <br>
+	 * <i><b>NOTE:</b> This method internally uses {@link #hasCharsInRange(int, int, String)}, so an <code>IllegalArgumentException</code> 
+	 * might be thrown if any of that methods requirements are not met.</i>
+	 * 
+	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
+	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check.
+	 * @param message an optional message to be used as as the IllegalArgumentException message.
+	 * 
+	 * @return <code>value</code> if <code>value</code>'s length falls within the specified range.
+	 * 
+	 * @throws NullPointerException if <code>value</code> is <code>null</code>.
+	 * @throws IllegalArgumentException  if any of the conditions stated above are/is met. 
+	 * 
+	 * @see #hasCharsInRange(int, int, String)
+	 */
+	public final static String requireCharsInRange(int minChars, int maxChars, String value, String message) {
+		if (!hasCharsInRange(minChars, maxChars, value))
+			throw new IllegalArgumentException(nonNull(message)? message :
+				String.format("The length of value(%d) must be greater than or equal to %d and less than %d.",
+						value.length(), minChars, maxChars));
+		return value;
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has less characters than the stated maximum chars (exclusive).
+	 * Returns <code>value</code> if the given <code>String</code>'s length (number of characters) is less than 
+	 * the given <code>maxChars</code>, otherwise an {@link IllegalArgumentException} will be thrown.
+	 * <br>
+	 * <br>
+	 * <i><b>NOTE:</b> This method internally uses {@link #hasLessThanChars(int, String)}, so an <code>IllegalArgumentException</code> 
+	 * might be thrown if any of that methods requirements are not met.</i>
+	 * 
+	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check.
+	 * 
+	 * @return <code>value</code> if <code>value</code>'s length is less than <code>maxChars</code>.
+	 * 
+	 * @throws NullPointerException if <code>value</code> is <code>null</code>.
+	 * @throws IllegalArgumentException  if any of the conditions stated above are/is met. 
+	 * 
+	 * @see #hasLessThanChars(int, String)
+	 */
+	public final static String requireLessThanChars(int maxChars, String value) {
+		return requireLessThanChars(maxChars, value, null);
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has less characters than the stated maximum chars (exclusive).
+	 * Returns <code>value</code> if the given <code>String</code>'s length (number of characters) is less than 
+	 * the given <code>maxChars</code>, otherwise an {@link IllegalArgumentException} will be thrown. An optional 
+	 * message may be passed to be used in the construction of the <code>IllegalArgumentException</code>.
+	 * <br>
+	 * <br>
+	 * <i><b>NOTE:</b> This method internally uses {@link #hasLessThanChars(int, String)}, so an <code>IllegalArgumentException</code> 
+	 * might be thrown if any of that methods requirements are not met.</i>
+	 * 
+	 * @param maxChars the maximum number of characters (exclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check.
+	 * @param message an optional message to be used as as the IllegalArgumentException message.
+	 * 
+	 * @return <code>value</code> if <code>value</code>'s length is less than <code>maxChars</code>.
+	 * 
+	 * @throws NullPointerException if <code>value</code> is <code>null</code>.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is met. 
+	 * 
+	 * @see #hasLessThanChars(int, String)
+	 */
+	public final static String requireLessThanChars(int maxChars, String value, String message) {
+		if (!hasLessThanChars(maxChars, value))
+			throw new IllegalArgumentException(nonNull(message)? message: 
+				String.format("value's length (%d) must be less than %d.", value.length(), maxChars));
+		return value;
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has more characters than the stated minimum chars (inclusive).
+	 * Returns <code>value</code> if the given <code>String</code>'s length (number of characters) is greater than 
+	 * or equal to the given <code>minChars</code>, otherwise, an {@link IllegalArgumentException} will be thrown.
+	 * <br>
+	 * <br>
+	 * <i><b>NOTE:</b> This method internally uses {@link #hasMoreThanChars(int, String)}, so an <code>IllegalArgumentException</code> 
+	 * might be thrown if any of that methods requirements are not met.</i>
+	 * 
+	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check.
+	 * 
+	 * @return <code>value</code> if <code>value</code>'s length is greater than or equal to <code>minChars</code>.
+	 * 
+	 * @throws NullPointerException if value is null.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is met.
+	 * 
+	 * @see #hasMoreThanChars(int, String)
+	 */
+	public final static String requireMoreThanChars(int minChars, String value) {
+		return requireMoreThanChars(minChars, value, null);
+	}
+
+	/**
+	 * Checks that the given <code>String</code> has more characters than the stated minimum chars (inclusive).
+	 * Returns <code>value</code> if the given <code>String</code>'s length (number of characters) is greater than 
+	 * or equal to the given <code>minChars</code>, otherwise, an {@link IllegalArgumentException} will be thrown. 
+	 * An optional message may be passed to be used in the construction of the <code>IllegalArgumentException</code>.
+	 * <br>
+	 * <br>
+	 * <i><b>NOTE:</b> This method internally uses {@link #hasMoreThanChars(int, String)}, so an <code>IllegalArgumentException</code> 
+	 * might be thrown if any of that methods requirements are not met.</i>
+	 * 
+	 * @param minChars the minimum number of characters (inclusive) that the given <code>String</code> should have.
+	 * @param value the <code>String</code> to check.
+	 * @param message an optional message to be used as as the IllegalArgumentException message.
+	 * 
+	 * @return <code>value</code> if <code>value</code>'s length is greater than or equal to <code>minChars</code>.
+	 * 
+	 * @throws NullPointerException if value is null.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is met.
+	 * 
+	 * @see #hasMoreThanChars(int, String)
+	 */
+	public final static String requireMoreThanChars(int minChars, String value, String message) {
+		if (!hasMoreThanChars(minChars, value))
+			throw new IllegalArgumentException(nonNull(message)? message: 
+					String.format("value's length (%d) must be greater than or equal to %d.", value.length(), minChars));
+		return value;
 	}
 
 	/**
