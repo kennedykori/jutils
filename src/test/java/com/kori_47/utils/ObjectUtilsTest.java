@@ -271,6 +271,87 @@ public class ObjectUtilsTest {
 	}
 
 	@Test
+	public void testRequireCharsInRangeReturnValues() {
+		// Test the methods returns the expected value
+		assertEquals("name", ObjectUtils.requireCharsInRange(0, 20, "name"));
+		assertEquals("name", ObjectUtils.requireCharsInRange(0, 20, "name", null));
+	}
+
+	@Test
+	public void testRequireCharsInRangeExceptions() {
+		// Test the methods throw a NullPointerException when a null string is passed
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireCharsInRange(0, 20, null));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireCharsInRange(0, 20, null, null));
+	
+		// Test the methods throw a IllegalArgumentException when a null string is passed
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireCharsInRange(0, 1, "Hi"));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireCharsInRange(0, 1, "Hi", null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireCharsInRange(3, 7, "Hi", "greating must have 3 to 6 characters."));
+	}
+
+	@Test
+	public void testRequireCharsInRangeExceptionMessages() {
+		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireCharsInRange(2, 5, "Hello World!!", "value must have at most 4 characters."));
+		assertEquals("value must have at most 4 characters.", ex.getMessage());
+		IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireCharsInRange(3, 7, "Hi", "greating must have 3 to 6 characters."));
+		assertEquals("greating must have 3 to 6 characters.", ex1.getMessage());
+	}
+
+	@Test
+	public void testRequireLessThanCharsReturnValues() {
+		// Test the methods returns the expected value
+		assertEquals("name", ObjectUtils.requireLessThanChars(20, "name"));
+		assertEquals("name", ObjectUtils.requireLessThanChars(20, "name", null));
+	}
+
+	@Test
+	public void testRequireLessThanCharsExceptions() {
+		// Test the methods throw a NullPointerException when a null string is passed
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireLessThanChars(20, null));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireLessThanChars(20, null, null));
+	
+		// Test the methods throw a IllegalArgumentException when a null string is passed
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanChars(1, "Hi"));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanChars(2, "Hi", null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanChars(2, "Hi", "greating must have less than 3 characters."));
+	}
+
+	@Test
+	public void testRequireLessThanCharsExceptionMessages() {
+		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanChars(5, "Hello World!!", "value must have at most 4 characters."));
+		assertEquals("value must have at most 4 characters.", ex.getMessage());
+		IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanChars(1, "Hi", "greating must have at most 1 character."));
+		assertEquals("greating must have at most 1 character.", ex1.getMessage());
+	}
+
+	@Test
+	public void testRequireMoreThanCharsReturnValues() {
+		// Test the methods returns the expected value
+		assertEquals("name", ObjectUtils.requireMoreThanChars(4, "name"));
+		assertEquals("name", ObjectUtils.requireMoreThanChars(3, "name", null));
+	}
+
+	@Test
+	public void testRequireMoreThanCharsExceptions() {
+		// Test the methods throw a NullPointerException when a null string is passed
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireMoreThanChars(20, null));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.requireMoreThanChars(20, null, null));
+	
+		// Test the methods throw a IllegalArgumentException when a null string is passed
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(4, "Hi"));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(4, "Hi", null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(25, "Hi", "greating must have atleast 25 characters."));
+	}
+
+	@Test
+	public void testRequireMoreThanCharsExceptionMessages() {
+		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(35, "Hello World!!", "value must have at least 35 characters."));
+		assertEquals("value must have at least 35 characters.", ex.getMessage());
+		IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(10, "Hi", "greating must have at least 10 character."));
+		assertEquals("greating must have at least 10 character.", ex1.getMessage());
+	}
+
+	@Test
 	public void testStringRequireNonNullReturnValues() {
 		// Test the methods returns the expected value
 		assertEquals("name", ObjectUtils.requireNonEmptyString("name"));
