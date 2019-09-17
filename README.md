@@ -1,8 +1,8 @@
 # Java Utils
 
-[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils)
+[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) [![codecov](https://codecov.io/gh/kennedykori/JavaUtils/branch/master/graph/badge.svg)](https://codecov.io/gh/kennedykori/JavaUtils)
 
-This is a library composed of utility classes that can be used for checking and validation of both objects and primitives.
+This library contains a utility class that is composed of static methods that can be used for checking and validation of both objects and primitives.
 
 ## Get Started
 
