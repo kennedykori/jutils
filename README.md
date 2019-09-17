@@ -1,7 +1,8 @@
 # Java Utils
 
-This is library a composed of utility classes that can be used for checking and validation 
-of both objects and primitives.
+[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils)
+
+This is a library composed of utility classes that can be used for checking and validation of both objects and primitives.
 
 ## Get Started
 
@@ -55,6 +56,8 @@ public class Address {
 		this.city = requireNonEmptyString(city, "city");
 		this.zipCode = requireNonNegative(zipCode);
 	}
+	
+	// Other methods and attributes
 }
 ```
 
@@ -84,4 +87,8 @@ To view the test coverage report, be sure to be in the project root, and then ru
 
 After, open `build/reports/jacoco/test/html/index.html` in your browser to view the report.
 
-  
+## License
+
+MIT License
+
+Copyright (c) 2019 Kennedy Kori
