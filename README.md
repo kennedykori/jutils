@@ -1,17 +1,36 @@
 # Java Utils
 
-[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) [![codecov](https://codecov.io/gh/kennedykori/JavaUtils/branch/master/graph/badge.svg)](https://codecov.io/gh/kennedykori/JavaUtils)
+[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) [![codecov](https://codecov.io/gh/kennedykori/JavaUtils/branch/master/graph/badge.svg)](https://codecov.io/gh/kennedykori/JavaUtils) [![Download](https://api.bintray.com/packages/kori-47/kori_47/utils/images/download.svg)](https://bintray.com/kori-47/kori_47/utils/_latestVersion)
 
 This library contains a utility class that is composed of static methods that can be used for checking and validation of both objects and primitives.
 
 ## Get Started
 
-Use [gradle](https://gradle.org/) to compile and build the project. CD into the project and run:
+To use the library, make sure you have jcenter in your repositories closure:
+
+```gradle
+repositories {
+    jcenter()
+}
+```
+
+Then add the following dependency to your `build.gradle`:
+
+```gradle
+dependencies {
+    api 'com.kori_47:utils:{latest_version}'
+}
+```
+
+Or alternatively, you can use [gradle](https://gradle.org/) to compile and build the library. Just follow the steps bellow:
+
+* Clone the project from github
+* CD into the project root and run:
 
 ```bash
 ./gradlew build
 ```
-A jar will be generated at `build/libs`, Just add the generated jar in your classpath and start using the library.
+* Add the generated jar (will be located at `build/libs` after a successful build), in your classpath.
 
 ## Usage
 
