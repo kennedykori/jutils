@@ -39,7 +39,7 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 */
-	public final static boolean isGreateThan(int baseValue, int value) {
+	public final static boolean isGreaterThan(int baseValue, int value) {
 		return value > baseValue;
 	}
 
@@ -52,7 +52,7 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 */
-	public final static boolean isGreateThan(long baseValue, long value) {
+	public final static boolean isGreaterThan(long baseValue, long value) {
 		return value > baseValue;
 	}
 
@@ -65,7 +65,7 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 */
-	public final static boolean isGreateThan(float baseValue, float value) {
+	public final static boolean isGreaterThan(float baseValue, float value) {
 		return value > baseValue;
 	}
 
@@ -78,7 +78,7 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 */
-	public final static boolean isGreateThan(double baseValue, double value) {
+	public final static boolean isGreaterThan(double baseValue, double value) {
 		return value > baseValue;
 	}
 	
