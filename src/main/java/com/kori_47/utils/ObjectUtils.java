@@ -213,7 +213,7 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 */
 	public final static boolean isLessThan(int baseValue, int value) {
-		return value > baseValue;
+		return value < baseValue;
 	}
 
 	/**
@@ -228,7 +228,7 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 */
 	public final static boolean isLessThan(long baseValue, long value) {
-		return value > baseValue;
+		return value < baseValue;
 	}
 
 	/**
@@ -243,7 +243,7 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 */
 	public final static boolean isLessThan(float baseValue, float value) {
-		return value > baseValue;
+		return value < baseValue;
 	}
 
 	/**
@@ -259,7 +259,7 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 */
 	public final static boolean isLessThan(double baseValue, double value) {
-		return value > baseValue;
+		return value < baseValue;
 	}
 
 	/**
