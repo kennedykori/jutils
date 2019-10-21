@@ -28,6 +28,61 @@ public final class ObjectUtils {
 	 * ------------------------------------------------------------------------------------
 	 */
 	/*
+	 * ------------------------------------ IS GREATER THAN ------------------------------------
+	 */
+	/**
+	 * Checks if an {@code int} is greater than a supplied base value. Returns {@code true} 
+	 * if the given {@code int} is greater than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value the value to check for greatness.
+	 * 
+	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static boolean isGreateThan(int baseValue, int value) {
+		return value > baseValue;
+	}
+
+	/**
+	 * Checks if a {@code long} is greater than a supplied base value. Returns {@code true} 
+	 * if the given {@code long} is greater than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value the value to check for greatness.
+	 * 
+	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static boolean isGreateThan(long baseValue, long value) {
+		return value > baseValue;
+	}
+
+	/**
+	 * Checks if a {@code float} is greater than a supplied base value. Returns {@code true} 
+	 * if the given {@code float} is greater than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value the value to check for greatness.
+	 * 
+	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static boolean isGreateThan(float baseValue, float value) {
+		return value > baseValue;
+	}
+
+	/**
+	 * Checks if a {@code double} is greater than a supplied base value. Returns {@code true} 
+	 * if the given {@code double} is greater than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value the value to check for greatness.
+	 * 
+	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static boolean isGreateThan(double baseValue, double value) {
+		return value > baseValue;
+	}
+	
+	/*
 	 * ------------------------------------ IS NEGATIVE ------------------------------------
 	 */
 	/**
@@ -93,6 +148,61 @@ public final class ObjectUtils {
 		return false;
 	}
 
+	/*
+	 * ------------------------------------ IS LESS THAN ------------------------------------
+	 */
+	/**
+	 * Checks if an {@code int} is less than a supplied base value. Returns {@code true} 
+	 * if the given {@code int} is less than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value the value to check for smallness.
+	 * 
+	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 */
+	public final static boolean isLessThan(int baseValue, int value) {
+		return value > baseValue;
+	}
+
+	/**
+	 * Checks if a {@code long} is less than a supplied base value. Returns {@code true} 
+	 * if the given {@code long} is less than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value the value to check for smallness.
+	 * 
+	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 */
+	public final static boolean isLessThan(long baseValue, long value) {
+		return value > baseValue;
+	}
+
+	/**
+	 * Checks if a {@code float} is less than a supplied base value. Returns {@code true} 
+	 * if the given {@code float} is less than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value the value to check for smallness.
+	 * 
+	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 */
+	public final static boolean isLessThan(float baseValue, float value) {
+		return value > baseValue;
+	}
+
+	/**
+	 * Checks if a {@code double} is less than a supplied base value. Returns {@code true} 
+	 * if the given {@code double} is less than the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value the value to check for smallness.
+	 * 
+	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 */
+	public final static boolean isLessThan(double baseValue, double value) {
+		return value > baseValue;
+	}
+	
 	/*
 	 * ------------------------------------ IN RANGE ------------------------------------
 	 */
