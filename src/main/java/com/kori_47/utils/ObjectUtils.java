@@ -113,6 +113,96 @@ public final class ObjectUtils {
 	}
 
 	/*
+	 * ------------------------------------ IS GREATER THAN OR EQUAL TO
+	 * ------------------------------------
+	 */
+	/**
+	 * Checks if an {@code int} is greater than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code int} is greater than or equal to the
+	 * supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness or equality against.
+	 * @param value
+	 *            the value to check for greatness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isGreaterThanOrEqualTo(int baseValue, int value) {
+		return value >= baseValue;
+	}
+
+	/**
+	 * Checks if an {@code long} is greater than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code long} is greater than or equal to
+	 * the supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness or equality against.
+	 * @param value
+	 *            the value to check for greatness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isGreaterThanOrEqualTo(long baseValue, long value) {
+		return value >= baseValue;
+	}
+
+	/**
+	 * Checks if an {@code float} is greater than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code float} is greater than or equal to
+	 * the supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness or equality against.
+	 * @param value
+	 *            the value to check for greatness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isGreaterThanOrEqualTo(float baseValue, float value) {
+		return value >= baseValue;
+	}
+
+	/**
+	 * Checks if an {@code double} is greater than or equal to a supplied base
+	 * value. Returns {@code true} if the given {@code double} is greater than or
+	 * equal to the supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness or equality against.
+	 * @param value
+	 *            the value to check for greatness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isGreaterThanOrEqualTo(double baseValue, double value) {
+		return value >= baseValue;
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is greater than or equal to a supplied base
+	 * value. Returns {@code true} if the given {@code BigDecimal} is greater than
+	 * or equal to the supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness or equality against.
+	 * @param value
+	 *            the value to check for greatness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
+		int comparision = value.compareTo(baseValue);
+		return comparision > 0 || comparision == 1;
+	}
+
+	/*
 	 * ------------------------------------ IS NEGATIVE
 	 * ------------------------------------
 	 */
@@ -1455,7 +1545,7 @@ public final class ObjectUtils {
 	 *             if value is empty.
 	 */
 	public static final String requireNonEmptyString(String value, String nullMessage, String emptyMessage) {
-		// Check if messages are null and set a defaults
+		// Check if messages are null and set defaults
 		nullMessage = (isNull(nullMessage)) ? "value cannot be null." : nullMessage;
 		emptyMessage = (isNull(emptyMessage)) ? "value cannot be empty." : emptyMessage;
 		if (requireNonNull(value, nullMessage).isEmpty()) // Start by checking if the string is null
@@ -1465,5 +1555,4 @@ public final class ObjectUtils {
 
 	private ObjectUtils() {
 	}
-
 }
