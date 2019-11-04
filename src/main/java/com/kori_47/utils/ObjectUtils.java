@@ -134,7 +134,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code long} is greater than or equal to a supplied base value.
+	 * Checks if a {@code long} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code long} is greater than or equal to
 	 * the supplied base value.
 	 * 
@@ -151,7 +151,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code float} is greater than or equal to a supplied base value.
+	 * Checks if a {@code float} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code float} is greater than or equal to
 	 * the supplied base value.
 	 * 
@@ -168,9 +168,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code double} is greater than or equal to a supplied base
-	 * value. Returns {@code true} if the given {@code double} is greater than or
-	 * equal to the supplied base value.
+	 * Checks if a {@code double} is greater than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code double} is greater than or equal to
+	 * the supplied base value.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -366,6 +366,96 @@ public final class ObjectUtils {
 	 */
 	public final static boolean isLessThan(BigDecimal baseValue, BigDecimal value) {
 		return value.compareTo(baseValue) < 0;
+	}
+
+	/*
+	 * ------------------------------------ IS LESS THAN OR EQUAL TO
+	 * ------------------------------------
+	 */
+	/**
+	 * Checks if an {@code int} is less than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code int} is less than or equal to the
+	 * supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isLessThanOrEqualTo(int baseValue, int value) {
+		return value <= baseValue;
+	}
+
+	/**
+	 * Checks if a {@code long} is less than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code long} is less than or equal to the
+	 * supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isLessThanOrEqualTo(long baseValue, long value) {
+		return value <= baseValue;
+	}
+
+	/**
+	 * Checks if a {@code float} is less than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code float} is less than or equal to the
+	 * supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isLessThanOrEqualTo(float baseValue, float value) {
+		return value <= baseValue;
+	}
+
+	/**
+	 * Checks if a {@code double} is less than or equal to a supplied base value.
+	 * Returns {@code true} if the given {@code double} is less than or equal to the
+	 * supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isLessThanOrEqualTo(double baseValue, double value) {
+		return value <= baseValue;
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is less than or equal to a supplied base
+	 * value. Returns {@code true} if the given {@code BigDecimal} is less than or
+	 * equal to the supplied base value.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code true} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 */
+	public final static boolean isLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
+		int comparison = value.compareTo(baseValue);
+		return comparison < 0 || comparison == 1;
 	}
 
 	/*
