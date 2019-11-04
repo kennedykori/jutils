@@ -90,6 +90,30 @@ public class ObjectUtilsTest {
 	}
 
 	@Test
+	public void testIsLessThanOrEqualTo() {
+		// Test returns true when a number is greater than
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(123, 11));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(1L, -1L));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(-373233.09F, -373234.06F));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(6767.6767676767D, -7676.7676767676D));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74")));
+
+		// Test returns true when a number is equal to
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(123, 123));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(1L, 1L));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(-373233.09F, -373233.09F));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(-7676.7676767676D, -7676.7676767676D));
+		assertTrue(ObjectUtils.isLessThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.74")));
+
+		// Test returns false when a number is less than
+		assertFalse(ObjectUtils.isLessThanOrEqualTo(0, 2));
+		assertFalse(ObjectUtils.isLessThanOrEqualTo(67391L, 283927399L));
+		assertFalse(ObjectUtils.isLessThanOrEqualTo(-454.012F, 2.57F));
+		assertFalse(ObjectUtils.isLessThanOrEqualTo(-372873039919832.83D, -778564921.87344524D));
+		assertFalse(ObjectUtils.isLessThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75")));
+	}
+
+	@Test
 	public void testInRange() {
 		// Test returns true when number is in range
 		assertTrue(ObjectUtils.inRange(2, 3, 2));

@@ -453,8 +453,7 @@ public final class ObjectUtils {
 	 *         {@code baseValue}.
 	 */
 	public final static boolean isLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
-		int comparison = value.compareTo(baseValue);
-		return comparison < 0 || comparison == 1;
+		return value.compareTo(baseValue) <= 0;
 	}
 
 	/*
