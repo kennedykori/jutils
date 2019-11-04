@@ -608,6 +608,231 @@ public final class ObjectUtils {
 	}
 
 	/*
+	 * ------------------------------------ REQUIRE GREATER THAN
+	 * ------------------------------------
+	 */
+
+	/**
+	 * Checks if an {@code int} is greater than a supplied base value. Returns the
+	 * given {@code int} if it is greater than the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static int requireGreaterThan(int baseValue, int value) {
+		return requireGreaterThan(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if an {@code int} is greater than a supplied base value. Returns the
+	 * given {@code int} if it is greater than the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static int requireGreaterThan(int baseValue, int value, String message) {
+		if (!isGreaterThan(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@code long} is greater than a supplied base value. Returns the
+	 * given {@code long} if it is greater than the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static long requireGreaterThan(long baseValue, long value) {
+		return requireGreaterThan(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@code long} is greater than a supplied base value. Returns the
+	 * given {@code long} if it is greater than the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static long requireGreaterThan(long baseValue, long value, String message) {
+		if (!isGreaterThan(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@code float} is greater than a supplied base value. Returns the
+	 * given {@code float} if it is greater than the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static float requireGreaterThan(float baseValue, float value) {
+		return requireGreaterThan(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@code float} is greater than a supplied base value. Returns the
+	 * given {@code float} if it is greater than the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static float requireGreaterThan(float baseValue, float value, String message) {
+		if (!isGreaterThan(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@code double} is greater than a supplied base value. Returns the
+	 * given {@code double} if it is greater than the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static double requireGreaterThan(double baseValue, double value) {
+		return requireGreaterThan(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@code double} is greater than a supplied base value. Returns the
+	 * given {@code double} if it is greater than the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static double requireGreaterThan(double baseValue, double value, String message) {
+		if (!isGreaterThan(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is greater than a supplied base value. Returns
+	 * the given {@code BigDecimal} if it is greater than the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value) {
+		return requireGreaterThan(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is greater than a supplied base value. Returns
+	 * the given {@code BigDecimal} if it is greater than the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for greatness against.
+	 * @param value
+	 *            the value to check for greatness.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is less than {@code baseValue}.
+	 */
+	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value, String message) {
+		if (!isGreaterThan(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/*
 	 * ------------------------------------ REQUIRE IN RANGE
 	 * ------------------------------------
 	 */
