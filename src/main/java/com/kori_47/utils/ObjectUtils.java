@@ -198,8 +198,7 @@ public final class ObjectUtils {
 	 *         {@code baseValue}.
 	 */
 	public final static boolean isGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
-		int comparision = value.compareTo(baseValue);
-		return comparision > 0 || comparision == 1;
+		return value.compareTo(baseValue) >= 0;
 	}
 
 	/*

@@ -32,6 +32,30 @@ public class ObjectUtilsTest {
 	}
 
 	@Test
+	public void testIsGreaterThanOrEqualTo() {
+		// Test returns true when a number is greater than
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(0, 2));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(67391l, 283927399l));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-454.012f, 2.57f));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-372873039919832.83d, -778564921.87344524d));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75")));
+
+		// Test returns true when a number is equal to
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(2, 2));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(283927399l, 283927399l));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-454.012f, -454.012f));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-372873039919832.83d, -372873039919832.83d));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.74")));
+
+		// Test returns false when a number is less than
+		assertFalse(ObjectUtils.isGreaterThanOrEqualTo(123, 11));
+		assertFalse(ObjectUtils.isGreaterThanOrEqualTo(1L, -1L));
+		assertFalse(ObjectUtils.isGreaterThanOrEqualTo(-373233.09F, -373234.08F));
+		assertFalse(ObjectUtils.isGreaterThanOrEqualTo(6767.6767676767D, -7676.7676767676D));
+		assertFalse(ObjectUtils.isGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74")));
+	}
+
+	@Test
 	public void testIsNegative() {
 		// Test returns true when a number is negative
 		assertTrue(ObjectUtils.isNegative(-5));
