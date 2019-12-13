@@ -15,6 +15,44 @@ public class ObjectUtilsTest {
 	 * ------------------------------------------------------------------------------------
 	 */
 	@Test
+	public void testRequireGreaterThan() {
+		// Test returns value when a number is greater than the base
+		assertEquals(2, ObjectUtils.requireGreaterThan(0, 2));
+		assertEquals(283927399l, ObjectUtils.requireGreaterThan(67391l, 283927399l));
+		assertEquals(2.57f, ObjectUtils.requireGreaterThan(-454.012f, 2.57f));
+		assertEquals(-778564921.87344524d, ObjectUtils.requireGreaterThan(-372873039919832.83d, -778564921.87344524d));
+		assertEquals(new BigDecimal("56.75"),
+				ObjectUtils.requireGreaterThan(new BigDecimal("56.74"), new BigDecimal("56.75")));
+
+		// Test throws IllegalArgumentException when number is not greater than
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(1L, -1L));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(-373233.09F, -373234.08F));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(6767.6767676767D, -7676.7676767676D));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74")));
+
+		// Test exception message
+		final String errMessage = "value must be greater than base value."; // generic error message
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11, errMessage))
+						.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(1L, -1L, errMessage))
+						.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(-373233.09F, -373234.08F, errMessage)).getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireGreaterThan(6767.6767676767D, -7676.7676767676D, errMessage))
+								.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74"), errMessage))
+						.getMessage());
+	}
+
+	@Test
 	public void testIsGreaterThan() {
 		// Test returns true when a number is greater than
 		assertTrue(ObjectUtils.isGreaterThan(0, 2));
