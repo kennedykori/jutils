@@ -107,9 +107,13 @@ public final class ObjectUtils {
 	 *            the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws NullPointerException
+	 *             if any of the two arguments is/are {@code null}.
 	 */
 	public final static boolean isGreaterThan(BigDecimal baseValue, BigDecimal value) {
-		return value.compareTo(baseValue) > 0;
+		return requireNonNull(value, "value cannot be null.")
+				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) > 0;
 	}
 
 	/*
@@ -196,9 +200,13 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @throws NullPointerException
+	 *             if any of the two arguments is/are {@code null}.
 	 */
 	public final static boolean isGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
-		return value.compareTo(baseValue) >= 0;
+		return requireNonNull(value, "value cannot be null.")
+				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) >= 0;
 	}
 
 	/*
@@ -362,9 +370,13 @@ public final class ObjectUtils {
 	 *            the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @throws NullPointerException
+	 *             if any of the two arguments is/are {@code null}.
 	 */
 	public final static boolean isLessThan(BigDecimal baseValue, BigDecimal value) {
-		return value.compareTo(baseValue) < 0;
+		return requireNonNull(value, "value cannot be null.")
+				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) < 0;
 	}
 
 	/*
@@ -451,9 +463,13 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @throws NullPointerException
+	 *             if any of the two arguments is/are {@code null}.
 	 */
 	public final static boolean isLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
-		return value.compareTo(baseValue) <= 0;
+		return requireNonNull(value, "value cannot be null.")
+				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) <= 0;
 	}
 
 	/*
@@ -802,6 +818,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
 	 */
 	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value) {
 		return requireGreaterThan(baseValue, value, null);
@@ -824,6 +842,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
 	 */
 	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isGreaterThan(baseValue, value))
@@ -1037,6 +1057,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
 	 */
 	public final static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
@@ -1061,6 +1083,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
 	 */
 	public final static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
@@ -1795,6 +1819,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
 	 */
 	public final static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value) {
 		return requireLessThan(baseValue, value, null);
@@ -1817,9 +1843,252 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
 	 */
 	public final static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isLessThan(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/*
+	 * ------------------------------------ REQUIRE LESS THAN OR EQUAL TO
+	 * ------------------------------------
+	 */
+
+	/**
+	 * Checks if an {@code int} is less than or equal to a supplied base value.
+	 * Returns the given {@code int} if it is less than or equal to the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static int requireLessThanOrEqualTo(int baseValue, int value) {
+		return requireLessThanOrEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if an {@code int} is less than or equal to a supplied base value.
+	 * Returns the given {@code int} if it is less than or equal to the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static int requireLessThanOrEqualTo(int baseValue, int value, String message) {
+		if (!isLessThanOrEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@code long} is less than or equal to a supplied base value.
+	 * Returns the given {@code long} if it is less than or equal to the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static long requireLessThanOrEqualTo(long baseValue, long value) {
+		return requireLessThanOrEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@code long} is less than or equal to a supplied base value.
+	 * Returns the given {@code long} if it is less than or equal to the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static long requireLessThanOrEqualTo(long baseValue, long value, String message) {
+		if (!isLessThanOrEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@code float} is less than or equal to a supplied base value.
+	 * Returns the given {@code float} if it is less than or equal to the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static float requireLessThanOrEqualTo(float baseValue, float value) {
+		return requireLessThanOrEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if an {@code float} is less than or equal to a supplied base value.
+	 * Returns the given {@code float} if it is less than or equal to the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static float requireLessThanOrEqualTo(float baseValue, float value, String message) {
+		if (!isLessThanOrEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@code double} is less than or equal to a supplied base value.
+	 * Returns the given {@code double} if it is less than or equal to the given
+	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static double requireLessThanOrEqualTo(double baseValue, double value) {
+		return requireLessThanOrEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@code double} is less than or equal to a supplied base value.
+	 * Returns the given {@code double} if it is less than or equal to the given
+	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 */
+	public final static double requireLessThanOrEqualTo(double baseValue, double value, String message) {
+		if (!isLessThanOrEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is less than or equal to a supplied base
+	 * value. Returns the given {@code BigDecimal} if it is less than or equal to
+	 * the given base value, otherwise, an {@code IllegalArgumentException} is
+	 * thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 */
+	public final static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
+		return requireLessThanOrEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is less than or equal to a supplied base
+	 * value. Returns the given {@code BigDecimal} if it is less than or equal to
+	 * the given base value, otherwise, an {@code IllegalArgumentException} is
+	 * thrown.
+	 * 
+	 * @param baseValue
+	 *            the value to compare for smallness or equality against.
+	 * @param value
+	 *            the value to check for smallness or equality.
+	 * @param message
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is less than or equal to
+	 *         {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws NullPointerException
+	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 */
+	public final static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
+		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than %d.", value, baseValue)));
 		return value;
