@@ -15,50 +15,12 @@ public class ObjectUtilsTest {
 	 * ------------------------------------------------------------------------------------
 	 */
 	@Test
-	public void testRequireGreaterThan() {
-		// Test returns value when a number is greater than the base
-		assertEquals(2, ObjectUtils.requireGreaterThan(0, 2));
-		assertEquals(283927399l, ObjectUtils.requireGreaterThan(67391l, 283927399l));
-		assertEquals(2.57f, ObjectUtils.requireGreaterThan(-454.012f, 2.57f));
-		assertEquals(-778564921.87344524d, ObjectUtils.requireGreaterThan(-372873039919832.83d, -778564921.87344524d));
-		assertEquals(new BigDecimal("56.75"),
-				ObjectUtils.requireGreaterThan(new BigDecimal("56.74"), new BigDecimal("56.75")));
-
-		// Test throws IllegalArgumentException when number is not greater than
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(1L, -1L));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(-373233.09F, -373234.08F));
-		assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireGreaterThan(6767.6767676767D, -7676.7676767676D));
-		assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74")));
-
-		// Test exception message
-		final String errMessage = "value must be greater than base value."; // generic error message
-		assertEquals(errMessage,
-				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11, errMessage))
-						.getMessage());
-		assertEquals(errMessage,
-				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(1L, -1L, errMessage))
-						.getMessage());
-		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireGreaterThan(-373233.09F, -373234.08F, errMessage)).getMessage());
-		assertEquals(errMessage,
-				assertThrows(IllegalArgumentException.class,
-						() -> ObjectUtils.requireGreaterThan(6767.6767676767D, -7676.7676767676D, errMessage))
-								.getMessage());
-		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74"), errMessage))
-						.getMessage());
-	}
-
-	@Test
 	public void testIsGreaterThan() {
 		// Test returns true when a number is greater than
 		assertTrue(ObjectUtils.isGreaterThan(0, 2));
-		assertTrue(ObjectUtils.isGreaterThan(67391l, 283927399l));
-		assertTrue(ObjectUtils.isGreaterThan(-454.012f, 2.57f));
-		assertTrue(ObjectUtils.isGreaterThan(-372873039919832.83d, -778564921.87344524d));
+		assertTrue(ObjectUtils.isGreaterThan(67391L, 283927399L));
+		assertTrue(ObjectUtils.isGreaterThan(-454.012F, 2.57F));
+		assertTrue(ObjectUtils.isGreaterThan(-372873039919832.83D, -778564921.87344524D));
 		assertTrue(ObjectUtils.isGreaterThan(new BigDecimal("56.74"), new BigDecimal("56.75")));
 
 		// Test returns false when a number is less than
@@ -73,16 +35,16 @@ public class ObjectUtilsTest {
 	public void testIsGreaterThanOrEqualTo() {
 		// Test returns true when a number is greater than
 		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(0, 2));
-		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(67391l, 283927399l));
-		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-454.012f, 2.57f));
-		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-372873039919832.83d, -778564921.87344524d));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(67391L, 283927399L));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-454.012F, 2.57F));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-372873039919832.83D, -778564921.87344524D));
 		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75")));
 
 		// Test returns true when a number is equal to
 		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(2, 2));
-		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(283927399l, 283927399l));
-		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-454.012f, -454.012f));
-		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-372873039919832.83d, -372873039919832.83d));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(283927399L, 283927399L));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-454.012F, -454.012F));
+		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(-372873039919832.83D, -372873039919832.83D));
 		assertTrue(ObjectUtils.isGreaterThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.74")));
 
 		// Test returns false when a number is less than
@@ -97,16 +59,16 @@ public class ObjectUtilsTest {
 	public void testIsNegative() {
 		// Test returns true when a number is negative
 		assertTrue(ObjectUtils.isNegative(-5));
-		assertTrue(ObjectUtils.isNegative(-9l));
-		assertTrue(ObjectUtils.isNegative(-78.0f));
-		assertTrue(ObjectUtils.isNegative(-123.676673893277843d));
+		assertTrue(ObjectUtils.isNegative(-9L));
+		assertTrue(ObjectUtils.isNegative(-78.0F));
+		assertTrue(ObjectUtils.isNegative(-123.676673893277843D));
 		assertTrue(ObjectUtils.isNegative(new BigDecimal("-94.45")));
 
 		// Test returns false when a number is positive
 		assertFalse(ObjectUtils.isNegative(56));
-		assertFalse(ObjectUtils.isNegative(1l));
-		assertFalse(ObjectUtils.isNegative(85.56f));
-		assertFalse(ObjectUtils.isNegative(213.6539643849432438547d));
+		assertFalse(ObjectUtils.isNegative(1L));
+		assertFalse(ObjectUtils.isNegative(85.56F));
+		assertFalse(ObjectUtils.isNegative(213.6539643849432438547D));
 		assertFalse(ObjectUtils.isNegative(new BigDecimal("344.78")));
 	}
 
@@ -178,11 +140,11 @@ public class ObjectUtilsTest {
 	@Test
 	public void testInRangeExceptions() {
 		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(-13, -30, -43)));
-		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(0l, -300l, -2898898l)));
+		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(0L, -300L, -2898898L)));
 		assertThrows(IllegalArgumentException.class,
-				() -> assertFalse(ObjectUtils.inRange(1279.0000f, 1278.0000f, 1278.0001f)));
+				() -> assertFalse(ObjectUtils.inRange(1279.0000F, 1278.0000F, 1278.0001F)));
 		assertThrows(IllegalArgumentException.class,
-				() -> assertFalse(ObjectUtils.inRange(8.175456d, 7.175457d, 7.175455d)));
+				() -> assertFalse(ObjectUtils.inRange(8.175456D, 7.175457D, 7.175455D)));
 		assertThrows(IllegalArgumentException.class, () -> assertFalse(
 				ObjectUtils.inRange(new BigDecimal("0.015"), new BigDecimal("0.01"), new BigDecimal("0.01"))));
 		assertThrows(NullPointerException.class,
@@ -196,16 +158,16 @@ public class ObjectUtilsTest {
 	@Test
 	public void testRequireInRangeReturnValues() {
 		assertEquals(2, ObjectUtils.requireInRange(2, 3, 2));
-		assertEquals(223l, ObjectUtils.requireInRange(10l, 3792l, 223l));
-		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90f, 0.00f, -32.99f));
-		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763d, 1.6d, -1.788738737d));
+		assertEquals(223l, ObjectUtils.requireInRange(10L, 3792L, 223L));
+		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F));
+		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D));
 		assertEquals(new BigDecimal("45.10"),
 				ObjectUtils.requireInRange(new BigDecimal("45.09"), new BigDecimal("45.11"), new BigDecimal("45.10")));
 
 		assertEquals(2, ObjectUtils.requireInRange(2, 3, 2, null));
-		assertEquals(223l, ObjectUtils.requireInRange(10l, 3792l, 223l, null));
-		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90f, 0.00f, -32.99f, null));
-		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763d, 1.6d, -1.788738737d, null));
+		assertEquals(223l, ObjectUtils.requireInRange(10L, 3792l, 223L, null));
+		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F, null));
+		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D, null));
 		assertEquals(new BigDecimal("45.10"), ObjectUtils.requireInRange(new BigDecimal("45.09"),
 				new BigDecimal("45.11"), new BigDecimal("45.10"), null));
 	}
@@ -213,17 +175,17 @@ public class ObjectUtilsTest {
 	@Test
 	public void testRequireInRangeExceptions() {
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(0, 1, 3));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(10l, 3792l, 2l));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-100.90f, 0.00f, 32.99f));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-1.8673763d, 1.6d, 1.788738737d));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(10L, 3792L, 2L));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-100.90F, 0.00F, 32.99F));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-1.8673763D, 1.6D, 1.788738737D));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(new BigDecimal("45.09"),
 				new BigDecimal("45.11"), new BigDecimal("45.15")));
 
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(0, 1, 3, null));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(10l, 3792l, 2l, null));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-100.90f, 0.00f, 32.99f, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(10l, 3792L, 2L, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-100.90F, 0.00F, 32.99F, null));
 		assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireInRange(-1.8673763d, 1.6d, 1.788738737d, null));
+				() -> ObjectUtils.requireInRange(-1.8673763D, 1.6D, 1.788738737D, null));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(new BigDecimal("45.09"),
 				new BigDecimal("45.11"), new BigDecimal("45.15"), null));
 	}
@@ -246,6 +208,94 @@ public class ObjectUtilsTest {
 				() -> ObjectUtils.requireInRange(new BigDecimal("45.09"), new BigDecimal("45.11"),
 						new BigDecimal("45.15"), "Error: 45.15 is greater than 45.09"));
 		assertEquals("Error: 45.15 is greater than 45.09", ex5.getMessage());
+	}
+
+	@Test
+	public void testRequireGreaterThan() {
+		// Test returns value when a number is greater than the base
+		assertEquals(2, ObjectUtils.requireGreaterThan(0, 2));
+		assertEquals(283927399L, ObjectUtils.requireGreaterThan(67391L, 283927399L));
+		assertEquals(2.57F, ObjectUtils.requireGreaterThan(-454.012F, 2.57F));
+		assertEquals(-778564921.87344524D, ObjectUtils.requireGreaterThan(-372873039919832.83D, -778564921.87344524D));
+		assertEquals(new BigDecimal("56.75"),
+				ObjectUtils.requireGreaterThan(new BigDecimal("56.74"), new BigDecimal("56.75")));
+
+		// Test throws IllegalArgumentException when number is not greater than
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(1L, -1L));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(-373233.09F, -373234.08F));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(6767.6767676767D, -7676.7676767676D));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74")));
+
+		// Test exception message
+		final String errMessage = "value must be greater than or equal to base value."; // generic error message
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11, errMessage))
+						.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(1L, -1L, errMessage))
+						.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(-373233.09F, -373234.08F, errMessage)).getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireGreaterThan(6767.6767676767D, -7676.7676767676D, errMessage))
+								.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74"), errMessage))
+						.getMessage());
+	}
+
+	@Test
+	public void testRequireGreaterThanOrEqualTo() {
+		// Test returns value when a number is greater than the base
+		assertEquals(2, ObjectUtils.requireGreaterThanOrEqualTo(0, 2));
+		assertEquals(283927399L, ObjectUtils.requireGreaterThanOrEqualTo(67391L, 283927399L));
+		assertEquals(2.57F, ObjectUtils.requireGreaterThanOrEqualTo(-454.012F, 2.57F));
+		assertEquals(-778564921.87344524D,
+				ObjectUtils.requireGreaterThanOrEqualTo(-372873039919832.83D, -778564921.87344524D));
+		assertEquals(new BigDecimal("56.75"),
+				ObjectUtils.requireGreaterThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75")));
+
+		// Test returns value when a number is equal to base
+		assertEquals(0, ObjectUtils.requireGreaterThanOrEqualTo(0, 0));
+		assertEquals(61L, ObjectUtils.requireGreaterThanOrEqualTo(61L, 61L));
+		assertEquals(-454.012F, ObjectUtils.requireGreaterThanOrEqualTo(-454.012F, -454.012F));
+		assertEquals(-778564921.87344524D,
+				ObjectUtils.requireGreaterThanOrEqualTo(-778564921.87344524D, -778564921.87344524D));
+		assertEquals(new BigDecimal("56.75"),
+				ObjectUtils.requireGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.75")));
+
+		// Test throws IllegalArgumentException when number is not greater than
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThanOrEqualTo(123, 11));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThanOrEqualTo(1L, -1L));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThanOrEqualTo(-373233.09F, -373234.08F));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThanOrEqualTo(6767.6767676767D, -7676.7676767676D));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74")));
+
+		// Test exception message
+		final String errMessage = "value must be greater than base value."; // generic error message
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThanOrEqualTo(123, 11, errMessage)).getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireGreaterThanOrEqualTo(1L, -1L, errMessage)).getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireGreaterThanOrEqualTo(-373233.09F, -373234.08F, errMessage))
+								.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireGreaterThanOrEqualTo(6767.6767676767D, -7676.7676767676D, errMessage))
+								.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils
+						.requireGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74"), errMessage))
+								.getMessage());
 	}
 
 	@Test
