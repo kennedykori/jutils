@@ -230,7 +230,7 @@ public class ObjectUtilsTest {
 				() -> ObjectUtils.requireGreaterThan(new BigDecimal("56.75"), new BigDecimal("56.74")));
 
 		// Test exception message
-		final String errMessage = "value must be greater than or equal to base value."; // generic error message
+		final String errMessage = "value must be greater than base value."; // generic error message
 		assertEquals(errMessage,
 				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThan(123, 11, errMessage))
 						.getMessage());
@@ -268,7 +268,8 @@ public class ObjectUtilsTest {
 		assertEquals(new BigDecimal("56.75"),
 				ObjectUtils.requireGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.75")));
 
-		// Test throws IllegalArgumentException when number is not greater than
+		// Test throws IllegalArgumentException when number is not greater than or equal
+		// to
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThanOrEqualTo(123, 11));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireGreaterThanOrEqualTo(1L, -1L));
 		assertThrows(IllegalArgumentException.class,
@@ -279,7 +280,7 @@ public class ObjectUtilsTest {
 				() -> ObjectUtils.requireGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74")));
 
 		// Test exception message
-		final String errMessage = "value must be greater than base value."; // generic error message
+		final String errMessage = "value must be greater than or equal to base value."; // generic error message
 		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
 				() -> ObjectUtils.requireGreaterThanOrEqualTo(123, 11, errMessage)).getMessage());
 		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
@@ -295,6 +296,93 @@ public class ObjectUtilsTest {
 		assertEquals(errMessage,
 				assertThrows(IllegalArgumentException.class, () -> ObjectUtils
 						.requireGreaterThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74"), errMessage))
+								.getMessage());
+	}
+
+	@Test
+	public void testRequireLessThan() {
+		// Test returns value when a number is less than the base
+		assertEquals(2, ObjectUtils.requireLessThan(3, 2));
+		assertEquals(283927399L, ObjectUtils.requireLessThan(41263896377267391L, 283927399L));
+		assertEquals(-2.57F, ObjectUtils.requireLessThan(454.012F, -2.57F));
+		assertEquals(-372873039919832.83D, ObjectUtils.requireLessThan(-778564921.87344524D, -372873039919832.83D));
+		assertEquals(new BigDecimal("56.73"),
+				ObjectUtils.requireLessThan(new BigDecimal("56.74"), new BigDecimal("56.73")));
+
+		// Test throws IllegalArgumentException when number is not greater than
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThan(11, 123));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThan(-1L, 1L));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThan(-373234.08F, -373233.09F));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThan(-7676.7676767676D, 6767.6767676767D));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThan(new BigDecimal("56.74"), new BigDecimal("56.75")));
+
+		// Test exception message
+		final String errMessage = "value must be less than base value."; // generic error message
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThan(11, 123, errMessage))
+						.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThan(-1L, 1L, errMessage))
+						.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThan(-373234.08F, -373233.09F, errMessage)).getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireLessThan(6767.6767676767D, 7676.7676767676D, errMessage))
+								.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireLessThan(new BigDecimal("56.74"), new BigDecimal("56.75"), errMessage))
+								.getMessage());
+	}
+
+	@Test
+	public void testRequireLessThanOrEqualTo() {
+		// Test returns value when a number is less than the base
+		assertEquals(0, ObjectUtils.requireLessThanOrEqualTo(2, 0));
+		assertEquals(67391L, ObjectUtils.requireLessThanOrEqualTo(283927399L, 67391L));
+		assertEquals(-454.012F, ObjectUtils.requireLessThanOrEqualTo(2.57F, -454.012F));
+		assertEquals(-372873039919832.83D,
+				ObjectUtils.requireLessThanOrEqualTo(-778564921.87344524D, -372873039919832.83D));
+		assertEquals(new BigDecimal("56.74"),
+				ObjectUtils.requireLessThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.74")));
+
+		// Test returns value when a number is equal to base
+		assertEquals(0, ObjectUtils.requireLessThanOrEqualTo(0, 0));
+		assertEquals(61L, ObjectUtils.requireLessThanOrEqualTo(61L, 61L));
+		assertEquals(-454.012F, ObjectUtils.requireLessThanOrEqualTo(-454.012F, -454.012F));
+		assertEquals(-778564921.87344524D,
+				ObjectUtils.requireLessThanOrEqualTo(-778564921.87344524D, -778564921.87344524D));
+		assertEquals(new BigDecimal("56.75"),
+				ObjectUtils.requireLessThanOrEqualTo(new BigDecimal("56.75"), new BigDecimal("56.75")));
+
+		// Test throws IllegalArgumentException when number is not less than or equal to
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanOrEqualTo(11, 123));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireLessThanOrEqualTo(-1L, 1L));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThanOrEqualTo(-373234.08F, -373233.09F));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThanOrEqualTo(-7676.7676767676D, 6767.6767676767D));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75")));
+
+		// Test exception message
+		final String errMessage = "value must be less than or equal to base value."; // generic error message
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThanOrEqualTo(11, 123, errMessage)).getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThanOrEqualTo(-1L, 1L, errMessage)).getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireLessThanOrEqualTo(-373234.08F, -373233.09F, errMessage)).getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireLessThanOrEqualTo(-7676.7676767676D, 6767.6767676767D, errMessage))
+								.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils
+						.requireLessThanOrEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75"), errMessage))
 								.getMessage());
 	}
 
