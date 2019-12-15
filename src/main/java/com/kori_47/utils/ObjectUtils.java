@@ -654,9 +654,9 @@ public final class ObjectUtils {
 	 */
 
 	/**
-	 * Checks if an {@code int} is greater than a supplied base value. Returns the
-	 * given {@code int} if it is greater than the given base value, otherwise, an
-	 * {@code IllegalArgumentException} is thrown.
+	 * Validates that an {@code int} is greater than a supplied base value. Returns
+	 * the given {@code int} if it is greater than the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -673,9 +673,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code int} is greater than a supplied base value. Returns the
-	 * given {@code int} if it is greater than the given base value, otherwise, an
-	 * {@code IllegalArgumentException} is thrown.
+	 * Validates that an {@code int} is greater than a supplied base value. Returns
+	 * the given {@code int} if it is greater than the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -698,9 +698,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code long} is greater than a supplied base value. Returns the
-	 * given {@code long} if it is greater than the given base value, otherwise, an
-	 * {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code long} is greater than a supplied base value. Returns
+	 * the given {@code long} if it is greater than the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -717,9 +717,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code long} is greater than a supplied base value. Returns the
-	 * given {@code long} if it is greater than the given base value, otherwise, an
-	 * {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code long} is greater than a supplied base value. Returns
+	 * the given {@code long} if it is greater than the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -742,9 +742,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code float} is greater than a supplied base value. Returns the
-	 * given {@code float} if it is greater than the given base value, otherwise, an
-	 * {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code float} is greater than a supplied base value. Returns
+	 * the given {@code float} if it is greater than the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -761,9 +761,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code float} is greater than a supplied base value. Returns the
-	 * given {@code float} if it is greater than the given base value, otherwise, an
-	 * {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code float} is greater than a supplied base value. Returns
+	 * the given {@code float} if it is greater than the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -786,9 +786,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code double} is greater than a supplied base value. Returns the
-	 * given {@code double} if it is greater than the given base value, otherwise,
-	 * an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code double} is greater than a supplied base value.
+	 * Returns the given {@code double} if it is greater than the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -805,9 +805,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code double} is greater than a supplied base value. Returns the
-	 * given {@code double} if it is greater than the given base value, otherwise,
-	 * an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code double} is greater than a supplied base value.
+	 * Returns the given {@code double} if it is greater than the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -830,9 +830,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@link BigDecimal} is greater than a supplied base value. Returns
-	 * the given {@code BigDecimal} if it is greater than the given base value,
-	 * otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@link BigDecimal} is greater than a supplied base value.
+	 * Returns the given {@code BigDecimal} if it is greater than the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -851,9 +851,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@link BigDecimal} is greater than a supplied base value. Returns
-	 * the given {@code BigDecimal} if it is greater than the given base value,
-	 * otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@link BigDecimal} is greater than a supplied base value.
+	 * Returns the given {@code BigDecimal} if it is greater than the given base
+	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -883,9 +883,9 @@ public final class ObjectUtils {
 	 */
 
 	/**
-	 * Checks if an {@code int} is greater than or equal to a supplied base value.
-	 * Returns the given {@code int} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that an {@code int} is greater than or equal to a supplied base
+	 * value. Returns the given {@code int} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -903,9 +903,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code int} is greater than or equal to a supplied base value.
-	 * Returns the given {@code int} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that an {@code int} is greater than or equal to a supplied base
+	 * value. Returns the given {@code int} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -929,9 +929,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code long} is greater than or equal to a supplied base value.
-	 * Returns the given {@code long} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code long} is greater than or equal to a supplied base
+	 * value. Returns the given {@code long} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -949,9 +949,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code long} is greater than or equal to a supplied base value.
-	 * Returns the given {@code long} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code long} is greater than or equal to a supplied base
+	 * value. Returns the given {@code long} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -975,9 +975,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code float} is greater than or equal to a supplied base value.
-	 * Returns the given {@code float} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code float} is greater than or equal to a supplied base
+	 * value. Returns the given {@code float} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -995,9 +995,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code float} is greater than or equal to a supplied base value.
-	 * Returns the given {@code float} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code float} is greater than or equal to a supplied base
+	 * value. Returns the given {@code float} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -1021,9 +1021,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code double} is greater than or equal to a supplied base value.
-	 * Returns the given {@code double} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code double} is greater than or equal to a supplied base
+	 * value. Returns the given {@code double} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -1041,9 +1041,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code double} is greater than or equal to a supplied base value.
-	 * Returns the given {@code double} if it is greater than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code double} is greater than or equal to a supplied base
+	 * value. Returns the given {@code double} if it is greater than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -1067,10 +1067,10 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@link BigDecimal} is greater than or equal to a supplied base
-	 * value. Returns the given {@code BigDecimal} if it is greater than or equal to
-	 * the given base value, otherwise, an {@code IllegalArgumentException} is
-	 * thrown.
+	 * Validates that a {@link BigDecimal} is greater than or equal to a supplied
+	 * base value. Returns the given {@code BigDecimal} if it is greater than or
+	 * equal to the given base value, otherwise, an {@code IllegalArgumentException}
+	 * is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -1090,10 +1090,10 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@link BigDecimal} is greater than or equal to a supplied base
-	 * value. Returns the given {@code BigDecimal} if it is greater than or equal to
-	 * the given base value, otherwise, an {@code IllegalArgumentException} is
-	 * thrown.
+	 * Validates that a {@link BigDecimal} is greater than or equal to a supplied
+	 * base value. Returns the given {@code BigDecimal} if it is greater than or
+	 * equal to the given base value, otherwise, an {@code IllegalArgumentException}
+	 * is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
