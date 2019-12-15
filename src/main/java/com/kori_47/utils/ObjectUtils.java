@@ -67,7 +67,10 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is greater than a supplied base value. Returns
 	 * {@code true} if the given {@code float} is greater than the supplied base
-	 * value.
+	 * value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -77,13 +80,16 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 */
 	public final static boolean isGreaterThan(float baseValue, float value) {
-		return value > baseValue;
+		return Float.compare(value, baseValue) > 0;
 	}
 
 	/**
 	 * Checks if a {@code double} is greater than a supplied base value. Returns
 	 * {@code true} if the given {@code double} is greater than the supplied base
-	 * value.
+	 * value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness against.
@@ -93,7 +99,7 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 */
 	public final static boolean isGreaterThan(double baseValue, double value) {
-		return value > baseValue;
+		return Double.compare(value, baseValue) > 0;
 	}
 
 	/**
@@ -157,7 +163,10 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code float} is greater than or equal to
-	 * the supplied base value.
+	 * the supplied base value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -168,13 +177,16 @@ public final class ObjectUtils {
 	 *         {@code baseValue}.
 	 */
 	public final static boolean isGreaterThanOrEqualTo(float baseValue, float value) {
-		return value >= baseValue;
+		return Float.compare(value, baseValue) >= 0;
 	}
 
 	/**
 	 * Checks if a {@code double} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code double} is greater than or equal to
-	 * the supplied base value.
+	 * the supplied base value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for greatness or equality against.
@@ -185,7 +197,7 @@ public final class ObjectUtils {
 	 *         {@code baseValue}.
 	 */
 	public final static boolean isGreaterThanOrEqualTo(double baseValue, double value) {
-		return value >= baseValue;
+		return Double.compare(value, baseValue) >= 0;
 	}
 
 	/**
@@ -331,6 +343,10 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is less than a supplied base value. Returns
 	 * {@code true} if the given {@code float} is less than the supplied base value.
+	 * </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness against.
@@ -340,13 +356,16 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 */
 	public final static boolean isLessThan(float baseValue, float value) {
-		return value < baseValue;
+		return Float.compare(value, baseValue) < 0;
 	}
 
 	/**
 	 * Checks if a {@code double} is less than a supplied base value. Returns
 	 * {@code true} if the given {@code double} is less than the supplied base
-	 * value.
+	 * value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness against.
@@ -356,7 +375,7 @@ public final class ObjectUtils {
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 */
 	public final static boolean isLessThan(double baseValue, double value) {
-		return value < baseValue;
+		return Double.compare(value, baseValue) < 0;
 	}
 
 	/**
@@ -420,7 +439,10 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is less than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code float} is less than or equal to the
-	 * supplied base value.
+	 * supplied base value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness or equality against.
@@ -431,13 +453,16 @@ public final class ObjectUtils {
 	 *         {@code baseValue}.
 	 */
 	public final static boolean isLessThanOrEqualTo(float baseValue, float value) {
-		return value <= baseValue;
+		return Float.compare(value, baseValue) <= 0;
 	}
 
 	/**
 	 * Checks if a {@code double} is less than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code double} is less than or equal to the
-	 * supplied base value.
+	 * supplied base value. </br>
+	 * </br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness or equality against.
@@ -448,7 +473,7 @@ public final class ObjectUtils {
 	 *         {@code baseValue}.
 	 */
 	public final static boolean isLessThanOrEqualTo(double baseValue, double value) {
-		return value <= baseValue;
+		return Double.compare(value, baseValue) <= 0;
 	}
 
 	/**

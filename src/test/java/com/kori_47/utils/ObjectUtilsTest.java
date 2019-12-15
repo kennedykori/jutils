@@ -117,23 +117,23 @@ public class ObjectUtilsTest {
 	public void testInRange() {
 		// Test returns true when number is in range
 		assertTrue(ObjectUtils.inRange(2, 3, 2));
-		assertTrue(ObjectUtils.inRange(10l, 3792l, 223l));
-		assertTrue(ObjectUtils.inRange(-100.90f, 0.00f, -32.99f));
-		assertTrue(ObjectUtils.inRange(-1.8673763d, 1.6d, -1.788738737d));
+		assertTrue(ObjectUtils.inRange(10L, 3792L, 223L));
+		assertTrue(ObjectUtils.inRange(-100.90F, 0.00F, -32.99F));
+		assertTrue(ObjectUtils.inRange(-1.8673763D, 1.6D, -1.788738737D));
 		assertTrue(ObjectUtils.inRange(new BigDecimal("45.09"), new BigDecimal("45.11"), new BigDecimal("45.10")));
 
 		// Test returns false when number is not in range and value < minValue
 		assertFalse(ObjectUtils.inRange(-30, -13, -43));
-		assertFalse(ObjectUtils.inRange(-300l, 0l, -2898898l));
-		assertFalse(ObjectUtils.inRange(1278.0000f, 1278.0000f, 1277.9999f));
-		assertFalse(ObjectUtils.inRange(7.175456d, 7.175457d, 7.175455d));
+		assertFalse(ObjectUtils.inRange(-300L, 0L, -2898898L));
+		assertFalse(ObjectUtils.inRange(1278.0000F, 1278.0000F, 1277.9999F));
+		assertFalse(ObjectUtils.inRange(7.175456D, 7.175457D, 7.175455D));
 		assertFalse(ObjectUtils.inRange(new BigDecimal("-0.01"), new BigDecimal("0.01"), new BigDecimal("-0.10")));
 
 		// Test returns false when number is not in range and value > maxValue
 		assertFalse(ObjectUtils.inRange(-30, -13, -12));
-		assertFalse(ObjectUtils.inRange(-300l, 0l, 2898898l));
-		assertFalse(ObjectUtils.inRange(1278.0000f, 1278.0000f, 1278.0001f));
-		assertFalse(ObjectUtils.inRange(7.175456d, 7.175457d, 7.175458d));
+		assertFalse(ObjectUtils.inRange(-300L, 0L, 2898898L));
+		assertFalse(ObjectUtils.inRange(1278.0000F, 1278.0000F, 1278.0001F));
+		assertFalse(ObjectUtils.inRange(7.175456D, 7.175457D, 7.175458D));
 		assertFalse(ObjectUtils.inRange(new BigDecimal("-0.01"), new BigDecimal("0.01"), new BigDecimal("0.01")));
 	}
 
@@ -165,7 +165,7 @@ public class ObjectUtilsTest {
 				ObjectUtils.requireInRange(new BigDecimal("45.09"), new BigDecimal("45.11"), new BigDecimal("45.10")));
 
 		assertEquals(2, ObjectUtils.requireInRange(2, 3, 2, null));
-		assertEquals(223l, ObjectUtils.requireInRange(10L, 3792l, 223L, null));
+		assertEquals(223l, ObjectUtils.requireInRange(10L, 3792L, 223L, null));
 		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F, null));
 		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D, null));
 		assertEquals(new BigDecimal("45.10"), ObjectUtils.requireInRange(new BigDecimal("45.09"),
@@ -182,7 +182,7 @@ public class ObjectUtilsTest {
 				new BigDecimal("45.11"), new BigDecimal("45.15")));
 
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(0, 1, 3, null));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(10l, 3792L, 2L, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(10L, 3792L, 2L, null));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireInRange(-100.90F, 0.00F, 32.99F, null));
 		assertThrows(IllegalArgumentException.class,
 				() -> ObjectUtils.requireInRange(-1.8673763D, 1.6D, 1.788738737D, null));
@@ -196,13 +196,13 @@ public class ObjectUtilsTest {
 				() -> ObjectUtils.requireInRange(0, 1, 3, "Error: 3 is greater than 1"));
 		assertEquals("Error: 3 is greater than 1", ex1.getMessage());
 		IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireInRange(10l, 3792l, 2l, "Error: 2 is less than 10"));
+				() -> ObjectUtils.requireInRange(10L, 3792L, 2L, "Error: 2 is less than 10"));
 		assertEquals("Error: 2 is less than 10", ex2.getMessage());
 		IllegalArgumentException ex3 = assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireInRange(-100.90f, 0.00f, 32.99f, "Error: 32.99 is greater than 0.00"));
+				() -> ObjectUtils.requireInRange(-100.90F, 0.00F, 32.99F, "Error: 32.99 is greater than 0.00"));
 		assertEquals("Error: 32.99 is greater than 0.00", ex3.getMessage());
 		IllegalArgumentException ex4 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils
-				.requireInRange(-1.8673763d, 1.6d, 1.788738737d, "Error: 1.788738737 is greater than 1.6"));
+				.requireInRange(-1.8673763D, 1.6D, 1.788738737D, "Error: 1.788738737 is greater than 1.6"));
 		assertEquals("Error: 1.788738737 is greater than 1.6", ex4.getMessage());
 		IllegalArgumentException ex5 = assertThrows(IllegalArgumentException.class,
 				() -> ObjectUtils.requireInRange(new BigDecimal("45.09"), new BigDecimal("45.11"),
@@ -389,31 +389,31 @@ public class ObjectUtilsTest {
 	@Test
 	public void testNonNegativeReturnValues() {
 		assertEquals(36, ObjectUtils.requireNonNegative(36));
-		assertEquals(64l, ObjectUtils.requireNonNegative(64l));
-		assertEquals(56f, ObjectUtils.requireNonNegative(56f));
-		assertEquals(98.09d, ObjectUtils.requireNonNegative(98.09d));
+		assertEquals(64l, ObjectUtils.requireNonNegative(64L));
+		assertEquals(56f, ObjectUtils.requireNonNegative(56F));
+		assertEquals(98.09d, ObjectUtils.requireNonNegative(98.09D));
 		assertEquals(new BigDecimal("872.23"), ObjectUtils.requireNonNegative(new BigDecimal("872.23")));
 
 		assertEquals(574, ObjectUtils.requireNonNegative(574, null));
-		assertEquals(934l, ObjectUtils.requireNonNegative(934l, null));
-		assertEquals(2.56f, ObjectUtils.requireNonNegative(2.56f, null));
-		assertEquals(490.50d, ObjectUtils.requireNonNegative(490.50d, null));
+		assertEquals(934l, ObjectUtils.requireNonNegative(934L, null));
+		assertEquals(2.56f, ObjectUtils.requireNonNegative(2.56F, null));
+		assertEquals(490.50d, ObjectUtils.requireNonNegative(490.50D, null));
 		assertEquals(new BigDecimal("0.50"), ObjectUtils.requireNonNegative(new BigDecimal("0.50"), null));
 	}
 
 	@Test
 	public void testNonNegativeExceptions() {
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-36));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64l));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56f));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09d));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64L));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56F));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09D));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(new BigDecimal("-872.23")));
 		assertThrows(NullPointerException.class, () -> ObjectUtils.requireNonNegative(null));
 
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-36, null));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64l, null));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56f, null));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09d, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-64L, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-56F, null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-98.09D, null));
 		assertThrows(IllegalArgumentException.class,
 				() -> ObjectUtils.requireNonNegative(new BigDecimal("-872.23"), null));
 		assertThrows(NullPointerException.class, () -> ObjectUtils.requireNonNegative(null, null));
@@ -425,13 +425,13 @@ public class ObjectUtilsTest {
 				() -> ObjectUtils.requireNonNegative(-36, "given integer must not be negative."));
 		assertEquals("given integer must not be negative.", ex1.getMessage());
 		IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireNonNegative(-64l, "given long must not be negative."));
+				() -> ObjectUtils.requireNonNegative(-64L, "given long must not be negative."));
 		assertEquals("given long must not be negative.", ex2.getMessage());
 		IllegalArgumentException ex3 = assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireNonNegative(-56f, "given float must not be negative."));
+				() -> ObjectUtils.requireNonNegative(-56F, "given float must not be negative."));
 		assertEquals("given float must not be negative.", ex3.getMessage());
 		IllegalArgumentException ex4 = assertThrows(IllegalArgumentException.class,
-				() -> ObjectUtils.requireNonNegative(-98.09d, "given decimal must not be negative."));
+				() -> ObjectUtils.requireNonNegative(-98.09D, "given decimal must not be negative."));
 		assertEquals("given decimal must not be negative.", ex4.getMessage());
 		IllegalArgumentException ex5 = assertThrows(IllegalArgumentException.class, () -> ObjectUtils
 				.requireNonNegative(new BigDecimal("-872.23"), "given BigDecimal must not be negative."));
