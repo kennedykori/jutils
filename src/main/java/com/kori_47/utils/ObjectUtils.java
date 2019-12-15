@@ -67,8 +67,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is greater than a supplied base value. Returns
 	 * {@code true} if the given {@code float} is greater than the supplied base
-	 * value. </br>
-	 * </br>
+	 * value.<br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
@@ -86,8 +86,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code double} is greater than a supplied base value. Returns
 	 * {@code true} if the given {@code double} is greater than the supplied base
-	 * value. </br>
-	 * </br>
+	 * value. <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
@@ -163,8 +163,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code float} is greater than or equal to
-	 * the supplied base value. </br>
-	 * </br>
+	 * the supplied base value. <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
@@ -183,8 +183,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code double} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code double} is greater than or equal to
-	 * the supplied base value. </br>
-	 * </br>
+	 * the supplied base value. <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
@@ -343,8 +343,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is less than a supplied base value. Returns
 	 * {@code true} if the given {@code float} is less than the supplied base value.
-	 * </br>
-	 * </br>
+	 * <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
@@ -362,8 +362,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code double} is less than a supplied base value. Returns
 	 * {@code true} if the given {@code double} is less than the supplied base
-	 * value. </br>
-	 * </br>
+	 * value. <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
@@ -439,8 +439,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code float} is less than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code float} is less than or equal to the
-	 * supplied base value. </br>
-	 * </br>
+	 * supplied base value. <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
@@ -459,8 +459,8 @@ public final class ObjectUtils {
 	/**
 	 * Checks if a {@code double} is less than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code double} is less than or equal to the
-	 * supplied base value. </br>
-	 * </br>
+	 * supplied base value. <br>
+	 * <br>
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
