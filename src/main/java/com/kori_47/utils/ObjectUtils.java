@@ -756,7 +756,7 @@ public final class ObjectUtils {
 	public final static float requireGreaterThan(float baseValue, float value, String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%f) should be greater than %f.", value, baseValue)));
 		return value;
 	}
 
@@ -800,7 +800,7 @@ public final class ObjectUtils {
 	public final static double requireGreaterThan(double baseValue, double value, String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%f) should be greater than %f.", value, baseValue)));
 		return value;
 	}
 
@@ -848,7 +848,7 @@ public final class ObjectUtils {
 	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%s) should be greater than %s.", value, baseValue)));
 		return value;
 	}
 
@@ -991,7 +991,7 @@ public final class ObjectUtils {
 	public final static float requireGreaterThanOrEqualTo(float baseValue, float value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than or equal %d.", value, baseValue)));
+					: String.format("value(%f) should be greater than or equal %f.", value, baseValue)));
 		return value;
 	}
 
@@ -1037,7 +1037,7 @@ public final class ObjectUtils {
 	public final static double requireGreaterThanOrEqualTo(double baseValue, double value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than or equal %d.", value, baseValue)));
+					: String.format("value(%f) should be greater than or equal %f.", value, baseValue)));
 		return value;
 	}
 
@@ -1089,7 +1089,7 @@ public final class ObjectUtils {
 	public final static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than or equal %d.", value, baseValue)));
+					: String.format("value(%s) should be greater than or equal %s.", value, baseValue)));
 		return value;
 	}
 
@@ -1272,7 +1272,7 @@ public final class ObjectUtils {
 	public final static float requireInRange(float minValue, float maxValue, float value, String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
-					: String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue,
+					: String.format("value(%f) should be more than or equal to %f and less than %f.", value, minValue,
 							maxValue));
 		return value;
 	}
@@ -1332,7 +1332,7 @@ public final class ObjectUtils {
 	public final static double requireInRange(double minValue, double maxValue, double value, String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
-					: String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue,
+					: String.format("value(%f) should be more than or equal to %f and less than %f.", value, minValue,
 							maxValue));
 		return value;
 	}
@@ -1757,7 +1757,7 @@ public final class ObjectUtils {
 	public final static float requireLessThan(float baseValue, float value, String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%f) should be greater than %f.", value, baseValue)));
 		return value;
 	}
 
@@ -1801,7 +1801,7 @@ public final class ObjectUtils {
 	public final static double requireLessThan(double baseValue, double value, String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%f) should be greater than %f.", value, baseValue)));
 		return value;
 	}
 
@@ -1849,7 +1849,7 @@ public final class ObjectUtils {
 	public final static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%s) should be greater than %s.", value, baseValue)));
 		return value;
 	}
 
@@ -1900,7 +1900,7 @@ public final class ObjectUtils {
 	public final static int requireLessThanOrEqualTo(int baseValue, int value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%d) should be less than %d.", value, baseValue)));
 		return value;
 	}
 
@@ -1946,7 +1946,7 @@ public final class ObjectUtils {
 	public final static long requireLessThanOrEqualTo(long baseValue, long value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%d) should be less than %d.", value, baseValue)));
 		return value;
 	}
 
@@ -1992,7 +1992,7 @@ public final class ObjectUtils {
 	public final static float requireLessThanOrEqualTo(float baseValue, float value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%f) should be less than %f.", value, baseValue)));
 		return value;
 	}
 
@@ -2038,7 +2038,7 @@ public final class ObjectUtils {
 	public final static double requireLessThanOrEqualTo(double baseValue, double value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%f) should be less than %f.", value, baseValue)));
 		return value;
 	}
 
@@ -2090,7 +2090,7 @@ public final class ObjectUtils {
 	public final static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
-					: String.format("value(%d) should be greater than %d.", value, baseValue)));
+					: String.format("value(%s) should be greater than %s.", value, baseValue)));
 		return value;
 	}
 
