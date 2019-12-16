@@ -2305,31 +2305,32 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the given <code>String</code> has characters between the given
-	 * minimum chars (inclusive) and the given maximum chars (exclusive). Returns
-	 * <code>value</code> if the given <code>String</code>'s length (no of
-	 * characters) falls within the given range, otherwise, an
-	 * {@link IllegalArgumentException} will be thrown.<br>
-	 * <br>
-	 * <i><b>NOTE:</b> This method internally uses
+	 * Validates that the given {@code String} has characters between the given <i>
+	 * minimum chars <strong>(inclusive)</strong> </i> and the given <i>maximum
+	 * chars <strong>(exclusive)</strong> </i>. Returns {@code value} if the given
+	 * {@code String}'s length <i>(no of characters)</i> falls within the given
+	 * range, otherwise, an {@link IllegalArgumentException} will be thrown. <br>
+	 * <i><strong>NOTE:</strong> This method internally uses
 	 * {@link #hasCharsInRange(int, int, String)}, so an
-	 * <code>IllegalArgumentException</code> might be thrown if any of that methods
+	 * {@code IllegalArgumentException} might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
 	 * @param minChars
-	 *            the minimum number of characters (inclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the minimum number of characters
+	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param maxChars
-	 *            the maximum number of characters (exclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the maximum number of characters
+	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param value
-	 *            the <code>String</code> to check.
+	 *            the {@code String} to check.
 	 * 
-	 * @return <code>value</code> if <code>value</code>'s length falls within the
-	 *         specified range.
+	 * @return {@code value} if {@code value}'s length falls within the specified
+	 *         range.
 	 * 
 	 * @throws NullPointerException
-	 *             if <code>value</code> is <code>null</code>.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
 	 *             if any of the conditions stated above are/is met.
 	 * 
@@ -2340,36 +2341,38 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the given <code>String</code> has characters between the given
-	 * minimum chars (inclusive) and the given maximum chars (exclusive). Returns
-	 * <code>value</code> if the given <code>String</code>'s length (no of
-	 * characters) falls within the given range, otherwise, an
-	 * {@link IllegalArgumentException} will be thrown. An optional message may be
-	 * passed to be used in the construction of the
-	 * <code>IllegalArgumentException</code>. <br>
+	 * Validates that the given {@code String} has characters between the given <i>
+	 * minimum chars <strong>(inclusive)</strong> </i> and the given <i>maximum
+	 * chars <strong>(exclusive)</strong> </i>. Returns {@code value} if the given
+	 * {@code String}'s length <i>(no of characters)</i> falls within the given
+	 * range, otherwise, an {@link IllegalArgumentException} will be thrown. An
+	 * optional message may be passed to be used in the construction of the
+	 * {@code IllegalArgumentException}. <br>
 	 * <br>
-	 * <i><b>NOTE:</b> This method internally uses
+	 * <i><strong>NOTE:</strong> This method internally uses
 	 * {@link #hasCharsInRange(int, int, String)}, so an
-	 * <code>IllegalArgumentException</code> might be thrown if any of that methods
+	 * {@code IllegalArgumentException} might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
 	 * @param minChars
-	 *            the minimum number of characters (inclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the minimum number of characters
+	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param maxChars
-	 *            the maximum number of characters (exclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the maximum number of characters
+	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param value
-	 *            the <code>String</code> to check.
+	 *            the {@code String} to check.
 	 * @param message
-	 *            an optional message to be used as as the IllegalArgumentException
-	 *            message.
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return <code>value</code> if <code>value</code>'s length falls within the
-	 *         specified range.
+	 * @return {@code value} if {@code value}'s length falls within the specified
+	 *         range.
 	 * 
 	 * @throws NullPointerException
-	 *             if <code>value</code> is <code>null</code>.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
 	 *             if any of the conditions stated above are/is met.
 	 * 
