@@ -2387,28 +2387,29 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the given <code>String</code> has less characters than the stated
-	 * maximum chars (exclusive). Returns <code>value</code> if the given
-	 * <code>String</code>'s length (number of characters) is less than the given
-	 * <code>maxChars</code>, otherwise an {@link IllegalArgumentException} will be
-	 * thrown. <br>
+	 * Validates that the given {@code String} has less characters than the stated
+	 * <i>maximum chars <strong>(exclusive)</strong></i>. Returns {@code value} if
+	 * the given {@code String}'s length <i>(number of characters)</i> is less than
+	 * the given {@code maxChars}, otherwise an {@code IllegalArgumentException}
+	 * will be thrown. <br>
 	 * <br>
-	 * <i><b>NOTE:</b> This method internally uses
+	 * <i><strong>NOTE:</strong> This method internally uses
 	 * {@link #hasLessThanChars(int, String)}, so an
-	 * <code>IllegalArgumentException</code> might be thrown if any of that methods
+	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
 	 * @param maxChars
-	 *            the maximum number of characters (exclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the maximum number of characters
+	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param value
-	 *            the <code>String</code> to check.
+	 *            the {@code String} to check.
 	 * 
-	 * @return <code>value</code> if <code>value</code>'s length is less than
-	 *         <code>maxChars</code>.
+	 * @return {@code value} if {@code value}'s length is less than
+	 *         {@code maxChars}.
 	 * 
 	 * @throws NullPointerException
-	 *             if <code>value</code> is <code>null</code>.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
 	 *             if any of the conditions stated above are/is met.
 	 * 
@@ -2419,32 +2420,33 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the given <code>String</code> has less characters than the stated
-	 * maximum chars (exclusive). Returns <code>value</code> if the given
-	 * <code>String</code>'s length (number of characters) is less than the given
-	 * <code>maxChars</code>, otherwise an {@link IllegalArgumentException} will be
-	 * thrown. An optional message may be passed to be used in the construction of
-	 * the <code>IllegalArgumentException</code>. <br>
+	 * Validates that the given {@code String} has less characters than the stated
+	 * <i>maximum chars <strong>(exclusive)</strong></i>. Returns {@code value} if
+	 * the given {@code String}'s length <i>(number of characters)</i> is less than
+	 * the given {@code maxChars}, otherwise an {@code IllegalArgumentException}
+	 * will be thrown. An optional message may be passed to be used in the
+	 * construction of the {@code IllegalArgumentException}. <br>
 	 * <br>
-	 * <i><b>NOTE:</b> This method internally uses
+	 * <i><strong>NOTE:</strong> This method internally uses
 	 * {@link #hasLessThanChars(int, String)}, so an
-	 * <code>IllegalArgumentException</code> might be thrown if any of that methods
+	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
 	 * @param maxChars
-	 *            the maximum number of characters (exclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the maximum number of characters
+	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param value
-	 *            the <code>String</code> to check.
+	 *            the {@code String} to check.
 	 * @param message
-	 *            an optional message to be used as as the IllegalArgumentException
-	 *            message.
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return <code>value</code> if <code>value</code>'s length is less than
-	 *         <code>maxChars</code>.
+	 * @return {@code value} if {@code value}'s length is less than
+	 *         {@code maxChars}.
 	 * 
 	 * @throws NullPointerException
-	 *             if <code>value</code> is <code>null</code>.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
 	 *             if any of the conditions stated above are/is met.
 	 * 
