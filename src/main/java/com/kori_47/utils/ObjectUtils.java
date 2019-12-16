@@ -1446,39 +1446,38 @@ public final class ObjectUtils {
 	 * ------------------------------------
 	 */
 	/**
-	 * Checks that the specified <code>Integer</code> is not negative, i.e less than
-	 * zero. If the <code>Integer</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned.
+	 * Validates that the specified {@code int} is not negative, i.e less than zero.
+	 * If {@code value} is negative, an {@code IllegalArgumentException} is thrown,
+	 * otherwise, {@code value} is returned.
 	 * 
 	 * @param value
-	 *            the integer to check
+	 *            the {@code int} to check.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative.
 	 */
 	public final static int requireNonNegative(int value) {
 		return requireNonNegative(value, null);
 	}
 
 	/**
-	 * Checks that the specified <code>Integer</code> is not negative, i.e less than
-	 * zero. If the <code>Integer</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned. An
-	 * optional message can also be passed to be used as the
-	 * <code>IllegalArgumentException</code> message.
+	 * Validates that the specified {@code int} is not negative, i.e less than zero.
+	 * If {@code value} is negative, an {@code IllegalArgumentException} is thrown,
+	 * otherwise, {@code value} is returned. An optional message can also be passed
+	 * to be used as the {@code IllegalArgumentException} message.
 	 * 
 	 * @param value
-	 *            the integer to check
+	 *            the {@code int} to check.
 	 * @param message
 	 *            an optional message to be used as as the
-	 *            <code>IllegalArgumentException</code> message
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative
 	 */
 	public final static int requireNonNegative(int value, String message) {
 		if (isNegative(value))
@@ -1487,39 +1486,38 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the specified <code>Long</code> is not negative, i.e less than
-	 * zero. If the <code>Long</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned.
+	 * Validates that the specified {@code long} is not negative, i.e less than
+	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
+	 * thrown, otherwise, {@code value} is returned.
 	 * 
 	 * @param value
-	 *            the long to check
+	 *            the {@code long} to check.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative.
 	 */
 	public final static long requireNonNegative(long value) {
 		return requireNonNegative(value, null);
 	}
 
 	/**
-	 * Checks that the specified <code>Long</code> is not negative, i.e less than
-	 * zero. If the <code>Long</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned. An
-	 * optional message can also be passed to be used as the
-	 * <code>IllegalArgumentException</code> message.
+	 * Validates that the specified {@code long} is not negative, i.e less than
+	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
+	 * thrown, otherwise, {@code value} is returned. An optional message can also be
+	 * passed to be used as the {@code IllegalArgumentException} message.
 	 * 
 	 * @param value
-	 *            the long to check
+	 *            the {@code long} to check.
 	 * @param message
 	 *            an optional message to be used as as the
-	 *            <code>IllegalArgumentException</code> message
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative
 	 */
 	public final static long requireNonNegative(long value, String message) {
 		if (isNegative(value))
@@ -1528,39 +1526,38 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the specified <code>Float</code> is not negative, i.e less than
-	 * zero. If the <code>Float</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned.
+	 * Validates that the specified {@code float} is not negative, i.e less than
+	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
+	 * thrown, otherwise, {@code value} is returned.
 	 * 
 	 * @param value
-	 *            the float to check
+	 *            the {@code float} to check.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative.
 	 */
 	public final static float requireNonNegative(float value) {
 		return requireNonNegative(value, null);
 	}
 
 	/**
-	 * Checks that the specified <code>Float</code> is not negative, i.e less than
-	 * zero. If the <code>Float</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned. An
-	 * optional message can also be passed to be used as the
-	 * <code>IllegalArgumentException</code> message.
+	 * Validates that the specified {@code float} is not negative, i.e less than
+	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
+	 * thrown, otherwise, {@code value} is returned. An optional message can also be
+	 * passed to be used as the {@code IllegalArgumentException} message.
 	 * 
 	 * @param value
-	 *            the float to check
+	 *            the {@code float} to check.
 	 * @param message
 	 *            an optional message to be used as as the
-	 *            <code>IllegalArgumentException</code> message
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative
 	 */
 	public final static float requireNonNegative(float value, String message) {
 		if (isNegative(value))
@@ -1569,39 +1566,38 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the specified <code>Double</code> is not negative, i.e less than
-	 * zero. If the <code>Double</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned.
+	 * Validates that the specified {@code double} is not negative, i.e less than
+	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
+	 * thrown, otherwise, {@code value} is returned.
 	 * 
 	 * @param value
-	 *            the double to check
+	 *            the {@code double} to check.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative.
 	 */
 	public final static double requireNonNegative(double value) {
 		return requireNonNegative(value, null);
 	}
 
 	/**
-	 * Checks that the specified <code>Double</code> is not negative, i.e less than
-	 * zero. If the <code>Double</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned. An
-	 * optional message can also be passed to be used as the
-	 * <code>IllegalArgumentException</code> message.
+	 * Validates that the specified {@code double} is not negative, i.e less than
+	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
+	 * thrown, otherwise, {@code value} is returned. An optional message can also be
+	 * passed to be used as the {@code IllegalArgumentException} message.
 	 * 
 	 * @param value
-	 *            the double to check
+	 *            the {@code double} to check.
 	 * @param message
 	 *            an optional message to be used as as the
-	 *            <code>IllegalArgumentException</code> message
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative
 	 */
 	public final static double requireNonNegative(double value, String message) {
 		if (isNegative(value))
@@ -1610,19 +1606,19 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the specified {@link BigDecimal} is not negative, i.e less than
-	 * zero. If the <code>BigDecimal</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned.
+	 * Validates that the specified {@link BigDecimal} is not negative, i.e less
+	 * than zero. If {@code value} is negative, an {@code IllegalArgumentException}
+	 * is thrown, otherwise, {@code value} is returned.
 	 * 
 	 * @param value
-	 *            the <code>BigDecimal</code> to check
+	 *            the {@code BigDecimal} to check.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws NullPointerException
-	 *             if value is <code>null</code>
 	 * @throws IllegalArgumentException
-	 *             if value is negative
+	 *             if {@code value} is negative.
+	 * @throws NullPointerException
+	 *             if value is {@code null}.
 	 * 
 	 * @see BigDecimal
 	 */
@@ -1631,25 +1627,23 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the specified {@link BigDecimal} is not negative, i.e less than
-	 * zero. If the <code>BigDecimal</code> is negative, an
-	 * {@link IllegalArgumentException} is thrown, otherwise, value is returned. An
-	 * optional message can also be passed to be used as the
-	 * <code>IllegalArgumentException</code> message.
+	 * Validates that the specified {@link BigDecimal} is not negative, i.e less
+	 * than zero. If {@code value} is negative, an {@code IllegalArgumentException}
+	 * is thrown, otherwise, {@code value} is returned. An optional message can also
+	 * be passed to be used as the {@code IllegalArgumentException} message.
 	 * 
 	 * @param value
-	 *            the <code>BigDecimal</code> to check
+	 *            the {@code BigDecimal} to check.
 	 * @param message
 	 *            an optional message to be used as as the
-	 *            <code>IllegalArgumentException</code> message
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is <b>NOT</b> negative
+	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws NullPointerException
-	 *             if value is <code>null</code>
 	 * @throws IllegalArgumentException
-	 *             if value is negative
-	 * 
+	 *             if {@code value} is negative
+	 * @throws NullPointerException
+	 *             if value is {@code null}.
 	 * 
 	 * @see BigDecimal
 	 */
