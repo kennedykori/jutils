@@ -2154,24 +2154,24 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a given instance is serializable, i.e implements the
+	 * Validates that a given instance is serializable, i.e implements the
 	 * {@link Serializable} interface. If the given instance is serializable, the
-	 * method returns the instance. Otherwise, an {@link IllegalArgumentException}
-	 * is thrown. Also a {@link NullPointerException} will also be thrown if the
-	 * supplied instance is <code>null</code>.
+	 * method returns the instance. Otherwise, an {@code IllegalArgumentException}
+	 * is thrown. Also a {@code NullPointerException} will also be thrown if the
+	 * supplied instance is {@code null}.
 	 * 
 	 * @param <T>
-	 *            the type of the instance to be checked for serializability
+	 *            the type of the instance to be checked for serializability.
 	 * 
 	 * @param value
-	 *            the instance to check for serializability
+	 *            the instance to check for serializability.
 	 * 
-	 * @return value if it's not <i>null <b>AND</b> is serializable</i>.
+	 * @return {@code value} if it's not <i>null <b>AND</b> is serializable</i>.
 	 * 
 	 * @throws NullPointerException
-	 *             if value is null.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
-	 *             if value is not serializable.
+	 *             if {@code value} is not serializable.
 	 * 
 	 * @see #requireSerializable(Object, String)
 	 * @see Serializable
@@ -2181,28 +2181,28 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a given instance is serializable, i.e implements the
+	 * Validates that a given instance is serializable, i.e implements the
 	 * {@link Serializable} interface. If the given instance is serializable, the
-	 * method returns the instance. Otherwise, an {@link IllegalArgumentException}
-	 * is thrown. Also a {@link NullPointerException} will also be thrown if the
-	 * supplied instance is <code>null</code>. A message can optionally be passed to
-	 * be used in the construction of the <code>IllegalArgumentException</code>.
+	 * method returns the instance. Otherwise, an {@code IllegalArgumentException}
+	 * is thrown. Also a {@code NullPointerException} will also be thrown if the
+	 * supplied instance is {@code null}. A message can optionally be passed to be
+	 * used in the construction of the {@code IllegalArgumentException}.
 	 * 
 	 * @param <T>
-	 *            the type of the instance to be checked for serializability
+	 *            the type of the instance to be checked for serializability.
 	 * 
 	 * @param value
-	 *            the instance to check for serializability
+	 *            the instance to check for serializability.
 	 * @param message
-	 *            an optional message to be used in the construction of the
-	 *            <code>IllegalArgumentException</code>
+	 *            an optional message to be used as the
+	 *            {@code IllegalArgumentException} message.
 	 * 
 	 * @return value if it's not <i>null <b>AND</b> is serializable</i>.
 	 * 
 	 * @throws NullPointerException
-	 *             if value is null.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
-	 *             if value is not serializable.
+	 *             if {@code value} is not serializable.
 	 * 
 	 * @see Serializable
 	 */
