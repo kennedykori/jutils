@@ -2460,28 +2460,29 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the given <code>String</code> has more characters than the stated
-	 * minimum chars (inclusive). Returns <code>value</code> if the given
-	 * <code>String</code>'s length (number of characters) is greater than or equal
-	 * to the given <code>minChars</code>, otherwise, an
-	 * {@link IllegalArgumentException} will be thrown. <br>
+	 * Validates that the given {@code String} has more characters than the stated
+	 * <i>minimum chars <strong>(inclusive)</strong></i>. Returns {@code value} if
+	 * the given {@code String}'s length <i>(number of characters)</i> is greater
+	 * than or equal to the given {@code minChars}, otherwise an
+	 * {@code IllegalArgumentException} will be thrown. <br>
 	 * <br>
-	 * <i><b>NOTE:</b> This method internally uses
+	 * <i><strong>NOTE:</strong> This method internally uses
 	 * {@link #hasMoreThanChars(int, String)}, so an
-	 * <code>IllegalArgumentException</code> might be thrown if any of that methods
+	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
 	 * @param minChars
-	 *            the minimum number of characters (inclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the minimum number of characters
+	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param value
-	 *            the <code>String</code> to check.
+	 *            the {@code String} to check.
 	 * 
-	 * @return <code>value</code> if <code>value</code>'s length is greater than or
-	 *         equal to <code>minChars</code>.
+	 * @return {@code value} if {@code value}'s length is greater than or equal to
+	 *         {@code minChars}.
 	 * 
 	 * @throws NullPointerException
-	 *             if value is null.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
 	 *             if any of the conditions stated above are/is met.
 	 * 
@@ -2492,33 +2493,34 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks that the given <code>String</code> has more characters than the stated
-	 * minimum chars (inclusive). Returns <code>value</code> if the given
-	 * <code>String</code>'s length (number of characters) is greater than or equal
-	 * to the given <code>minChars</code>, otherwise, an
-	 * {@link IllegalArgumentException} will be thrown. An optional message may be
+	 * Validates that the given {@code String} has more characters than the stated
+	 * <i>minimum chars <strong>(inclusive)</strong></i>. Returns {@code value} if
+	 * the given {@code String}'s length <i>(number of characters)</i> is greater
+	 * than or equal to the given {@code minChars}, otherwise an
+	 * {@code IllegalArgumentException} will be thrown. An optional message may be
 	 * passed to be used in the construction of the
-	 * <code>IllegalArgumentException</code>. <br>
+	 * {@code IllegalArgumentException}. <br>
 	 * <br>
-	 * <i><b>NOTE:</b> This method internally uses
+	 * <i><strong>NOTE:</strong> This method internally uses
 	 * {@link #hasMoreThanChars(int, String)}, so an
-	 * <code>IllegalArgumentException</code> might be thrown if any of that methods
+	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
 	 * @param minChars
-	 *            the minimum number of characters (inclusive) that the given
-	 *            <code>String</code> should have.
+	 *            the minimum number of characters
+	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
+	 *            should have.
 	 * @param value
-	 *            the <code>String</code> to check.
+	 *            the {@code String} to check.
 	 * @param message
-	 *            an optional message to be used as as the IllegalArgumentException
-	 *            message.
+	 *            an optional message to be used as as the
+	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return <code>value</code> if <code>value</code>'s length is greater than or
-	 *         equal to <code>minChars</code>.
+	 * @return {@code value} if {@code value}'s length is greater than or equal to
+	 *         {@code minChars}.
 	 * 
 	 * @throws NullPointerException
-	 *             if value is null.
+	 *             if {@code value} is {@code null}.
 	 * @throws IllegalArgumentException
 	 *             if any of the conditions stated above are/is met.
 	 * 
