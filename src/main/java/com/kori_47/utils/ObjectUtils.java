@@ -2266,10 +2266,9 @@ public final class ObjectUtils {
 	 *             if any of the conditions stated above are/is met.
 	 */
 	public final static boolean hasCharsInRange(int minChars, int maxChars, String value) {
-		if (requireNonNegative(maxChars) <= requireNonNegative(minChars))
-			throw new IllegalArgumentException(
-					String.format("maxChars(%d) cannot be less than or equal to minChars(%d).", maxChars, minChars));
-		return requireNonNull(value).length() >= minChars && value.length() < maxChars;
+		requireGreaterThan(requireNonNegative(minChars), requireNonNegative(maxChars),
+				String.format("maxChars(%d) cannot be less than or equal to minChars(%d).", maxChars, minChars));
+		return inRange(minChars, maxChars, requireNonNull(value).length());
 	}
 
 	/**
@@ -2318,7 +2317,7 @@ public final class ObjectUtils {
 	 *             if <code>minChars</code> is negative.
 	 */
 	public final static boolean hasMoreThanChars(int minChars, String value) {
-		return requireNonNull(value).length() >= requireNonNegative(minChars);
+		return isGreaterThanOrEqualTo(requireNonNegative(minChars), requireNonNull(value).length());
 	}
 
 	/**
