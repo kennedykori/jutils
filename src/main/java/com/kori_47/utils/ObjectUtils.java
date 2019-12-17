@@ -268,9 +268,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(int value) {
-		if (value < 0)
-			return true;
-		return false;
+		return isLessThan(0, value);
 	}
 
 	/**
@@ -283,9 +281,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(long value) {
-		if (value < 0l)
-			return true;
-		return false;
+		return isLessThan(0L, value);
 	}
 
 	/**
@@ -298,9 +294,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(float value) {
-		if (value < 0f)
-			return true;
-		return false;
+		return isLessThan(0F, value);
 	}
 
 	/**
@@ -314,9 +308,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(double value) {
-		if (value < 0.0)
-			return true;
-		return false;
+		return isLessThan(0D, value);
 	}
 
 	/**
@@ -333,9 +325,7 @@ public final class ObjectUtils {
 	 *             if value is <code>null</code>.
 	 */
 	public final static boolean isNegative(BigDecimal value) {
-		if (requireNonNull(value).signum() < 0)
-			return true;
-		return false;
+		return requireNonNull(value).signum() < 0;
 	}
 
 	/*
