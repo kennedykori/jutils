@@ -1123,8 +1123,8 @@ public final class ObjectUtils {
 	 * ------------------------------------
 	 */
 	/**
-	 * Validates that the specified {@code Integer} is in range of the specified
-	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
+	 * Validates that the specified {@code int} is in range of the specified minimum
+	 * value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
 	 * {@code minValue} and less than {@code maxValue}, otherwise, an
@@ -1137,9 +1137,9 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the integer to check.
+	 *            the {@code int} to check.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1150,8 +1150,8 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Integer} is in range of the specified
-	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
+	 * Validates that the specified {@code int} is in range of the specified minimum
+	 * value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
 	 * {@code minValue} and less than {@code maxValue}, otherwise, an
@@ -1165,12 +1165,12 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the integer to check.
+	 *            the {@code int} to check.
 	 * @param message
 	 *            an optional message to be used as as the
 	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1185,7 +1185,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Long} is in range of the specified
+	 * Validates that the specified {@code long} is in range of the specified
 	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
@@ -1199,9 +1199,9 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the long to check.
+	 *            the {@code long} to check.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1212,7 +1212,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Long} is in range of the specified
+	 * Validates that the specified {@code long} is in range of the specified
 	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
@@ -1227,12 +1227,12 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the long to check.
+	 *            the {@code long} to check.
 	 * @param message
 	 *            an optional message to be used as as the
 	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1247,7 +1247,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Float} is in range of the specified
+	 * Validates that the specified {@code float} is in range of the specified
 	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
@@ -1261,9 +1261,9 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the float to check.
+	 *            the {@code float} to check.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1274,7 +1274,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Float} is in range of the specified
+	 * Validates that the specified {@code float} is in range of the specified
 	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
@@ -1289,12 +1289,12 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the float to check.
+	 *            the {@code float} to check.
 	 * @param message
 	 *            an optional message to be used as as the
 	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1309,7 +1309,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Double} is in range of the specified
+	 * Validates that the specified {@code double} is in range of the specified
 	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
@@ -1323,9 +1323,9 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the double to check.
+	 *            the {@code double} to check.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1336,7 +1336,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Validates that the specified {@code Double} is in range of the specified
+	 * Validates that the specified {@code double} is in range of the specified
 	 * minimum value <i><strong>(inclusive)</strong></i> and maximum value
 	 * <i><strong>(exclusive)</strong></i>. Returns {@code value} if it is in the
 	 * specified range, i.e, {@code value} is greater than or equal to
@@ -1351,12 +1351,12 @@ public final class ObjectUtils {
 	 * @param maxValue
 	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
 	 * @param value
-	 *            the double to check.
+	 *            the {@code double} to check.
 	 * @param message
 	 *            an optional message to be used as as the
 	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1387,7 +1387,7 @@ public final class ObjectUtils {
 	 * @param value
 	 *            the {@code BigDecimal} to check.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
@@ -1422,7 +1422,7 @@ public final class ObjectUtils {
 	 *            an optional message to be used as as the
 	 *            {@code IllegalArgumentException} message.
 	 * 
-	 * @return value if it is in the specified range.
+	 * @return {@code value} if it is in the specified range.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is not in the specified range or if
