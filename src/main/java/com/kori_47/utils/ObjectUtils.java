@@ -1888,7 +1888,7 @@ public final class ObjectUtils {
 	 */
 
 	/**
-	 * Checks if an {@code int} is less than or equal to a supplied base value.
+	 * Validates that an {@code int} is less than or equal to a supplied base value.
 	 * Returns the given {@code int} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
@@ -1908,7 +1908,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code int} is less than or equal to a supplied base value.
+	 * Validates that an {@code int} is less than or equal to a supplied base value.
 	 * Returns the given {@code int} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
@@ -1934,7 +1934,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code long} is less than or equal to a supplied base value.
+	 * Validates that a {@code long} is less than or equal to a supplied base value.
 	 * Returns the given {@code long} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
@@ -1954,7 +1954,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code long} is less than or equal to a supplied base value.
+	 * Validates that a {@code long} is less than or equal to a supplied base value.
 	 * Returns the given {@code long} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
@@ -1980,9 +1980,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code float} is less than or equal to a supplied base value.
-	 * Returns the given {@code float} if it is less than or equal to the given base
-	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code float} is less than or equal to a supplied base
+	 * value. Returns the given {@code float} if it is less than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness or equality against.
@@ -2000,9 +2000,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if an {@code float} is less than or equal to a supplied base value.
-	 * Returns the given {@code float} if it is less than or equal to the given base
-	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that an {@code float} is less than or equal to a supplied base
+	 * value. Returns the given {@code float} if it is less than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness or equality against.
@@ -2026,9 +2026,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code double} is less than or equal to a supplied base value.
-	 * Returns the given {@code double} if it is less than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code double} is less than or equal to a supplied base
+	 * value. Returns the given {@code double} if it is less than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness or equality against.
@@ -2046,9 +2046,9 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@code double} is less than or equal to a supplied base value.
-	 * Returns the given {@code double} if it is less than or equal to the given
-	 * base value, otherwise, an {@code IllegalArgumentException} is thrown.
+	 * Validates that a {@code double} is less than or equal to a supplied base
+	 * value. Returns the given {@code double} if it is less than or equal to the
+	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
 	 * @param baseValue
 	 *            the value to compare for smallness or equality against.
@@ -2072,7 +2072,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@link BigDecimal} is less than or equal to a supplied base
+	 * Validates that a {@link BigDecimal} is less than or equal to a supplied base
 	 * value. Returns the given {@code BigDecimal} if it is less than or equal to
 	 * the given base value, otherwise, an {@code IllegalArgumentException} is
 	 * thrown.
@@ -2095,7 +2095,7 @@ public final class ObjectUtils {
 	}
 
 	/**
-	 * Checks if a {@link BigDecimal} is less than or equal to a supplied base
+	 * Validates that a {@link BigDecimal} is less than or equal to a supplied base
 	 * value. Returns the given {@code BigDecimal} if it is less than or equal to
 	 * the given base value, otherwise, an {@code IllegalArgumentException} is
 	 * thrown.
