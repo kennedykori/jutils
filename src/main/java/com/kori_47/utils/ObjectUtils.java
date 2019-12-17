@@ -7,18 +7,50 @@ import static java.util.Objects.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
- * This class consists of static utility methods for operating on objects,
- * similar to {@link Objects} and static utility methods for operating on
- * primitives. These utilities include methods for checking a
- * <code>String</code>'s length, methods for checking the negativity of a number
- * and methods for checking if a number falls in a given range.
+ * This class consists of static utility methods<i>(similar to
+ * {@link java.util.Objects})</i> for operating on objects, and primitives.
+ * These utility methods can be classified into two main categories :-
+ * 
+ * <ol>
+ * <li><i><strong>Methods that check if a certain condition is met</strong></i>
+ * -
+ * 
+ * These methods return a {@code boolean} value and typically have the following
+ * prefixes: <i>has, in, is, etc.</i> These methods take a value or values and
+ * return {@code true} if the value(s) meets a certain condition <i>(e.g. check
+ * if a number is negative)</i> and {@code false} otherwise.</li>
+ * 
+ * <li><i><strong>Methods that validate if a certain condition is
+ * met</strong></i> -
+ * 
+ * These methods throw an {@code IllegalArgumentException} if a condition they
+ * check for isn't met and are all prefixed with <i>require</i>. These methods
+ * take a value and return the value if the value meets a certain condition
+ * <i>(e.g. validate a number isn't negative)</i>, otherwise, an
+ * {@code IllegalArgumentException} is thrown.
+ * 
+ * </li>
+ * </ol>
+ * 
+ * The utility methods in this class include methods for checking and validating
+ * a {@code String}'s length, methods for checking and validating the negativity
+ * of a number, methods for checking and validating if a number is less than or
+ * greater than a given base value and methods for checking and validating if a
+ * number falls in a given range.
+ * 
+ * <p>
+ * <i> <strong>NOTE : </strong> Unless otherwise specified, methods in this
+ * class use {@link Float#compare(float, float)} and
+ * {@link Double#compare(double, double)} for {@code float} and {@code double}
+ * comparisons. </i>
+ * </p>
  * 
  * @author <a href="https://github.com/kennedykori"> Kennedy Kori</a>
  *
  * @since Sep 9, 2019, 6:31:47 PM
+ * 
  */
 public final class ObjectUtils {
 
