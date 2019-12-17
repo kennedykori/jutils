@@ -268,9 +268,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(int value) {
-		if (value < 0)
-			return true;
-		return false;
+		return isLessThan(0, value);
 	}
 
 	/**
@@ -283,9 +281,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(long value) {
-		if (value < 0l)
-			return true;
-		return false;
+		return isLessThan(0L, value);
 	}
 
 	/**
@@ -298,9 +294,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(float value) {
-		if (value < 0f)
-			return true;
-		return false;
+		return isLessThan(0F, value);
 	}
 
 	/**
@@ -314,9 +308,7 @@ public final class ObjectUtils {
 	 *         <code>false</code>
 	 */
 	public final static boolean isNegative(double value) {
-		if (value < 0.0)
-			return true;
-		return false;
+		return isLessThan(0D, value);
 	}
 
 	/**
@@ -333,9 +325,7 @@ public final class ObjectUtils {
 	 *             if value is <code>null</code>.
 	 */
 	public final static boolean isNegative(BigDecimal value) {
-		if (requireNonNull(value).signum() < 0)
-			return true;
-		return false;
+		return requireNonNull(value).signum() < 0;
 	}
 
 	/*
@@ -556,10 +546,9 @@ public final class ObjectUtils {
 	 *             if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
 	public final static boolean inRange(int minValue, int maxValue, int value) {
-		if (maxValue < minValue)
-			throw new IllegalArgumentException(
-					"maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
-		return value >= minValue && value < maxValue;
+		requireGreaterThanOrEqualTo(minValue, maxValue,
+				String.format("maxValue( %d ) cannot be less than minValue( %d ).", maxValue, minValue));
+		return isGreaterThanOrEqualTo(minValue, value) && isLessThan(maxValue, value);
 	}
 
 	/**
@@ -585,10 +574,9 @@ public final class ObjectUtils {
 	 *             if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
 	public final static boolean inRange(long minValue, long maxValue, long value) {
-		if (maxValue < minValue)
-			throw new IllegalArgumentException(
-					"maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
-		return value >= minValue && value < maxValue;
+		requireGreaterThanOrEqualTo(minValue, maxValue,
+				String.format("maxValue( %d ) cannot be less than minValue( %d ).", maxValue, minValue));
+		return isGreaterThanOrEqualTo(minValue, value) && isLessThan(maxValue, value);
 	}
 
 	/**
@@ -614,10 +602,9 @@ public final class ObjectUtils {
 	 *             if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
 	public final static boolean inRange(float minValue, float maxValue, float value) {
-		if (maxValue < minValue)
-			throw new IllegalArgumentException(
-					"maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
-		return value >= minValue && value < maxValue;
+		requireGreaterThanOrEqualTo(minValue, maxValue,
+				String.format("maxValue( %f ) cannot be less than minValue( %f ).", maxValue, minValue));
+		return isGreaterThanOrEqualTo(minValue, value) && isLessThan(maxValue, value);
 	}
 
 	/**
@@ -643,10 +630,9 @@ public final class ObjectUtils {
 	 *             if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
 	public final static boolean inRange(double minValue, double maxValue, double value) {
-		if (maxValue < minValue)
-			throw new IllegalArgumentException(
-					"maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
-		return value >= minValue && value < maxValue;
+		requireGreaterThanOrEqualTo(minValue, maxValue,
+				String.format("maxValue( %f ) cannot be less than minValue( %f ).", maxValue, minValue));
+		return isGreaterThanOrEqualTo(minValue, value) && isLessThan(maxValue, value);
 	}
 
 	/**
@@ -674,10 +660,9 @@ public final class ObjectUtils {
 	 *             if <code>maxValue</code> is less than <code>minValue</code>.
 	 */
 	public final static boolean inRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value) {
-		if (requireNonNull(maxValue).compareTo(requireNonNull(minValue)) < 0)
-			throw new IllegalArgumentException(
-					"maxValue(" + maxValue + ") cannot be less than minValue(" + minValue + ").");
-		return requireNonNull(value).compareTo(minValue) >= 0 && value.compareTo(maxValue) < 0;
+		requireGreaterThanOrEqualTo(minValue, maxValue,
+				String.format("maxValue( %s ) cannot be less than minValue( %s ).", maxValue, minValue));
+		return isGreaterThanOrEqualTo(minValue, value) && isLessThan(maxValue, value);
 	}
 
 	/*
@@ -2281,10 +2266,9 @@ public final class ObjectUtils {
 	 *             if any of the conditions stated above are/is met.
 	 */
 	public final static boolean hasCharsInRange(int minChars, int maxChars, String value) {
-		if (requireNonNegative(maxChars) <= requireNonNegative(minChars))
-			throw new IllegalArgumentException(
-					String.format("maxChars(%d) cannot be less than or equal to minChars(%d).", maxChars, minChars));
-		return requireNonNull(value).length() >= minChars && value.length() < maxChars;
+		requireGreaterThan(requireNonNegative(minChars), requireNonNegative(maxChars),
+				String.format("maxChars(%d) cannot be less than or equal to minChars(%d).", maxChars, minChars));
+		return inRange(minChars, maxChars, requireNonNull(value).length());
 	}
 
 	/**
@@ -2333,7 +2317,7 @@ public final class ObjectUtils {
 	 *             if <code>minChars</code> is negative.
 	 */
 	public final static boolean hasMoreThanChars(int minChars, String value) {
-		return requireNonNull(value).length() >= requireNonNegative(minChars);
+		return isGreaterThanOrEqualTo(requireNonNegative(minChars), requireNonNull(value).length());
 	}
 
 	/**
