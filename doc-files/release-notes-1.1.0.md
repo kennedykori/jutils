@@ -145,3 +145,7 @@ returns the value, else, throws a `java.lang.IllegalArgumentException`. These me
 All the utility methods have been refactored to use `java.lang.Float.compare(float, float)` and 
 `java.lang.Double.compare(double, double)` when performing `float` and `double` comparisons instead 
 of the standard comparisons operators in java.
+
+## Reporting Problems
+
+If you find a problem with this release, please file a bug on [GitHub Issues](https://github.com/kennedykori/JavaUtils/issues).
