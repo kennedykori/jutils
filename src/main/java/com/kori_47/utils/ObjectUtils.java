@@ -75,6 +75,8 @@ public final class ObjectUtils {
 	 *            the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThan(int baseValue, int value) {
 		return value > baseValue;
@@ -91,6 +93,8 @@ public final class ObjectUtils {
 	 *            the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThan(long baseValue, long value) {
 		return value > baseValue;
@@ -110,6 +114,8 @@ public final class ObjectUtils {
 	 *            the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThan(float baseValue, float value) {
 		return Float.compare(value, baseValue) > 0;
@@ -129,6 +135,8 @@ public final class ObjectUtils {
 	 *            the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThan(double baseValue, double value) {
 		return Double.compare(value, baseValue) > 0;
@@ -148,6 +156,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws NullPointerException
 	 *             if any of the two arguments is/are {@code null}.
+	 *
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThan(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
@@ -170,6 +180,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThanOrEqualTo(int baseValue, int value) {
 		return value >= baseValue;
@@ -187,6 +199,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThanOrEqualTo(long baseValue, long value) {
 		return value >= baseValue;
@@ -207,6 +221,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThanOrEqualTo(float baseValue, float value) {
 		return Float.compare(value, baseValue) >= 0;
@@ -227,6 +243,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThanOrEqualTo(double baseValue, double value) {
 		return Double.compare(value, baseValue) >= 0;
@@ -247,6 +265,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws NullPointerException
 	 *             if any of the two arguments is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
@@ -342,6 +362,8 @@ public final class ObjectUtils {
 	 *            the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThan(int baseValue, int value) {
 		return value < baseValue;
@@ -357,6 +379,8 @@ public final class ObjectUtils {
 	 *            the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThan(long baseValue, long value) {
 		return value < baseValue;
@@ -376,6 +400,8 @@ public final class ObjectUtils {
 	 *            the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThan(float baseValue, float value) {
 		return Float.compare(value, baseValue) < 0;
@@ -395,6 +421,8 @@ public final class ObjectUtils {
 	 *            the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThan(double baseValue, double value) {
 		return Double.compare(value, baseValue) < 0;
@@ -414,6 +442,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws NullPointerException
 	 *             if any of the two arguments is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThan(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
@@ -436,6 +466,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThanOrEqualTo(int baseValue, int value) {
 		return value <= baseValue;
@@ -453,6 +485,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThanOrEqualTo(long baseValue, long value) {
 		return value <= baseValue;
@@ -473,6 +507,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThanOrEqualTo(float baseValue, float value) {
 		return Float.compare(value, baseValue) <= 0;
@@ -493,6 +529,8 @@ public final class ObjectUtils {
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThanOrEqualTo(double baseValue, double value) {
 		return Double.compare(value, baseValue) <= 0;
@@ -513,6 +551,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws NullPointerException
 	 *             if any of the two arguments is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static boolean isLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
@@ -684,6 +724,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireGreaterThan(int baseValue, int value) {
 		return requireGreaterThan(baseValue, value, null);
@@ -706,6 +748,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireGreaterThan(int baseValue, int value, String message) {
 		if (!isGreaterThan(baseValue, value))
@@ -728,6 +772,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireGreaterThan(long baseValue, long value) {
 		return requireGreaterThan(baseValue, value, null);
@@ -750,6 +796,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireGreaterThan(long baseValue, long value, String message) {
 		if (!isGreaterThan(baseValue, value))
@@ -772,6 +820,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireGreaterThan(float baseValue, float value) {
 		return requireGreaterThan(baseValue, value, null);
@@ -794,6 +844,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireGreaterThan(float baseValue, float value, String message) {
 		if (!isGreaterThan(baseValue, value))
@@ -816,6 +868,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireGreaterThan(double baseValue, double value) {
 		return requireGreaterThan(baseValue, value, null);
@@ -838,6 +892,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireGreaterThan(double baseValue, double value, String message) {
 		if (!isGreaterThan(baseValue, value))
@@ -862,6 +918,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is less than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value) {
 		return requireGreaterThan(baseValue, value, null);
@@ -886,6 +944,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is less than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isGreaterThan(baseValue, value))
@@ -914,6 +974,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireGreaterThanOrEqualTo(int baseValue, int value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
@@ -937,6 +999,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireGreaterThanOrEqualTo(int baseValue, int value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
@@ -960,6 +1024,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireGreaterThanOrEqualTo(long baseValue, long value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
@@ -983,6 +1049,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireGreaterThanOrEqualTo(long baseValue, long value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
@@ -1006,6 +1074,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireGreaterThanOrEqualTo(float baseValue, float value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
@@ -1029,6 +1099,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireGreaterThanOrEqualTo(float baseValue, float value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
@@ -1052,6 +1124,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireGreaterThanOrEqualTo(double baseValue, double value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
@@ -1075,6 +1149,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is less than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireGreaterThanOrEqualTo(double baseValue, double value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
@@ -1101,6 +1177,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is less than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
@@ -1127,6 +1205,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is less than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
@@ -1689,6 +1769,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireLessThan(int baseValue, int value) {
 		return requireLessThan(baseValue, value, null);
@@ -1711,6 +1793,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireLessThan(int baseValue, int value, String message) {
 		if (!isLessThan(baseValue, value))
@@ -1733,6 +1817,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireLessThan(long baseValue, long value) {
 		return requireLessThan(baseValue, value, null);
@@ -1755,6 +1841,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireLessThan(long baseValue, long value, String message) {
 		if (!isLessThan(baseValue, value))
@@ -1777,6 +1865,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireLessThan(float baseValue, float value) {
 		return requireLessThan(baseValue, value, null);
@@ -1799,6 +1889,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireLessThan(float baseValue, float value, String message) {
 		if (!isLessThan(baseValue, value))
@@ -1821,6 +1913,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireLessThan(double baseValue, double value) {
 		return requireLessThan(baseValue, value, null);
@@ -1843,6 +1937,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireLessThan(double baseValue, double value, String message) {
 		if (!isLessThan(baseValue, value))
@@ -1867,6 +1963,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is greater than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value) {
 		return requireLessThan(baseValue, value, null);
@@ -1891,6 +1989,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is greater than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isLessThan(baseValue, value))
@@ -1919,6 +2019,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireLessThanOrEqualTo(int baseValue, int value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
@@ -1942,6 +2044,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static int requireLessThanOrEqualTo(int baseValue, int value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
@@ -1965,6 +2069,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireLessThanOrEqualTo(long baseValue, long value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
@@ -1988,6 +2094,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static long requireLessThanOrEqualTo(long baseValue, long value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
@@ -2011,6 +2119,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireLessThanOrEqualTo(float baseValue, float value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
@@ -2034,6 +2144,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static float requireLessThanOrEqualTo(float baseValue, float value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
@@ -2057,6 +2169,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireLessThanOrEqualTo(double baseValue, double value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
@@ -2080,6 +2194,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException
 	 *             if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static double requireLessThanOrEqualTo(double baseValue, double value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
@@ -2106,6 +2222,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is greater than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
@@ -2132,6 +2250,8 @@ public final class ObjectUtils {
 	 *             if {@code value} is greater than {@code baseValue}.
 	 * @throws NullPointerException
 	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.1.0
 	 */
 	public final static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))

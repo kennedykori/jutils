@@ -14,14 +14,14 @@ plugins {
     // Apply the maven publish plugin
     id 'maven-publish'
     // Apply the bintray plugin 
-    id "com.jfrog.bintray" version "1.8.4"
+    id 'com.jfrog.bintray' version '1.8.4'
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 group = 'com.kori_47'
-version = '1.0'
+version = '1.1.0'
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -68,13 +68,13 @@ def pomConfig = {
         license {
             name 'MIT'
             url 'https://github.com/kennedykori/JavaUtils/blob/master/LICENSE'
-            distribution "repo"
+            distribution 'repo'
         }
     }
     developers {
         developer {
             id 'kennedykori'
-            name "Kennedy Kori"
+            name 'Kennedy Kori'
             email 'kennedykori47@gmail.com'
         }
     }
@@ -94,7 +94,7 @@ publishing {
             
             groupId 'com.kori_47'
             artifactId 'utils'
-            version '1.0'
+            version '1.1.0'
             
             pom.withXml {
                 def root = asNode()
@@ -119,15 +119,17 @@ bintray {
 		issueTrackerUrl = 'https://github.com/kennedykori/JavaUtils/issues'
     	vcsUrl = 'https://github.com/kennedykori/JavaUtils.git'
     	licenses = ['MIT']
+    	labels = ['java', 'utils', 'utility']
 		publicDownloadNumbers = true
 		
 		githubRepo = 'kennedykori/JavaUtils'
-		githubReleaseNotesFile = 'README.md'
+		githubReleaseNotesFile = 'doc-files/release-notes-1.1.0.md'
 		
 		version {
-	        name = '1.0-Final'
-	        desc = 'Utils 1.0 final'
+	        name = '1.1.0'
+	        desc = 'Utils 1.1.0'
 	        released  = new Date()
+	        vcsTag = '1.1.0'
 			// GPG Signing
 			gpg {
                 sign = true

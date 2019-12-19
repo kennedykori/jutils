@@ -1,8 +1,25 @@
 # Java Utils
 
-[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) [![codecov](https://codecov.io/gh/kennedykori/JavaUtils/branch/master/graph/badge.svg)](https://codecov.io/gh/kennedykori/JavaUtils) [![Download](https://api.bintray.com/packages/kori-47/kori_47/utils/images/download.svg)](https://bintray.com/kori-47/kori_47/utils/_latestVersion)
+[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) 
+[![codecov](https://codecov.io/gh/kennedykori/JavaUtils/branch/master/graph/badge.svg)](https://codecov.io/gh/kennedykori/JavaUtils) 
+[![Download](https://api.bintray.com/packages/kori-47/kori_47/utils/images/download.svg)](https://bintray.com/kori-47/kori_47/utils/_latestVersion) 
+[![javadoc](https://javadoc.io/badge2/com.kori_47/utils/javadoc.svg)](https://javadoc.io/doc/com.kori_47/utils)
 
-This library contains a utility class that is composed of static methods that can be used for checking and validation of both objects and primitives.
+This library contains a utility class that is composed of static methods, similar to `java.util.Objects`, that can be used for checking and 
+validation of both objects and primitives. These utility methods can be classified into two main categories :-
+ 
+ * _**Methods that check if a certain condition is met**_ - These methods return a boolean value and typically have the following
+  prefixes: _has, in, is, etc._ These methods take a value or values and return `true` if the value(s) meets a certain condition _(e.g. check
+  if a number is negative)_ and  `false` otherwise.
+ 
+ * _**Methods that validate if a certain condition is met**_ - These methods throw a `java.lang.IllegalArgumentException` if a condition they
+  check for isn't met and are all prefixed with _require_. These methods take a value and return the value if the value meets a certain condition
+  _(e.g. validate a number isn't negative)_, otherwise, a `java.lang.IllegalArgumentException` is thrown.
+
+
+The utility methods in this class include methods for checking and validating a `String`'s length, methods for checking and validating the negativity
+of a number, methods for checking and validating if a number is less than or greater than a given base value and methods for checking and validating if a
+number falls in a given range.
 
 ## Get Started
 
@@ -18,19 +35,20 @@ Then add the following dependency to your `build.gradle`:
 
 ```gradle
 dependencies {
-    api 'com.kori_47:utils:{latest_version}'
+    api 'com.kori_47:utils:1.1.0'
 }
 ```
 
 Or alternatively, you can use [gradle](https://gradle.org/) to compile and build the library. Just follow the steps bellow:
 
-* Clone the project from github
+* Clone the project from [github](https://github.com/kennedykori/JavaUtils).
 * CD into the project root and run:
 
 ```bash
 ./gradlew build
 ```
-* Add the generated jar (will be located at `build/libs` after a successful build), in your classpath.
+* Add the generated jar _(will be located at `build/libs` after a successful build)_, in your classpath.
+* You're good to go. :thumbsup:
 
 ## Usage
 
@@ -70,7 +88,7 @@ public class Address {
 	private final int zipCode;
 	
 	public Address (String recipient, int box, String city, int zipCode) {
-		this.recipient = requireLessThanChars(51, requireMoreThanChars(2, recipient.trim(), "recipient should have atleast two characters."), "recipient should have atmost 50 characters."); // equal to: this.recipient = requireCharsInRange(2, 51, recipient.trim());
+		this.recipient = requireCharsInRange(2, 51, recipient.trim(), "recipient should have between 2 to 50 characters."); // equal to: this.recipient = requireLessThanChars(51, requireMoreThanChars(2, recipient.trim()));
 		this.box = requireNonNegative(box, "box shouldn't be negative.");
 		this.city = requireNonEmptyString(city, "city");
 		this.zipCode = requireNonNegative(zipCode);
@@ -82,13 +100,16 @@ public class Address {
 
 ## API Reference
 
-To get the documentation for this project, CD in to the project root and run:
+You can access the documentation of this project from [here](https://javadoc.io/doc/com.kori_47/utils).
+
+Alternatively, you can generate the documentation using gradle by running the following 
+command from the project root: 
 
 ```bash
 ./gradlew javadoc
 ```
 
-After this, just open `build/docs/javadoc/index.html` in your browser of choice.
+Then open `build/docs/javadoc/index.html` in your browser of choice.
 
 ## Tests
 
@@ -104,7 +125,7 @@ To view the test coverage report, be sure to be in the project root, and then ru
 ./gradlew jacocoTestReport
 ```
 
-After, open `build/reports/jacoco/test/html/index.html` in your browser to view the report.
+Then open `build/reports/jacoco/test/html/index.html` in your browser to view the report.
 
 ## License
 
