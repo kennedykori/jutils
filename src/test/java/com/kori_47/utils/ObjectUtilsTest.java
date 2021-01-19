@@ -15,6 +15,28 @@ public class ObjectUtilsTest {
 	 * ------------------------------------------------------------------------------------
 	 */
 	@Test
+	public void testIsEqualTo() {
+		// Test returns true when number is equal to
+		assertTrue(ObjectUtils.isEqualTo(0, -0));
+		assertTrue(ObjectUtils.isEqualTo(-435L, -435L));
+		assertTrue(ObjectUtils.isEqualTo(-65.78724913F, -65.78724913F));
+		assertTrue(ObjectUtils.isEqualTo(0.000000000000001D, 0.000000000000001D));
+		assertTrue(ObjectUtils.isEqualTo(new BigDecimal("7"), new BigDecimal("7")));
+
+		// Test returns false when number is not equal to
+		assertFalse(ObjectUtils.isEqualTo(0, -1));
+		assertFalse(ObjectUtils.isEqualTo(435L, -435L));
+		assertFalse(ObjectUtils.isEqualTo(65.78724913F, -65.78724913F));
+		assertFalse(ObjectUtils.isEqualTo(0.999999999999999D, 0.1D));
+		assertFalse(ObjectUtils.isEqualTo(new BigDecimal("0.9999999999999999"), new BigDecimal("1")));
+
+		// Test that NullPointerException is thrown when null is given
+		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(null, null));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(null, new BigDecimal("1")));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(new BigDecimal("1"), null));
+	}
+	
+	@Test
 	public void testIsGreaterThan() {
 		// Test returns true when a number is greater than
 		assertTrue(ObjectUtils.isGreaterThan(0, 2));
