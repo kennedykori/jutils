@@ -61,6 +61,95 @@ public final class ObjectUtils {
 	 * ------------------------------------------------------------------------------------
 	 */
 	/*
+	 * ------------------------------------ IS EQUAL
+	 * ------------------------------------
+	 */
+	/**
+	 * Checks if an {@code int} is equal to a supplied base value. Returns {@code true} if the
+	 * given {@code int} is equal to the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(int baseValue, int value) {
+		return baseValue == value;
+	}
+
+	/**
+	 * Checks if a {@code long} is equal to a supplied base value. Returns {@code true} if the
+	 * given {@code long} is equal to the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(long baseValue, long value) {
+		return baseValue == value;
+	}
+	
+	/**
+	 * Checks if a {@code float} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code float} is equal to the supplied base
+	 * value.<br>
+	 * <br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Float#compare(float, float)} to compare the given values. </i>
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(float baseValue, float value) {
+		return Float.compare(value, baseValue) == 0;
+	}
+
+	/**
+	 * Checks if a {@code double} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code double} is equal to the supplied base
+	 * value. <br>
+	 * <br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Double#compare(double, double)} to compare the given values. </i>
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(double baseValue, double value) {
+		return Double.compare(value, baseValue) == 0;
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code BigDecimal} is equal to the supplied
+	 * base value.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws NullPointerException if any of the two arguments is/are {@code null}.
+	 *
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(BigDecimal baseValue, BigDecimal value) {
+		return requireNonNull(value, "value cannot be null.")
+				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) == 0;
+	}
+
+	/*
 	 * ------------------------------------ IS GREATER THAN
 	 * ------------------------------------
 	 */
