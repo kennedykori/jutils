@@ -795,6 +795,214 @@ public final class ObjectUtils {
 	}
 
 	/*
+	 * ------------------------------------ REQUIRE EQUAL TO
+	 * ------------------------------------
+	 */
+
+	/**
+	 * Validates that an {@code int} is equal to a supplied base value. Returns
+	 * the given {@code int} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static int requireEqualTo(int baseValue, int value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that an {@code int} is equal to a supplied base value. Returns
+	 * the given {@code int} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @param message an optional message to be used as as the {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static int requireEqualTo(int baseValue, int value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be equal to %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@code long} is equal to a supplied base value. Returns
+	 * the given {@code long} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static long requireEqualTo(long baseValue, long value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@code long} is equal to a supplied base value. Returns
+	 * the given {@code long} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @param message an optional message to be used as as the {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static long requireEqualTo(long baseValue, long value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%d) should be equal to %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@code long} is equal to a supplied base value. Returns
+	 * the given {@code long} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static float requireEqualTo(float baseValue, float value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@code float} is equal to a supplied base value. Returns
+	 * the given {@code float} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @param message an optional message to be used as as the {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static float requireEqualTo(float baseValue, float value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%f) should be equal to %f.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@code double} is equal to a supplied base value. Returns
+	 * the given {@code double} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static double requireEqualTo(double baseValue, double value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@code double} is equal to a supplied base value. Returns
+	 * the given {@code double} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @param message an optional message to be used as as the {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static double requireEqualTo(double baseValue, double value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%f) should be equal to %f.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@link BigDecimal} is equal to a supplied base value. Returns
+	 * the given {@code BigDecimal} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @param message an optional message to be used as as the {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * @throws NullPointerException if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@link BigDecimal} is equal to a supplied base value. Returns
+	 * the given {@code BigDecimal} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value the value to check for equality.
+	 * @param message an optional message to be used as as the {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to {@code baseValue}.
+	 * @throws NullPointerException if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException((nonNull(message) ? message
+					: String.format("value(%s) should be equal to %s.", value, baseValue)));
+		return value;
+	}
+
+	/*
 	 * ------------------------------------ REQUIRE GREATER THAN
 	 * ------------------------------------
 	 */
