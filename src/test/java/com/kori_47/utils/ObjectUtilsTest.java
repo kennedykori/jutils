@@ -15,6 +15,28 @@ public class ObjectUtilsTest {
 	 * ------------------------------------------------------------------------------------
 	 */
 	@Test
+	public void testIsEqualTo() {
+		// Test returns true when number is equal to
+		assertTrue(ObjectUtils.isEqualTo(0, -0));
+		assertTrue(ObjectUtils.isEqualTo(-435L, -435L));
+		assertTrue(ObjectUtils.isEqualTo(-65.78724913F, -65.78724913F));
+		assertTrue(ObjectUtils.isEqualTo(0.000000000000001D, 0.000000000000001D));
+		assertTrue(ObjectUtils.isEqualTo(new BigDecimal("7"), new BigDecimal("7")));
+
+		// Test returns false when number is not equal to
+		assertFalse(ObjectUtils.isEqualTo(0, -1));
+		assertFalse(ObjectUtils.isEqualTo(435L, -435L));
+		assertFalse(ObjectUtils.isEqualTo(65.78724913F, -65.78724913F));
+		assertFalse(ObjectUtils.isEqualTo(0.999999999999999D, 0.1D));
+		assertFalse(ObjectUtils.isEqualTo(new BigDecimal("0.9999999999999999"), new BigDecimal("1")));
+
+		// Test that NullPointerException is thrown when null is given
+		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(null, null));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(null, new BigDecimal("1")));
+		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(new BigDecimal("1"), null));
+	}
+	
+	@Test
 	public void testIsGreaterThan() {
 		// Test returns true when a number is greater than
 		assertTrue(ObjectUtils.isGreaterThan(0, 2));
@@ -156,11 +178,47 @@ public class ObjectUtilsTest {
 	}
 
 	@Test
+	public void testRequireEqualTo() {
+		// Test returns value when equal
+		assertEquals(0, ObjectUtils.requireEqualTo(0, -0));
+		assertEquals(-47L, ObjectUtils.requireEqualTo(-47L, -47L));
+		assertEquals(-34.4535623F, ObjectUtils.requireEqualTo(-34.4535623F, -34.4535623F));
+		assertEquals(0.999999999999999999D, ObjectUtils.requireEqualTo(0.999999999999999999D, 0.999999999999999999D));
+		assertEquals(new BigDecimal("0.9999999999999999"), ObjectUtils.requireEqualTo(new BigDecimal("0.9999999999999999"), new BigDecimal("0.9999999999999999")));
+
+		// Test throws IllegalArgumentException when not equal to
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(0, -1));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(78L, -3L));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(7.99999F, 8F));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(0.99999999999999D, 1));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(new BigDecimal("-1"), new BigDecimal("-1.00000000001")));
+
+		// Test exception message
+		final String errMessage = "value must be equal to base value."; // generic error message
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(11, 123, errMessage))
+						.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(-1L, 1L, errMessage))
+						.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireEqualTo(-373234.08F, -373233.09F, errMessage)).getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireEqualTo(6767.6767676767D, 7676.7676767676D, errMessage))
+								.getMessage());
+		assertEquals(errMessage,
+				assertThrows(IllegalArgumentException.class,
+						() -> ObjectUtils.requireEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75"), errMessage))
+								.getMessage());
+	}
+
+	@Test
 	public void testRequireInRangeReturnValues() {
 		assertEquals(2, ObjectUtils.requireInRange(2, 3, 2));
-		assertEquals(223l, ObjectUtils.requireInRange(10L, 3792L, 223L));
-		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F));
-		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D));
+		assertEquals(223L, ObjectUtils.requireInRange(10L, 3792L, 223L));
+		assertEquals(-32.99F, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F));
+		assertEquals(-1.788738737D, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D));
 		assertEquals(new BigDecimal("45.10"),
 				ObjectUtils.requireInRange(new BigDecimal("45.09"), new BigDecimal("45.11"), new BigDecimal("45.10")));
 
