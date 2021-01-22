@@ -901,8 +901,6 @@ public final class ObjectUtils {
 	 * 
 	 * @param baseValue the value to compare for equality to.
 	 * @param value     the value to check for equality.
-	 * @param message   an optional message to be used as as the
-	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
 	 * 
