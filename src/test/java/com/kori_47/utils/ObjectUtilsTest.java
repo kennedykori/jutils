@@ -1,19 +1,20 @@
 package com.kori_47.utils;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
+
 public class ObjectUtilsTest {
-	/*-------------------------------------------------------------------------------------
-	 * 
-	 * NUMBERS
-	 *
-	 * ------------------------------------------------------------------------------------
-	 */
+	// ========================================================================
+	// NUMBERS UTILITY METHODS TESTS
+	// ========================================================================
 	@Test
 	public void testIsEqualTo() {
 		// Test returns true when number is equal to
@@ -35,7 +36,7 @@ public class ObjectUtilsTest {
 		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(null, new BigDecimal("1")));
 		assertThrows(NullPointerException.class, () -> ObjectUtils.isEqualTo(new BigDecimal("1"), null));
 	}
-	
+
 	@Test
 	public void testIsGreaterThan() {
 		// Test returns true when a number is greater than
@@ -184,14 +185,16 @@ public class ObjectUtilsTest {
 		assertEquals(-47L, ObjectUtils.requireEqualTo(-47L, -47L));
 		assertEquals(-34.4535623F, ObjectUtils.requireEqualTo(-34.4535623F, -34.4535623F));
 		assertEquals(0.999999999999999999D, ObjectUtils.requireEqualTo(0.999999999999999999D, 0.999999999999999999D));
-		assertEquals(new BigDecimal("0.9999999999999999"), ObjectUtils.requireEqualTo(new BigDecimal("0.9999999999999999"), new BigDecimal("0.9999999999999999")));
+		assertEquals(new BigDecimal("0.9999999999999999"),
+				ObjectUtils.requireEqualTo(new BigDecimal("0.9999999999999999"), new BigDecimal("0.9999999999999999")));
 
 		// Test throws IllegalArgumentException when not equal to
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(0, -1));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(78L, -3L));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(7.99999F, 8F));
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(0.99999999999999D, 1));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireEqualTo(new BigDecimal("-1"), new BigDecimal("-1.00000000001")));
+		assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireEqualTo(new BigDecimal("-1"), new BigDecimal("-1.00000000001")));
 
 		// Test exception message
 		final String errMessage = "value must be equal to base value."; // generic error message
@@ -203,10 +206,8 @@ public class ObjectUtilsTest {
 						.getMessage());
 		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
 				() -> ObjectUtils.requireEqualTo(-373234.08F, -373233.09F, errMessage)).getMessage());
-		assertEquals(errMessage,
-				assertThrows(IllegalArgumentException.class,
-						() -> ObjectUtils.requireEqualTo(6767.6767676767D, 7676.7676767676D, errMessage))
-								.getMessage());
+		assertEquals(errMessage, assertThrows(IllegalArgumentException.class,
+				() -> ObjectUtils.requireEqualTo(6767.6767676767D, 7676.7676767676D, errMessage)).getMessage());
 		assertEquals(errMessage,
 				assertThrows(IllegalArgumentException.class,
 						() -> ObjectUtils.requireEqualTo(new BigDecimal("56.74"), new BigDecimal("56.75"), errMessage))
@@ -496,12 +497,9 @@ public class ObjectUtilsTest {
 		assertEquals("given BigDecimal must not be negative.", ex5.getMessage());
 	}
 
-	/*-------------------------------------------------------------------------------------
-	 * 
-	 * SERIALIZABLES
-	 *
-	 * ------------------------------------------------------------------------------------
-	 */
+	// ========================================================================
+	// SERIALIZABLES UTILITY METHODS TESTS
+	// ========================================================================
 	@Test
 	public void testIsSerializable() {
 		assertFalse(ObjectUtils.isSerializable(new NonSerializableClass()));
@@ -531,13 +529,9 @@ public class ObjectUtilsTest {
 		assertEquals("instance must be serializable.", ex.getMessage());
 	}
 
-	/*-------------------------------------------------------------------------------------
-	 * 
-	 * STRINGS
-	 *
-	 * ------------------------------------------------------------------------------------
-	 */
-
+	// ========================================================================
+	// STRINGS UTILITY METHODS TESTS
+	// ========================================================================
 	@Test
 	public void testHasCharsInRange() {
 		assertTrue(ObjectUtils.hasCharsInRange(2, 3, "Hi")); // 2 chars
