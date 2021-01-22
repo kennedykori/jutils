@@ -21,7 +21,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 group = 'com.kori_47'
-version = '1.1.0'
+version = '1.2.0'
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -78,7 +78,6 @@ def pomConfig = {
             email 'kennedykori47@gmail.com'
         }
     }
-    
     scm {
        url 'https://github.com/kennedykori/JavaUtils'
     }
@@ -91,11 +90,11 @@ publishing {
             // Attach sources and javadoc Jars to the main maven publication
             artifact sourcesJar
             artifact javadocJar
-            
+
             groupId 'com.kori_47'
             artifactId 'utils'
-            version '1.1.0'
-            
+            version '1.2.0'
+
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description', 'This library contains a utility class that is composed of static methods that can be used for checking and validation of both objects and primitives.')
@@ -112,32 +111,32 @@ bintray {
     key = System.getenv('BINTRAY_KEY')
     publications = ['UtilsPublication']
     pkg {
-    	repo = 'kori_47'
-    	name = 'utils'
-		desc = 'This library contains a utility class that is composed of static methods that can be used for checking and validation of both objects and primitives.'
-		websiteUrl = 'https://github.com/kennedykori/JavaUtils'
-		issueTrackerUrl = 'https://github.com/kennedykori/JavaUtils/issues'
-    	vcsUrl = 'https://github.com/kennedykori/JavaUtils.git'
-    	licenses = ['MIT']
-    	labels = ['java', 'utils', 'utility']
-		publicDownloadNumbers = true
-		
-		githubRepo = 'kennedykori/JavaUtils'
-		githubReleaseNotesFile = 'doc-files/release-notes-1.1.0.md'
-		
-		version {
-	        name = '1.1.0'
-	        desc = 'Utils 1.1.0'
-	        released  = new Date()
-	        vcsTag = '1.1.0'
-			// GPG Signing
-			gpg {
+        repo = 'kori_47'
+        name = 'utils'
+        desc = 'This library contains a utility class that is composed of static methods that can be used for checking and validation of both objects and primitives.'
+        websiteUrl = 'https://github.com/kennedykori/JavaUtils'
+        issueTrackerUrl = 'https://github.com/kennedykori/JavaUtils/issues'
+        vcsUrl = 'https://github.com/kennedykori/JavaUtils.git'
+        licenses = ['MIT']
+        labels = ['java', 'utils', 'utility']
+        publicDownloadNumbers = true
+
+        githubRepo = 'kennedykori/JavaUtils'
+        githubReleaseNotesFile = 'doc-files/release-notes-1.2.0.md'
+
+        version {
+            name = '1.2.0'
+            desc = 'Utils 1.2.0'
+            released  = new Date()
+            vcsTag = '1.2.0'
+            // GPG Signing
+            gpg {
                 sign = true
-			}
-			// Maven Central Sync
-			mavenCentralSync {
-				sync = true
-			}
-	    }
+            }
+            // Maven Central Sync
+            mavenCentralSync {
+                sync = true
+            }
+        }
     }
 }
