@@ -3,10 +3,13 @@
  */
 package com.kori_47.utils;
 
-import static java.util.Objects.*;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+import static java.util.Objects.requireNonNull;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 
 /**
  * This class consists of static utility methods<i>(similar to
@@ -54,25 +57,104 @@ import java.math.BigDecimal;
  */
 public final class ObjectUtils {
 
-	/*-------------------------------------------------------------------------------------
+	// ========================================================================
+	// IS EQUAL CHECKS
+	// ========================================================================
+	/**
+	 * Checks if an {@code int} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code int} is equal to the supplied base value.
 	 * 
-	 * NUMBERS
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(int baseValue, int value) {
+		return baseValue == value;
+	}
+
+	/**
+	 * Checks if a {@code long} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code long} is equal to the supplied base value.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(long baseValue, long value) {
+		return baseValue == value;
+	}
+
+	/**
+	 * Checks if a {@code float} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code float} is equal to the supplied base
+	 * value.<br>
+	 * <br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Float#compare(float, float)} to compare the given values. </i>
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(float baseValue, float value) {
+		return Float.compare(value, baseValue) == 0;
+	}
+
+	/**
+	 * Checks if a {@code double} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code double} is equal to the supplied base value.
+	 * <br>
+	 * <br>
+	 * <i> <strong>NOTE:</strong> This method uses
+	 * {@link Double#compare(double, double)} to compare the given values. </i>
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code true} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static boolean isEqualTo(double baseValue, double value) {
+		return Double.compare(value, baseValue) == 0;
+	}
+
+	/**
+	 * Checks if a {@link BigDecimal} is equal to a supplied base value. Returns
+	 * {@code true} if the given {@code BigDecimal} is equal to the supplied base
+	 * value.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
+	 * 
+	 * @throws NullPointerException if any of the two arguments is/are {@code null}.
 	 *
-	 * ------------------------------------------------------------------------------------
+	 * @since 1.2.0
 	 */
-	/*
-	 * ------------------------------------ IS GREATER THAN
-	 * ------------------------------------
-	 */
+	public final static boolean isEqualTo(BigDecimal baseValue, BigDecimal value) {
+		return requireNonNull(value, "value cannot be null.")
+				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) == 0;
+	}
+
+	// ========================================================================
+	// IS GREATER THAN CHECKS
+	// ========================================================================
 	/**
 	 * Checks if an {@code int} is greater than a supplied base value. Returns
 	 * {@code true} if the given {@code int} is greater than the supplied base
 	 * value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 * 
@@ -87,10 +169,8 @@ public final class ObjectUtils {
 	 * {@code true} if the given {@code long} is greater than the supplied base
 	 * value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 * 
@@ -108,10 +188,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 * 
@@ -129,10 +207,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 * 
@@ -147,15 +223,12 @@ public final class ObjectUtils {
 	 * {@code true} if the given {@code BigDecimal} is greater than the supplied
 	 * base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code true} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws NullPointerException
-	 *             if any of the two arguments is/are {@code null}.
+	 * @throws NullPointerException if any of the two arguments is/are {@code null}.
 	 *
 	 * @since 1.1.0
 	 */
@@ -164,19 +237,16 @@ public final class ObjectUtils {
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) > 0;
 	}
 
-	/*
-	 * ------------------------------------ IS GREATER THAN OR EQUAL TO
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// IS GREATER THAN OR EQUAL TO CHECKS
+	// ========================================================================
 	/**
 	 * Checks if an {@code int} is greater than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code int} is greater than or equal to the
 	 * supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
@@ -192,10 +262,8 @@ public final class ObjectUtils {
 	 * Returns {@code true} if the given {@code long} is greater than or equal to
 	 * the supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
@@ -214,10 +282,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
@@ -236,10 +302,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
@@ -255,16 +319,13 @@ public final class ObjectUtils {
 	 * value. Returns {@code true} if the given {@code BigDecimal} is greater than
 	 * or equal to the supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws NullPointerException
-	 *             if any of the two arguments is/are {@code null}.
+	 * @throws NullPointerException if any of the two arguments is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -273,17 +334,15 @@ public final class ObjectUtils {
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) >= 0;
 	}
 
-	/*
-	 * ------------------------------------ IS NEGATIVE
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// IS NEGATIVE CHECKS
+	// ========================================================================
 	/**
 	 * Checks if an integer is negative, i.e, less than 0 and returns
 	 * <code>true</code> if the integer is negative, otherwise returns
 	 * <code>false</code>
 	 * 
-	 * @param value
-	 *            the integer to check
+	 * @param value the integer to check
 	 * @return <code>true</code> if the integer is negative, otherwise returns
 	 *         <code>false</code>
 	 */
@@ -295,8 +354,7 @@ public final class ObjectUtils {
 	 * Checks if a long is negative, i.e, less than 0 and returns <code>true</code>
 	 * if the long is negative, otherwise returns <code>false</code>
 	 * 
-	 * @param value
-	 *            the long to check
+	 * @param value the long to check
 	 * @return <code>true</code> if the long is negative, otherwise returns
 	 *         <code>false</code>
 	 */
@@ -308,8 +366,7 @@ public final class ObjectUtils {
 	 * Checks if a float is negative, i.e, less than 0 and returns <code>true</code>
 	 * if the float is negative, otherwise returns <code>false</code>
 	 * 
-	 * @param value
-	 *            the float to check
+	 * @param value the float to check
 	 * @return <code>true</code> if the float is negative, otherwise returns
 	 *         <code>false</code>
 	 */
@@ -322,8 +379,7 @@ public final class ObjectUtils {
 	 * <code>true</code> if the double is negative, otherwise returns
 	 * <code>false</code>
 	 * 
-	 * @param value
-	 *            the double to check
+	 * @param value the double to check
 	 * @return <code>true</code> if the double is negative, otherwise returns
 	 *         <code>false</code>
 	 */
@@ -335,31 +391,26 @@ public final class ObjectUtils {
 	 * Checks if a {@link BigDecimal} is negative, i.e, less than 0 and returns
 	 * <code>true</code>, otherwise returns <code>false</code>
 	 * 
-	 * @param value
-	 *            the <code>BigDecimal</code> to check
+	 * @param value the <code>BigDecimal</code> to check
 	 * 
 	 * @return <code>true</code> if the <code>BigDecimal</code> is negative,
 	 *         otherwise returns <code>false</code>
 	 * 
-	 * @throws NullPointerException
-	 *             if value is <code>null</code>.
+	 * @throws NullPointerException if value is <code>null</code>.
 	 */
 	public final static boolean isNegative(BigDecimal value) {
 		return requireNonNull(value).signum() < 0;
 	}
 
-	/*
-	 * ------------------------------------ IS LESS THAN
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// IS LESS THAN CHECKS
+	// ========================================================================
 	/**
 	 * Checks if an {@code int} is less than a supplied base value. Returns
 	 * {@code true} if the given {@code int} is less than the supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 * 
@@ -373,10 +424,8 @@ public final class ObjectUtils {
 	 * Checks if a {@code long} is less than a supplied base value. Returns
 	 * {@code true} if the given {@code long} is less than the supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 * 
@@ -394,10 +443,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 * 
@@ -415,10 +462,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 * 
@@ -433,15 +478,12 @@ public final class ObjectUtils {
 	 * {@code true} if the given {@code BigDecimal} is less than the supplied base
 	 * value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code true} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws NullPointerException
-	 *             if any of the two arguments is/are {@code null}.
+	 * @throws NullPointerException if any of the two arguments is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -450,19 +492,16 @@ public final class ObjectUtils {
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) < 0;
 	}
 
-	/*
-	 * ------------------------------------ IS LESS THAN OR EQUAL TO
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// IS LESS THAN OR EQUAL TO CHECKS
+	// ========================================================================
 	/**
 	 * Checks if an {@code int} is less than or equal to a supplied base value.
 	 * Returns {@code true} if the given {@code int} is less than or equal to the
 	 * supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
@@ -478,10 +517,8 @@ public final class ObjectUtils {
 	 * Returns {@code true} if the given {@code long} is less than or equal to the
 	 * supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
@@ -500,10 +537,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Float#compare(float, float)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
@@ -522,10 +557,8 @@ public final class ObjectUtils {
 	 * <i> <strong>NOTE:</strong> This method uses
 	 * {@link Double#compare(double, double)} to compare the given values. </i>
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
@@ -541,16 +574,13 @@ public final class ObjectUtils {
 	 * value. Returns {@code true} if the given {@code BigDecimal} is less than or
 	 * equal to the supplied base value.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code true} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws NullPointerException
-	 *             if any of the two arguments is/are {@code null}.
+	 * @throws NullPointerException if any of the two arguments is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -559,10 +589,9 @@ public final class ObjectUtils {
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) <= 0;
 	}
 
-	/*
-	 * ------------------------------------ IN RANGE
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// IN RANGE CHECKS
+	// ========================================================================
 	/**
 	 * Checks that the specified <code>Integer</code> is in range of the specified
 	 * minimum value (inclusive) and maximum value (exclusive). Returns
@@ -571,19 +600,16 @@ public final class ObjectUtils {
 	 * otherwise. An {@link IllegalArgumentException} will be thrown if the maximum
 	 * value is less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value(inclusive) of the range.
-	 * @param maxValue
-	 *            the maximum value(exclusive) of the range.
-	 * @param value
-	 *            the integer to check.
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value    the integer to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to
 	 *         <code>minValue</code> and less than <code>maxValue</code>,
 	 *         <code>false</code> otherwise.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if <code>maxValue</code> is less than <code>minValue</code>.
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
+	 *                                  <code>minValue</code>.
 	 */
 	public final static boolean inRange(int minValue, int maxValue, int value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
@@ -599,19 +625,16 @@ public final class ObjectUtils {
 	 * otherwise. An {@link IllegalArgumentException} will be thrown if the maximum
 	 * value is less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value(inclusive) of the range.
-	 * @param maxValue
-	 *            the maximum value(exclusive) of the range.
-	 * @param value
-	 *            the long to check.
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value    the long to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to
 	 *         <code>minValue</code> and less than <code>maxValue</code>,
 	 *         <code>false</code> otherwise.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if <code>maxValue</code> is less than <code>minValue</code>.
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
+	 *                                  <code>minValue</code>.
 	 */
 	public final static boolean inRange(long minValue, long maxValue, long value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
@@ -627,19 +650,16 @@ public final class ObjectUtils {
 	 * otherwise. An {@link IllegalArgumentException} will be thrown if the maximum
 	 * value is less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value(inclusive) of the range.
-	 * @param maxValue
-	 *            the maximum value(exclusive) of the range.
-	 * @param value
-	 *            the float to check.
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value    the float to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to
 	 *         <code>minValue</code> and less than <code>maxValue</code>,
 	 *         <code>false</code> otherwise.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if <code>maxValue</code> is less than <code>minValue</code>.
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
+	 *                                  <code>minValue</code>.
 	 */
 	public final static boolean inRange(float minValue, float maxValue, float value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
@@ -655,19 +675,16 @@ public final class ObjectUtils {
 	 * otherwise. An {@link IllegalArgumentException} will be thrown if the maximum
 	 * value is less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value(inclusive) of the range.
-	 * @param maxValue
-	 *            the maximum value(exclusive) of the range.
-	 * @param value
-	 *            the double to check.
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value    the double to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to
 	 *         <code>minValue</code> and less than <code>maxValue</code>,
 	 *         <code>false</code> otherwise.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if <code>maxValue</code> is less than <code>minValue</code>.
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
+	 *                                  <code>minValue</code>.
 	 */
 	public final static boolean inRange(double minValue, double maxValue, double value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
@@ -683,21 +700,18 @@ public final class ObjectUtils {
 	 * otherwise. An {@link IllegalArgumentException} will be thrown if the maximum
 	 * value is less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value(inclusive) of the range.
-	 * @param maxValue
-	 *            the maximum value(exclusive) of the range.
-	 * @param value
-	 *            the <code>BigDecimal</code> to check.
+	 * @param minValue the minimum value(inclusive) of the range.
+	 * @param maxValue the maximum value(exclusive) of the range.
+	 * @param value    the <code>BigDecimal</code> to check.
 	 * 
 	 * @return <code>true</code> if <code>value</code> is greater than or equal to
 	 *         <code>minValue</code> and less than <code>maxValue</code>,
 	 *         <code>false</code> otherwise.
 	 * 
-	 * @throws NullPointerException
-	 *             if any of the arguments passed are <code>null</code>.
-	 * @throws IllegalArgumentException
-	 *             if <code>maxValue</code> is less than <code>minValue</code>.
+	 * @throws NullPointerException     if any of the arguments passed are
+	 *                                  <code>null</code>.
+	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
+	 *                                  <code>minValue</code>.
 	 */
 	public final static boolean inRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
@@ -705,25 +719,243 @@ public final class ObjectUtils {
 		return isGreaterThanOrEqualTo(minValue, value) && isLessThan(maxValue, value);
 	}
 
-	/*
-	 * ------------------------------------ REQUIRE GREATER THAN
-	 * ------------------------------------
+	// ========================================================================
+	// REQUIRE EQUAL TO VALIDATORS
+	// ========================================================================
+	/**
+	 * Validates that an {@code int} is equal to a supplied base value. Returns the
+	 * given {@code int} if it is equal to the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
 	 */
+	public final static int requireEqualTo(int baseValue, int value) {
+		return requireEqualTo(baseValue, value, null);
+	}
 
+	/**
+	 * Validates that an {@code int} is equal to a supplied base value. Returns the
+	 * given {@code int} if it is equal to the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static int requireEqualTo(int baseValue, int value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException(
+					(nonNull(message) ? message : String.format("value(%d) should be equal to %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@code long} is equal to a supplied base value. Returns the
+	 * given {@code long} if it is equal to the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static long requireEqualTo(long baseValue, long value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@code long} is equal to a supplied base value. Returns the
+	 * given {@code long} if it is equal to the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static long requireEqualTo(long baseValue, long value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException(
+					(nonNull(message) ? message : String.format("value(%d) should be equal to %d.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@code long} is equal to a supplied base value. Returns the
+	 * given {@code long} if it is equal to the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static float requireEqualTo(float baseValue, float value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@code float} is equal to a supplied base value. Returns the
+	 * given {@code float} if it is equal to the given base value, otherwise, an
+	 * {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static float requireEqualTo(float baseValue, float value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException(
+					(nonNull(message) ? message : String.format("value(%f) should be equal to %f.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@code double} is equal to a supplied base value. Returns
+	 * the given {@code double} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static double requireEqualTo(double baseValue, double value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@code double} is equal to a supplied base value. Returns
+	 * the given {@code double} if it is equal to the given base value, otherwise,
+	 * an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static double requireEqualTo(double baseValue, double value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException(
+					(nonNull(message) ? message : String.format("value(%f) should be equal to %f.", value, baseValue)));
+		return value;
+	}
+
+	/**
+	 * Validates that a {@link BigDecimal} is equal to a supplied base value.
+	 * Returns the given {@code BigDecimal} if it is equal to the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value) {
+		return requireEqualTo(baseValue, value, null);
+	}
+
+	/**
+	 * Validates that a {@link BigDecimal} is equal to a supplied base value.
+	 * Returns the given {@code BigDecimal} if it is equal to the given base value,
+	 * otherwise, an {@code IllegalArgumentException} is thrown.
+	 * 
+	 * @param baseValue the value to compare for equality to.
+	 * @param value     the value to check for equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
+	 * 
+	 * @return {@code value} if {@code value} is equal to {@code baseValue}.
+	 * 
+	 * @throws IllegalArgumentException if {@code value} is not equal to
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
+	 * 
+	 * @since 1.2.0
+	 */
+	public final static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
+		if (!isEqualTo(baseValue, value))
+			throw new IllegalArgumentException(
+					(nonNull(message) ? message : String.format("value(%s) should be equal to %s.", value, baseValue)));
+		return value;
+	}
+
+	// ========================================================================
+	// REQUIRE GREATER THAN VALIDATORS
+	// ========================================================================
 	/**
 	 * Validates that an {@code int} is greater than a supplied base value. Returns
 	 * the given {@code int} if it is greater than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -736,18 +968,15 @@ public final class ObjectUtils {
 	 * the given {@code int} if it is greater than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -763,15 +992,13 @@ public final class ObjectUtils {
 	 * the given {@code long} if it is greater than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -784,18 +1011,15 @@ public final class ObjectUtils {
 	 * the given {@code long} if it is greater than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -811,15 +1035,13 @@ public final class ObjectUtils {
 	 * the given {@code float} if it is greater than the given base value,
 	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -832,18 +1054,15 @@ public final class ObjectUtils {
 	 * the given {@code float} if it is greater than the given base value,
 	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -859,15 +1078,13 @@ public final class ObjectUtils {
 	 * Returns the given {@code double} if it is greater than the given base value,
 	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -880,18 +1097,15 @@ public final class ObjectUtils {
 	 * Returns the given {@code double} if it is greater than the given base value,
 	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -907,17 +1121,15 @@ public final class ObjectUtils {
 	 * Returns the given {@code BigDecimal} if it is greater than the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -930,20 +1142,17 @@ public final class ObjectUtils {
 	 * Returns the given {@code BigDecimal} if it is greater than the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness against.
-	 * @param value
-	 *            the value to check for greatness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness against.
+	 * @param value     the value to check for greatness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -954,26 +1163,22 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*
-	 * ------------------------------------ REQUIRE GREATER THAN OR EQUAL TO
-	 * ------------------------------------
-	 */
-
+	// ========================================================================
+	// REQUIRE GREATER THAN OR EQUAL TO VALIDATORS
+	// ========================================================================
 	/**
 	 * Validates that an {@code int} is greater than or equal to a supplied base
 	 * value. Returns the given {@code int} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -986,19 +1191,16 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code int} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1014,16 +1216,14 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code long} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1036,19 +1236,16 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code long} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1064,16 +1261,14 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code float} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1086,19 +1281,16 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code float} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1114,16 +1306,14 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code double} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1136,19 +1326,16 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code double} if it is greater than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1165,18 +1352,16 @@ public final class ObjectUtils {
 	 * equal to the given base value, otherwise, an {@code IllegalArgumentException}
 	 * is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1190,21 +1375,18 @@ public final class ObjectUtils {
 	 * equal to the given base value, otherwise, an {@code IllegalArgumentException}
 	 * is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for greatness or equality against.
-	 * @param value
-	 *            the value to check for greatness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for greatness or equality against.
+	 * @param value     the value to check for greatness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is greater than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is less than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is less than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1215,10 +1397,9 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*
-	 * ------------------------------------ REQUIRE IN RANGE
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// REQUIRE IN RANGE VALIDATORS
+	// ========================================================================
 	/**
 	 * Validates that the specified {@code int} is in range of the specified minimum
 	 * value <i><strong>(inclusive)</strong></i> and maximum value
@@ -1229,18 +1410,17 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} will also be thrown if the maximum value is
 	 * less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code int} to check.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code int} to check.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static int requireInRange(int minValue, int maxValue, int value) {
 		return requireInRange(minValue, maxValue, value, null);
@@ -1257,21 +1437,19 @@ public final class ObjectUtils {
 	 * less than the minimum value. An optional message can also be given to be used
 	 * as the exception message.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code int} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code int} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static int requireInRange(int minValue, int maxValue, int value, String message) {
 		if (!inRange(minValue, maxValue, value))
@@ -1291,18 +1469,17 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} will also be thrown if the maximum value is
 	 * less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code long} to check.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code long} to check.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static long requireInRange(long minValue, long maxValue, long value) {
 		return requireInRange(minValue, maxValue, value, null);
@@ -1319,21 +1496,19 @@ public final class ObjectUtils {
 	 * less than the minimum value. An optional message can also be given to be used
 	 * as the exception message.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code long} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code long} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static long requireInRange(long minValue, long maxValue, long value, String message) {
 		if (!inRange(minValue, maxValue, value))
@@ -1353,18 +1528,17 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} will also be thrown if the maximum value is
 	 * less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code float} to check.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code float} to check.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static float requireInRange(float minValue, float maxValue, float value) {
 		return requireInRange(minValue, maxValue, value, null);
@@ -1381,21 +1555,19 @@ public final class ObjectUtils {
 	 * less than the minimum value. An optional message can also be given to be used
 	 * as the exception message.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code float} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code float} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static float requireInRange(float minValue, float maxValue, float value, String message) {
 		if (!inRange(minValue, maxValue, value))
@@ -1415,18 +1587,17 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} will also be thrown if the maximum value is
 	 * less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code double} to check.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code double} to check.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static double requireInRange(double minValue, double maxValue, double value) {
 		return requireInRange(minValue, maxValue, value, null);
@@ -1443,21 +1614,19 @@ public final class ObjectUtils {
 	 * less than the minimum value. An optional message can also be given to be used
 	 * as the exception message.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code double} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code double} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
 	 */
 	public final static double requireInRange(double minValue, double maxValue, double value, String message) {
 		if (!inRange(minValue, maxValue, value))
@@ -1477,20 +1646,18 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} will also be thrown if the maximum value is
 	 * less than the minimum value.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code BigDecimal} to check.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code BigDecimal} to check.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
-	 * @throws NullPointerException
-	 *             if any of the arguments is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
+	 * @throws NullPointerException     if any of the arguments is/are {@code null}.
 	 * 
 	 * @see BigDecimal
 	 */
@@ -1509,23 +1676,21 @@ public final class ObjectUtils {
 	 * less than the minimum value. An optional message can also be given to be used
 	 * as the exception message.
 	 * 
-	 * @param minValue
-	 *            the minimum value<i><strong>(inclusive)</strong></i> of the range.
-	 * @param maxValue
-	 *            the maximum value<i><strong>(exclusive)</strong></i> of the range.
-	 * @param value
-	 *            the {@code BigDecimal} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minValue the minimum value<i><strong>(inclusive)</strong></i> of the
+	 *                 range.
+	 * @param maxValue the maximum value<i><strong>(exclusive)</strong></i> of the
+	 *                 range.
+	 * @param value    the {@code BigDecimal} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is in the specified range.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not in the specified range or if
-	 *             {@code maxValue} is less than {@code minValue}.
-	 * @throws NullPointerException
-	 *             if any of the first three arguments is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is not in the specified
+	 *                                  range or if {@code maxValue} is less than
+	 *                                  {@code minValue}.
+	 * @throws NullPointerException     if any of the first three arguments is/are
+	 *                                  {@code null}.
 	 * 
 	 * @see BigDecimal
 	 */
@@ -1538,22 +1703,19 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*
-	 * ------------------------------------ REQUIRE NON NEGATIVE
-	 * ------------------------------------
-	 */
+	// ========================================================================
+	// REQUIRE NON NEGATIVE VALIDATORS
+	// ========================================================================
 	/**
 	 * Validates that the specified {@code int} is not negative, i.e less than zero.
 	 * If {@code value} is negative, an {@code IllegalArgumentException} is thrown,
 	 * otherwise, {@code value} is returned.
 	 * 
-	 * @param value
-	 *            the {@code int} to check.
+	 * @param value the {@code int} to check.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative.
+	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
 	public final static int requireNonNegative(int value) {
 		return requireNonNegative(value, null);
@@ -1565,16 +1727,13 @@ public final class ObjectUtils {
 	 * otherwise, {@code value} is returned. An optional message can also be passed
 	 * to be used as the {@code IllegalArgumentException} message.
 	 * 
-	 * @param value
-	 *            the {@code int} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param value   the {@code int} to check.
+	 * @param message an optional message to be used as as the
+	 *                {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative
+	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
 	public final static int requireNonNegative(int value, String message) {
 		if (isNegative(value))
@@ -1587,13 +1746,11 @@ public final class ObjectUtils {
 	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
 	 * thrown, otherwise, {@code value} is returned.
 	 * 
-	 * @param value
-	 *            the {@code long} to check.
+	 * @param value the {@code long} to check.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative.
+	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
 	public final static long requireNonNegative(long value) {
 		return requireNonNegative(value, null);
@@ -1605,16 +1762,13 @@ public final class ObjectUtils {
 	 * thrown, otherwise, {@code value} is returned. An optional message can also be
 	 * passed to be used as the {@code IllegalArgumentException} message.
 	 * 
-	 * @param value
-	 *            the {@code long} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param value   the {@code long} to check.
+	 * @param message an optional message to be used as as the
+	 *                {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative
+	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
 	public final static long requireNonNegative(long value, String message) {
 		if (isNegative(value))
@@ -1627,13 +1781,11 @@ public final class ObjectUtils {
 	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
 	 * thrown, otherwise, {@code value} is returned.
 	 * 
-	 * @param value
-	 *            the {@code float} to check.
+	 * @param value the {@code float} to check.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative.
+	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
 	public final static float requireNonNegative(float value) {
 		return requireNonNegative(value, null);
@@ -1645,16 +1797,13 @@ public final class ObjectUtils {
 	 * thrown, otherwise, {@code value} is returned. An optional message can also be
 	 * passed to be used as the {@code IllegalArgumentException} message.
 	 * 
-	 * @param value
-	 *            the {@code float} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param value   the {@code float} to check.
+	 * @param message an optional message to be used as as the
+	 *                {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative
+	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
 	public final static float requireNonNegative(float value, String message) {
 		if (isNegative(value))
@@ -1667,13 +1816,11 @@ public final class ObjectUtils {
 	 * zero. If {@code value} is negative, an {@code IllegalArgumentException} is
 	 * thrown, otherwise, {@code value} is returned.
 	 * 
-	 * @param value
-	 *            the {@code double} to check.
+	 * @param value the {@code double} to check.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative.
+	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
 	public final static double requireNonNegative(double value) {
 		return requireNonNegative(value, null);
@@ -1685,16 +1832,13 @@ public final class ObjectUtils {
 	 * thrown, otherwise, {@code value} is returned. An optional message can also be
 	 * passed to be used as the {@code IllegalArgumentException} message.
 	 * 
-	 * @param value
-	 *            the {@code double} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param value   the {@code double} to check.
+	 * @param message an optional message to be used as as the
+	 *                {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative
+	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
 	public final static double requireNonNegative(double value, String message) {
 		if (isNegative(value))
@@ -1707,15 +1851,12 @@ public final class ObjectUtils {
 	 * than zero. If {@code value} is negative, an {@code IllegalArgumentException}
 	 * is thrown, otherwise, {@code value} is returned.
 	 * 
-	 * @param value
-	 *            the {@code BigDecimal} to check.
+	 * @param value the {@code BigDecimal} to check.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative.
-	 * @throws NullPointerException
-	 *             if value is {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is negative.
+	 * @throws NullPointerException     if value is {@code null}.
 	 * 
 	 * @see BigDecimal
 	 */
@@ -1729,18 +1870,14 @@ public final class ObjectUtils {
 	 * is thrown, otherwise, {@code value} is returned. An optional message can also
 	 * be passed to be used as the {@code IllegalArgumentException} message.
 	 * 
-	 * @param value
-	 *            the {@code BigDecimal} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param value   the {@code BigDecimal} to check.
+	 * @param message an optional message to be used as as the
+	 *                {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if it is <i><strong>NOT</strong></i> negative.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is negative
-	 * @throws NullPointerException
-	 *             if value is {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is negative
+	 * @throws NullPointerException     if value is {@code null}.
 	 * 
 	 * @see BigDecimal
 	 */
@@ -1750,25 +1887,21 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*
-	 * ------------------------------------ REQUIRE LESS THAN
-	 * ------------------------------------
-	 */
-
+	// ========================================================================
+	// REQUIRE LESS THAN VALIDATORS
+	// ========================================================================
 	/**
 	 * Validates that an {@code int} is less than a supplied base value. Returns the
 	 * given {@code int} if it is less than the given base value, otherwise, an
 	 * {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1781,18 +1914,15 @@ public final class ObjectUtils {
 	 * given {@code int} if it is less than the given base value, otherwise, an
 	 * {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1808,15 +1938,13 @@ public final class ObjectUtils {
 	 * given {@code long} if it is less than the given base value, otherwise, an
 	 * {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1829,18 +1957,15 @@ public final class ObjectUtils {
 	 * given {@code long} if it is less than the given base value, otherwise, an
 	 * {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1856,15 +1981,13 @@ public final class ObjectUtils {
 	 * the given {@code float} if it is less than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1877,18 +2000,15 @@ public final class ObjectUtils {
 	 * the given {@code float} if it is less than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1904,15 +2024,13 @@ public final class ObjectUtils {
 	 * the given {@code long} if it is less than the given base value, otherwise, an
 	 * {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1925,18 +2043,15 @@ public final class ObjectUtils {
 	 * the given {@code double} if it is less than the given base value, otherwise,
 	 * an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1952,17 +2067,15 @@ public final class ObjectUtils {
 	 * Returns the given {@code BigDecimal} if it is less than the given base value,
 	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1975,20 +2088,17 @@ public final class ObjectUtils {
 	 * Returns the given {@code BigDecimal} if it is less than the given base value,
 	 * otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness against.
-	 * @param value
-	 *            the value to check for smallness.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness against.
+	 * @param value     the value to check for smallness.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -1999,26 +2109,22 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*
-	 * ------------------------------------ REQUIRE LESS THAN OR EQUAL TO
-	 * ------------------------------------
-	 */
-
+	// ========================================================================
+	// REQUIRE LESS THAN OR EQUAL TO VALIDATORS
+	// ========================================================================
 	/**
 	 * Validates that an {@code int} is less than or equal to a supplied base value.
 	 * Returns the given {@code int} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2031,19 +2137,16 @@ public final class ObjectUtils {
 	 * Returns the given {@code int} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2059,16 +2162,14 @@ public final class ObjectUtils {
 	 * Returns the given {@code long} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2081,19 +2182,16 @@ public final class ObjectUtils {
 	 * Returns the given {@code long} if it is less than or equal to the given base
 	 * value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2109,16 +2207,14 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code float} if it is less than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2131,19 +2227,16 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code float} if it is less than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2159,16 +2252,14 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code double} if it is less than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2181,19 +2272,16 @@ public final class ObjectUtils {
 	 * value. Returns the given {@code double} if it is less than or equal to the
 	 * given base value, otherwise, an {@code IllegalArgumentException} is thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2210,18 +2298,16 @@ public final class ObjectUtils {
 	 * the given base value, otherwise, an {@code IllegalArgumentException} is
 	 * thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2235,21 +2321,18 @@ public final class ObjectUtils {
 	 * the given base value, otherwise, an {@code IllegalArgumentException} is
 	 * thrown.
 	 * 
-	 * @param baseValue
-	 *            the value to compare for smallness or equality against.
-	 * @param value
-	 *            the value to check for smallness or equality.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param baseValue the value to compare for smallness or equality against.
+	 * @param value     the value to check for smallness or equality.
+	 * @param message   an optional message to be used as as the
+	 *                  {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value} is less than or equal to
 	 *         {@code baseValue}.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is greater than {@code baseValue}.
-	 * @throws NullPointerException
-	 *             if {@code baseValue} or/and {@code value} is/are {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is greater than
+	 *                                  {@code baseValue}.
+	 * @throws NullPointerException     if {@code baseValue} or/and {@code value}
+	 *                                  is/are {@code null}.
 	 * 
 	 * @since 1.1.0
 	 */
@@ -2260,27 +2343,21 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*-------------------------------------------------------------------------------------
-	 * 
-	 * SERIALIZABLES
-	 *
-	 * ------------------------------------------------------------------------------------
-	 */
+	// ========================================================================
+	// SERIALIZABLES UTILS
+	// ========================================================================
 	/**
 	 * Checks if a given instance is serializable, i.e implements the
 	 * {@link Serializable} interface. Returns <code>true</code> if the instance is
 	 * serializable, otherwise returns <code>false</code>.
 	 * 
-	 * @param <T>
-	 *            the type of the instance to be checked for serializability
+	 * @param <T>   the type of the instance to be checked for serializability
 	 * 
-	 * @param value
-	 *            the instance to check for serializability
+	 * @param value the instance to check for serializability
 	 * @return <code>true</code> if value is serializable or <code>false</code>
 	 *         otherwise.
 	 * 
-	 * @throws NullPointerException
-	 *             if value is null.
+	 * @throws NullPointerException if value is null.
 	 * 
 	 * @see Serializable
 	 */
@@ -2297,18 +2374,14 @@ public final class ObjectUtils {
 	 * is thrown. Also a {@code NullPointerException} will also be thrown if the
 	 * supplied instance is {@code null}.
 	 * 
-	 * @param <T>
-	 *            the type of the instance to be checked for serializability.
+	 * @param <T>   the type of the instance to be checked for serializability.
 	 * 
-	 * @param value
-	 *            the instance to check for serializability.
+	 * @param value the instance to check for serializability.
 	 * 
 	 * @return {@code value} if it's not <i>null <b>AND</b> is serializable</i>.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not serializable.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is not serializable.
 	 * 
 	 * @see #requireSerializable(Object, String)
 	 * @see Serializable
@@ -2325,21 +2398,16 @@ public final class ObjectUtils {
 	 * supplied instance is {@code null}. A message can optionally be passed to be
 	 * used in the construction of the {@code IllegalArgumentException}.
 	 * 
-	 * @param <T>
-	 *            the type of the instance to be checked for serializability.
+	 * @param <T>     the type of the instance to be checked for serializability.
 	 * 
-	 * @param value
-	 *            the instance to check for serializability.
-	 * @param message
-	 *            an optional message to be used as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param value   the instance to check for serializability.
+	 * @param message an optional message to be used as the
+	 *                {@code IllegalArgumentException} message.
 	 * 
 	 * @return value if it's not <i>null <b>AND</b> is serializable</i>.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if {@code value} is not serializable.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if {@code value} is not serializable.
 	 * 
 	 * @see Serializable
 	 */
@@ -2349,12 +2417,9 @@ public final class ObjectUtils {
 		return value;
 	}
 
-	/*-------------------------------------------------------------------------------------
-	 * 
-	 * STRINGS
-	 *
-	 * ------------------------------------------------------------------------------------
-	 */
+	// ========================================================================
+	// STRINGS UTILS
+	// ========================================================================
 	/**
 	 * Checks that the given <code>String</code> has characters between the given
 	 * minimum chars (inclusive) and the given maximum chars (exclusive). Returns
@@ -2368,22 +2433,18 @@ public final class ObjectUtils {
 	 * <li><code>maxChars</code> is equal to <code>minChars</code></li>
 	 * </ul>
 	 * 
-	 * @param minChars
-	 *            the minimum number of characters (inclusive) that the given
-	 *            <code>String</code> should have.
-	 * @param maxChars
-	 *            the maximum number of characters (exclusive) that the given
-	 *            <code>String</code> should have.
-	 * @param value
-	 *            the <code>String</code> to check.
+	 * @param minChars the minimum number of characters (inclusive) that the given
+	 *                 <code>String</code> should have.
+	 * @param maxChars the maximum number of characters (exclusive) that the given
+	 *                 <code>String</code> should have.
+	 * @param value    the <code>String</code> to check.
 	 * 
 	 * @return <code>true</code> if the given <code>String</code>'s length falls
 	 *         within the specified range, <code>false</code> otherwise.
 	 * 
-	 * @throws NullPointerException
-	 *             if <code>value</code> is <code>null</code>.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if <code>value</code> is <code>null</code>.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 */
 	public final static boolean hasCharsInRange(int minChars, int maxChars, String value) {
 		requireGreaterThan(requireNonNegative(minChars), requireNonNegative(maxChars),
@@ -2399,17 +2460,14 @@ public final class ObjectUtils {
 	 * {@link IllegalArgumentException} will be thrown if <code>maxChars</code> is
 	 * negative.
 	 * 
-	 * @param maxChars
-	 *            the maximum number of characters (exclusive) that the given
-	 *            <code>String</code> should have.
-	 * @param value
-	 *            the <code>String</code> to check.
+	 * @param maxChars the maximum number of characters (exclusive) that the given
+	 *                 <code>String</code> should have.
+	 * @param value    the <code>String</code> to check.
 	 * 
 	 * @return <code>true</code> if the given <code>String</code>'s length is less
 	 *         than <code>maxChars</code>, <code>false</code> otherwise.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if <code>maxChars</code> is negative.
+	 * @throws IllegalArgumentException if <code>maxChars</code> is negative.
 	 */
 	public final static boolean hasLessThanChars(int maxChars, String value) {
 		return requireNonNull(value).length() < requireNonNegative(maxChars);
@@ -2423,18 +2481,15 @@ public final class ObjectUtils {
 	 * {@link IllegalArgumentException} will be thrown if <code>minChars</code> is
 	 * negative.
 	 * 
-	 * @param minChars
-	 *            the minimum number of characters (inclusive) that the given
-	 *            <code>String</code> should have.
-	 * @param value
-	 *            the <code>String</code> to check.
+	 * @param minChars the minimum number of characters (inclusive) that the given
+	 *                 <code>String</code> should have.
+	 * @param value    the <code>String</code> to check.
 	 * 
 	 * @return <code>true</code> if the given <code>String</code>'s length is
 	 *         greater than or equal to <code>minChars</code>, <code>false</code>
 	 *         otherwise.
 	 * 
-	 * @throws IllegalArgumentException
-	 *             if <code>minChars</code> is negative.
+	 * @throws IllegalArgumentException if <code>minChars</code> is negative.
 	 */
 	public final static boolean hasMoreThanChars(int minChars, String value) {
 		return isGreaterThanOrEqualTo(requireNonNegative(minChars), requireNonNull(value).length());
@@ -2451,24 +2506,20 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
-	 * @param minChars
-	 *            the minimum number of characters
-	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param maxChars
-	 *            the maximum number of characters
-	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param value
-	 *            the {@code String} to check.
+	 * @param minChars the minimum number of characters
+	 *                 <i><strong>(inclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param maxChars the maximum number of characters
+	 *                 <i><strong>(exclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param value    the {@code String} to check.
 	 * 
 	 * @return {@code value} if {@code value}'s length falls within the specified
 	 *         range.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 * 
 	 * @see #hasCharsInRange(int, int, String)
 	 */
@@ -2490,27 +2541,22 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException} might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
-	 * @param minChars
-	 *            the minimum number of characters
-	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param maxChars
-	 *            the maximum number of characters
-	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param value
-	 *            the {@code String} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minChars the minimum number of characters
+	 *                 <i><strong>(inclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param maxChars the maximum number of characters
+	 *                 <i><strong>(exclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param value    the {@code String} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value}'s length falls within the specified
 	 *         range.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 * 
 	 * @see #hasCharsInRange(int, int, String)
 	 */
@@ -2534,20 +2580,17 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
-	 * @param maxChars
-	 *            the maximum number of characters
-	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param value
-	 *            the {@code String} to check.
+	 * @param maxChars the maximum number of characters
+	 *                 <i><strong>(exclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param value    the {@code String} to check.
 	 * 
 	 * @return {@code value} if {@code value}'s length is less than
 	 *         {@code maxChars}.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 * 
 	 * @see #hasLessThanChars(int, String)
 	 */
@@ -2568,23 +2611,19 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
-	 * @param maxChars
-	 *            the maximum number of characters
-	 *            <i><strong>(exclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param value
-	 *            the {@code String} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param maxChars the maximum number of characters
+	 *                 <i><strong>(exclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param value    the {@code String} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value}'s length is less than
 	 *         {@code maxChars}.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 * 
 	 * @see #hasLessThanChars(int, String)
 	 */
@@ -2607,20 +2646,17 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
-	 * @param minChars
-	 *            the minimum number of characters
-	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param value
-	 *            the {@code String} to check.
+	 * @param minChars the minimum number of characters
+	 *                 <i><strong>(inclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param value    the {@code String} to check.
 	 * 
 	 * @return {@code value} if {@code value}'s length is greater than or equal to
 	 *         {@code minChars}.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 * 
 	 * @see #hasMoreThanChars(int, String)
 	 */
@@ -2642,23 +2678,19 @@ public final class ObjectUtils {
 	 * {@code IllegalArgumentException}might be thrown if any of that methods
 	 * requirements are not met.</i>
 	 * 
-	 * @param minChars
-	 *            the minimum number of characters
-	 *            <i><strong>(inclusive)</strong></i> that the given {@code String}
-	 *            should have.
-	 * @param value
-	 *            the {@code String} to check.
-	 * @param message
-	 *            an optional message to be used as as the
-	 *            {@code IllegalArgumentException} message.
+	 * @param minChars the minimum number of characters
+	 *                 <i><strong>(inclusive)</strong></i> that the given
+	 *                 {@code String} should have.
+	 * @param value    the {@code String} to check.
+	 * @param message  an optional message to be used as as the
+	 *                 {@code IllegalArgumentException} message.
 	 * 
 	 * @return {@code value} if {@code value}'s length is greater than or equal to
 	 *         {@code minChars}.
 	 * 
-	 * @throws NullPointerException
-	 *             if {@code value} is {@code null}.
-	 * @throws IllegalArgumentException
-	 *             if any of the conditions stated above are/is met.
+	 * @throws NullPointerException     if {@code value} is {@code null}.
+	 * @throws IllegalArgumentException if any of the conditions stated above are/is
+	 *                                  met.
 	 * 
 	 * @see #hasMoreThanChars(int, String)
 	 */
@@ -2679,15 +2711,13 @@ public final class ObjectUtils {
 	 * {@link #requireNonEmptyString(String, String) requireNonEmptyString(value,
 	 * null)}.
 	 * 
-	 * @param value
-	 *            the {@code String} to be checked for validity.
+	 * @param value the {@code String} to be checked for validity.
 	 *
 	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
 	 * 
-	 * @throws NullPointerException
-	 *             if value is null.
-	 * @throws IllegalArgumentException
-	 *             if value is empty<i>(has a length of zero)</i>.
+	 * @throws NullPointerException     if value is null.
+	 * @throws IllegalArgumentException if value is empty<i>(has a length of
+	 *                                  zero)</i>.
 	 * 
 	 * @see #requireNonEmptyString(String, String)
 	 */
@@ -2723,18 +2753,15 @@ public final class ObjectUtils {
 	 * 		<i>"value cannot be empty"</i>
 	 * </pre>
 	 * 
-	 * @param value
-	 *            the {@code String} to be checked for validity.
-	 * @param name
-	 *            the name of the {@code String} variable to be checked for
-	 *            validity.
+	 * @param value the {@code String} to be checked for validity.
+	 * @param name  the name of the {@code String} variable to be checked for
+	 *              validity.
 	 *
 	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
 	 * 
-	 * @throws NullPointerException
-	 *             if value is null.
-	 * @throws IllegalArgumentException
-	 *             if value is empty<i>(has a length of zero)</i>.
+	 * @throws NullPointerException     if value is null.
+	 * @throws IllegalArgumentException if value is empty<i>(has a length of
+	 *                                  zero)</i>.
 	 * 
 	 * @see #requireNonEmptyString(String, String, String)
 	 */
@@ -2751,20 +2778,16 @@ public final class ObjectUtils {
 	 * as the second and third arguments to be used in the construction of
 	 * exceptions.
 	 * 
-	 * @param value
-	 *            the {@code String} to be checked for validity.
-	 * @param nullMessage
-	 *            an optional message to be used when raising the
-	 *            {@code NullPointerException}.
-	 * @param emptyMessage
-	 *            an optional message to be used when raising the
-	 *            {@code IllegalArgumentException}.
+	 * @param value        the {@code String} to be checked for validity.
+	 * @param nullMessage  an optional message to be used when raising the
+	 *                     {@code NullPointerException}.
+	 * @param emptyMessage an optional message to be used when raising the
+	 *                     {@code IllegalArgumentException}.
 	 * @return value if it's not <i>null <b>AND/OR</b> empty</i>.
 	 * 
-	 * @throws NullPointerException
-	 *             if value is null.
-	 * @throws IllegalArgumentException
-	 *             if value is empty<i>(has a length of zero)</i>.
+	 * @throws NullPointerException     if value is null.
+	 * @throws IllegalArgumentException if value is empty<i>(has a length of
+	 *                                  zero)</i>.
 	 */
 	public static final String requireNonEmptyString(String value, String nullMessage, String emptyMessage) {
 		// Check if messages are null and set defaults
@@ -2775,6 +2798,7 @@ public final class ObjectUtils {
 		return value;
 	}
 
+	// private constructor to prevent initialization
 	private ObjectUtils() {
 	}
 }

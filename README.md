@@ -22,8 +22,21 @@ of a number, methods for checking and validating if a number is less than or gre
 number falls in a given range.
 
 ## Get Started
+There are different ways you can use the library:-
 
-To use the library, make sure you have jcenter in your repositories closure:
+### Maven
+Add the following dependency to your `pom` file.
+```xml
+<dependency>
+    <groupId>com.kori_47</groupId>
+    <artifactId>utils</artifactId>
+    <version>1.2.0</version>
+    <type>pom</type>
+</dependency>
+```
+
+### Gradle
+Make sure you have jcenter in your repositories closure.
 
 ```gradle
 repositories {
@@ -31,14 +44,22 @@ repositories {
 }
 ```
 
-Then add the following dependency to your `build.gradle`:
+Then add the following dependency to your `build.gradle`.
 
 ```gradle
 dependencies {
-    api 'com.kori_47:utils:1.1.0'
+    api 'com.kori_47:utils:1.2.0'
 }
 ```
 
+### Ivy
+```xml
+<dependency org='com.kori_47' name='utils' rev='1.2.0'>
+    <artifact name='utils' ext='pom' ></artifactId>
+</dependency>
+```
+
+### Building the library
 Or alternatively, you can use [gradle](https://gradle.org/) to compile and build the library. Just follow the steps bellow:
 
 * Clone the project from [github](https://github.com/kennedykori/JavaUtils).
