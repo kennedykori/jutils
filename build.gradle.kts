@@ -6,8 +6,8 @@
  * User Manual available at https://docs.gradle.org/5.6.1/userguide/java_library_plugin.html
  */
 
-project.group = "com.kori_47"
-project.version = "1.2.0"
+project.group = "io.github.kennedykori"
+project.version = "2.0.0"
 
 plugins {
     // Apply the java-library plugin to add support for Java Library
@@ -44,7 +44,7 @@ java {
 tasks.jar {
     manifest {
         attributes(mapOf(
-                "Automatic-Module-Name" to "com.kori_47.jutils",
+                "Automatic-Module-Name" to "io.github.kennedykori.utils",
                 "Implementation-Title" to project.name,
                 "Implementation-Version" to project.version))
     }
