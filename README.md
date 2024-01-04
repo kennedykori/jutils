@@ -1,7 +1,7 @@
 
 # Java Utils
 
-[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) 
+[![CI](https://github.com/kennedykori/jutils/actions/workflows/ci.yml/badge.svg)](https://github.com/kennedykori/jutils/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/kennedykori/jutils/graph/badge.svg?token=4hqGKXW3tX)](https://codecov.io/gh/kennedykori/jutils)
 [![Download](https://api.bintray.com/packages/kori-47/kori_47/utils/images/download.svg)](https://bintray.com/kori-47/kori_47/utils/_latestVersion) 
 [![javadoc](https://javadoc.io/badge2/com.kori_47/utils/javadoc.svg)](https://javadoc.io/doc/com.kori_47/utils)
