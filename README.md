@@ -56,7 +56,7 @@ dependencies {
 ### Ivy
 ```xml
 <dependency org='com.kori_47' name='utils' rev='1.2.0'>
-    <artifact name='utils' ext='pom' ></artifactId>
+    <artifact name='utils' ext='pom'/>
 </dependency>
 ```
 
@@ -79,7 +79,7 @@ Import the ObjectsUtils class in your code and use it's static methods to check 
 **Example 1:**
 
 ```java
-import static com.kori_47.utils.ObjectUtils.*;
+import static io.github.kennedykori.utils.ObjectUtils.*;
 
 public class Person {
 
@@ -100,7 +100,7 @@ public class Person {
 **Example 2:**
 
 ```java
-import static com.kori_47.utils.ObjectUtils.*;
+import static io.github.kennedykori.utils.ObjectUtils.*;
 
 public class Address {
 	

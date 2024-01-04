@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kori_47.utils;
+package io.github.kennedykori.utils;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;

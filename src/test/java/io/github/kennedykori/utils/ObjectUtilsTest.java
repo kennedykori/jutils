@@ -1,4 +1,4 @@
-package com.kori_47.utils;
+package io.github.kennedykori.utils;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
