@@ -50,6 +50,17 @@ tasks.jar {
     }
 }
 
+tasks.jacocoTestCoverageVerification {
+    dependsOn(tasks.jacocoTestReport)
+    violationRules {
+        rule {
+            limit {
+                minimum = "1.0".toBigDecimal()
+            }
+        }
+    }
+}
+
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
     reports {
