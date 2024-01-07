@@ -16,13 +16,32 @@ plugins {
     jacoco
     // Apply the maven publish plugin
     `maven-publish`
+    // Checker Framework pluggable type-checking.
+    // This MUST be applied after plugins that introduce Java compilation tasks,
+    // typically `java` or `java-library`.
+    alias(libs.plugins.checker.framework)
 }
 
-repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    mavenCentral()
-    mavenLocal()
+apply(plugin = "org.checkerframework")
+configure<org.checkerframework.gradle.plugin.CheckerFrameworkExtension> {
+    checkers = listOf(
+            "org.checkerframework.checker.formatter.FormatterChecker",
+            "org.checkerframework.checker.index.IndexChecker",
+            "org.checkerframework.checker.nullness.NullnessChecker",
+            "org.checkerframework.common.value.ValueChecker",
+            "org.checkerframework.framework.util.PurityChecker",
+    )
+
+    extraJavacArgs = listOf(
+            // "--module-path", configurations.compileOnly.get().asPath
+            // "-Werror",
+            "-AcheckPurityAnnotations",
+            "-ArequirePrefixInWarningSuppressions",
+            "-AshowPrefixInWarningMessages",
+            "-AsuggestPureMethods",
+            "-AwarnRedundantAnnotations",
+            "-AwarnUnneededSuppressions",
+    )
 }
 
 dependencies {
@@ -39,6 +58,13 @@ java {
     }
     withJavadocJar()
     withSourcesJar()
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
+    mavenLocal()
 }
 
 tasks.jar {
