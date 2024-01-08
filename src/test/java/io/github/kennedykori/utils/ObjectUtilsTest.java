@@ -15,6 +15,7 @@ public class ObjectUtilsTest {
 	// ========================================================================
 	// NUMBERS UTILITY METHODS TESTS
 	// ========================================================================
+	@SuppressWarnings(value = "nullness:argument")
 	@Test
 	public void testIsEqualTo() {
 		// Test returns true when number is equal to
@@ -160,6 +161,7 @@ public class ObjectUtilsTest {
 		assertFalse(ObjectUtils.inRange(new BigDecimal("-0.01"), new BigDecimal("0.01"), new BigDecimal("0.01")));
 	}
 
+	@SuppressWarnings(value = "nullness:argument")
 	@Test
 	public void testInRangeExceptions() {
 		assertThrows(IllegalArgumentException.class, () -> assertFalse(ObjectUtils.inRange(-13, -30, -43)));
@@ -224,9 +226,9 @@ public class ObjectUtilsTest {
 				ObjectUtils.requireInRange(new BigDecimal("45.09"), new BigDecimal("45.11"), new BigDecimal("45.10")));
 
 		assertEquals(2, ObjectUtils.requireInRange(2, 3, 2, null));
-		assertEquals(223l, ObjectUtils.requireInRange(10L, 3792L, 223L, null));
-		assertEquals(-32.99f, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F, null));
-		assertEquals(-1.788738737d, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D, null));
+		assertEquals(223L, ObjectUtils.requireInRange(10L, 3792L, 223L, null));
+		assertEquals(-32.99F, ObjectUtils.requireInRange(-100.90F, 0.00F, -32.99F, null));
+		assertEquals(-1.788738737D, ObjectUtils.requireInRange(-1.8673763D, 1.6D, -1.788738737D, null));
 		assertEquals(new BigDecimal("45.10"), ObjectUtils.requireInRange(new BigDecimal("45.09"),
 				new BigDecimal("45.11"), new BigDecimal("45.10"), null));
 	}
@@ -448,18 +450,19 @@ public class ObjectUtilsTest {
 	@Test
 	public void testNonNegativeReturnValues() {
 		assertEquals(36, ObjectUtils.requireNonNegative(36));
-		assertEquals(64l, ObjectUtils.requireNonNegative(64L));
-		assertEquals(56f, ObjectUtils.requireNonNegative(56F));
-		assertEquals(98.09d, ObjectUtils.requireNonNegative(98.09D));
+		assertEquals(64L, ObjectUtils.requireNonNegative(64L));
+		assertEquals(56F, ObjectUtils.requireNonNegative(56F));
+		assertEquals(98.09D, ObjectUtils.requireNonNegative(98.09D));
 		assertEquals(new BigDecimal("872.23"), ObjectUtils.requireNonNegative(new BigDecimal("872.23")));
 
 		assertEquals(574, ObjectUtils.requireNonNegative(574, null));
-		assertEquals(934l, ObjectUtils.requireNonNegative(934L, null));
-		assertEquals(2.56f, ObjectUtils.requireNonNegative(2.56F, null));
-		assertEquals(490.50d, ObjectUtils.requireNonNegative(490.50D, null));
+		assertEquals(934L, ObjectUtils.requireNonNegative(934L, null));
+		assertEquals(2.56F, ObjectUtils.requireNonNegative(2.56F, null));
+		assertEquals(490.50D, ObjectUtils.requireNonNegative(490.50D, null));
 		assertEquals(new BigDecimal("0.50"), ObjectUtils.requireNonNegative(new BigDecimal("0.50"), null));
 	}
 
+	@SuppressWarnings(value = {"lowerbound:argument", "nullness:argument"})
 	@Test
 	public void testNonNegativeExceptions() {
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonNegative(-36));
@@ -478,6 +481,7 @@ public class ObjectUtilsTest {
 		assertThrows(NullPointerException.class, () -> ObjectUtils.requireNonNegative(null, null));
 	}
 
+	@SuppressWarnings(value = "lowerbound:argument")
 	@Test
 	public void testNonNegativeExceptionMessages() {
 		IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class,
@@ -498,7 +502,7 @@ public class ObjectUtilsTest {
 	}
 
 	// ========================================================================
-	// SERIALIZABLES UTILITY METHODS TESTS
+	// SERIALIZABLE UTILITY METHODS TESTS
 	// ========================================================================
 	@Test
 	public void testIsSerializable() {
@@ -545,6 +549,7 @@ public class ObjectUtilsTest {
 		assertFalse(ObjectUtils.hasCharsInRange(2, 4, "    ")); // 4 chars
 	}
 
+	@SuppressWarnings(value = {"lowerbound:argument", "nullness:argument"})
 	@Test
 	public void testHasCharsInRangeExceptions() {
 		// Test throws IllegalArgumentException when minChar is negative
@@ -573,6 +578,7 @@ public class ObjectUtilsTest {
 		assertFalse(ObjectUtils.hasLessThanChars(3, "    ")); // 4 chars
 	}
 
+	@SuppressWarnings(value = {"lowerbound:argument", "nullness:argument"})
 	@Test
 	public void testHasLessThanCharsExceptions() {
 		// Test throws when maxChar is negative
@@ -585,16 +591,17 @@ public class ObjectUtilsTest {
 	@Test
 	public void testHasMoreThanChars() {
 		assertTrue(ObjectUtils.hasMoreThanChars(1, "Hi")); // 2 chars
-		assertTrue(ObjectUtils.hasMoreThanChars(0, "")); // 0 chars
 		assertTrue(ObjectUtils.hasMoreThanChars(10, "Hello World!")); // 12 chars
 		assertTrue(ObjectUtils.hasMoreThanChars(3, "    ")); // 4 chars
 
-		assertFalse(ObjectUtils.hasMoreThanChars(3, "Hi")); // 2 chars
+		assertFalse(ObjectUtils.hasMoreThanChars(0, "")); // 0 chars
 		assertFalse(ObjectUtils.hasMoreThanChars(2, "")); // 0 chars
+		assertFalse(ObjectUtils.hasMoreThanChars(3, "Hi")); // 2 chars
 		assertFalse(ObjectUtils.hasMoreThanChars(20, "Hello World!")); // 12 chars
 		assertFalse(ObjectUtils.hasMoreThanChars(5, "    ")); // 4 chars
 	}
 
+	@SuppressWarnings(value = {"lowerbound:argument", "nullness:argument"})
 	@Test
 	public void testHasMoreThanCharsExceptions() {
 		// Test throws when maxChar is negative
@@ -611,6 +618,7 @@ public class ObjectUtilsTest {
 		assertEquals("name", ObjectUtils.requireCharsInRange(0, 20, "name", null));
 	}
 
+	@SuppressWarnings(value = {"index:argument", "nullness:argument"})
 	@Test
 	public void testRequireCharsInRangeExceptions() {
 		// Test the methods throw a NullPointerException when a null string is passed
@@ -625,6 +633,7 @@ public class ObjectUtilsTest {
 				() -> ObjectUtils.requireCharsInRange(3, 7, "Hi", "greating must have 3 to 6 characters."));
 	}
 
+	@SuppressWarnings(value = "index:argument")
 	@Test
 	public void testRequireCharsInRangeExceptionMessages() {
 		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
@@ -642,6 +651,7 @@ public class ObjectUtilsTest {
 		assertEquals("name", ObjectUtils.requireLessThanChars(20, "name", null));
 	}
 
+	@SuppressWarnings(value = "nullness:argument")
 	@Test
 	public void testRequireLessThanCharsExceptions() {
 		// Test the methods throw a NullPointerException when a null string is passed
@@ -669,10 +679,11 @@ public class ObjectUtilsTest {
 	@Test
 	public void testRequireMoreThanCharsReturnValues() {
 		// Test the methods returns the expected value
-		assertEquals("name", ObjectUtils.requireMoreThanChars(4, "name"));
+		assertEquals("Hi", ObjectUtils.requireMoreThanChars(1, "Hi"));
 		assertEquals("name", ObjectUtils.requireMoreThanChars(3, "name", null));
 	}
 
+	@SuppressWarnings(value = {"index:argument", "nullness:argument"})
 	@Test
 	public void testRequireMoreThanCharsExceptions() {
 		// Test the methods throw a NullPointerException when a null string is passed
@@ -682,11 +693,13 @@ public class ObjectUtilsTest {
 		// Test the methods throw a IllegalArgumentException when a null string is
 		// passed
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(4, "Hi"));
-		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(4, "Hi", null));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(4, "name"));
+		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireMoreThanChars(4, "name", null));
 		assertThrows(IllegalArgumentException.class,
 				() -> ObjectUtils.requireMoreThanChars(25, "Hi", "greating must have atleast 25 characters."));
 	}
 
+	@SuppressWarnings(value = "index:argument")
 	@Test
 	public void testRequireMoreThanCharsExceptionMessages() {
 		IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
@@ -705,6 +718,7 @@ public class ObjectUtilsTest {
 		assertEquals("name", ObjectUtils.requireNonEmptyString("name", null, null));
 	}
 
+	@SuppressWarnings(value = {"value:argument", "nullness:argument"})
 	@Test
 	public void testStringRequireNonNullExceptions() {
 		// Test the methods throw a NullPointerException when a null string is passed
@@ -719,6 +733,7 @@ public class ObjectUtilsTest {
 		assertThrows(IllegalArgumentException.class, () -> ObjectUtils.requireNonEmptyString("", null, null));
 	}
 
+	@SuppressWarnings(value = {"value:argument", "nullness:argument"})
 	@Test
 	public void testStringRequireNonNullExceptionMessages() {
 		// Test the methods throw a NullPointerException with the right message.
