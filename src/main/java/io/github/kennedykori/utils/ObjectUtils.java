@@ -10,6 +10,14 @@ import static java.util.Objects.requireNonNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import org.checkerframework.checker.index.qual.IndexFor;
+import org.checkerframework.checker.index.qual.IndexOrHigh;
+import org.checkerframework.checker.index.qual.NonNegative;
+import org.checkerframework.checker.nullness.qual.EnsuresNonNullIf;
+import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.common.value.qual.MinLen;
+import org.checkerframework.dataflow.qual.Pure;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 
 /**
  * This class consists of static utility methods<i>(similar to
@@ -64,6 +72,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@Pure
 	public static boolean isEqualTo(int baseValue, int value) {
 		return baseValue == value;
 	}
@@ -78,6 +87,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@Pure
 	public static boolean isEqualTo(long baseValue, long value) {
 		return baseValue == value;
 	}
@@ -97,6 +107,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@Pure
 	public static boolean isEqualTo(float baseValue, float value) {
 		return Float.compare(value, baseValue) == 0;
 	}
@@ -116,6 +127,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@Pure
 	public static boolean isEqualTo(double baseValue, double value) {
 		return Double.compare(value, baseValue) == 0;
 	}
@@ -134,6 +146,7 @@ public final class ObjectUtils {
 	 *
 	 * @since 1.2.0
 	 */
+	@SideEffectFree
 	public static boolean isEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) == 0;
@@ -154,6 +167,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThan(int baseValue, int value) {
 		return value > baseValue;
 	}
@@ -170,6 +184,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThan(long baseValue, long value) {
 		return value > baseValue;
 	}
@@ -189,6 +204,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThan(float baseValue, float value) {
 		return Float.compare(value, baseValue) > 0;
 	}
@@ -208,6 +224,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThan(double baseValue, double value) {
 		return Double.compare(value, baseValue) > 0;
 	}
@@ -226,6 +243,7 @@ public final class ObjectUtils {
 	 *
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static boolean isGreaterThan(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) > 0;
@@ -247,6 +265,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThanOrEqualTo(int baseValue, int value) {
 		return value >= baseValue;
 	}
@@ -264,6 +283,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThanOrEqualTo(long baseValue, long value) {
 		return value >= baseValue;
 	}
@@ -284,6 +304,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThanOrEqualTo(float baseValue, float value) {
 		return Float.compare(value, baseValue) >= 0;
 	}
@@ -304,6 +325,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isGreaterThanOrEqualTo(double baseValue, double value) {
 		return Double.compare(value, baseValue) >= 0;
 	}
@@ -323,6 +345,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static boolean isGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) >= 0;
@@ -340,6 +363,7 @@ public final class ObjectUtils {
 	 * @return <code>true</code> if the integer is negative, otherwise returns
 	 *         <code>false</code>
 	 */
+	@Pure
 	public static boolean isNegative(int value) {
 		return isLessThan(0, value);
 	}
@@ -352,6 +376,7 @@ public final class ObjectUtils {
 	 * @return <code>true</code> if the long is negative, otherwise returns
 	 *         <code>false</code>
 	 */
+	@Pure
 	public static boolean isNegative(long value) {
 		return isLessThan(0L, value);
 	}
@@ -364,6 +389,7 @@ public final class ObjectUtils {
 	 * @return <code>true</code> if the float is negative, otherwise returns
 	 *         <code>false</code>
 	 */
+	@Pure
 	public static boolean isNegative(float value) {
 		return isLessThan(0F, value);
 	}
@@ -377,6 +403,7 @@ public final class ObjectUtils {
 	 * @return <code>true</code> if the double is negative, otherwise returns
 	 *         <code>false</code>
 	 */
+	@Pure
 	public static boolean isNegative(double value) {
 		return isLessThan(0D, value);
 	}
@@ -410,6 +437,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThan(int baseValue, int value) {
 		return value < baseValue;
 	}
@@ -425,6 +453,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThan(long baseValue, long value) {
 		return value < baseValue;
 	}
@@ -444,6 +473,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThan(float baseValue, float value) {
 		return Float.compare(value, baseValue) < 0;
 	}
@@ -463,6 +493,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThan(double baseValue, double value) {
 		return Double.compare(value, baseValue) < 0;
 	}
@@ -481,6 +512,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static boolean isLessThan(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) < 0;
@@ -502,6 +534,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThanOrEqualTo(int baseValue, int value) {
 		return value <= baseValue;
 	}
@@ -519,6 +552,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThanOrEqualTo(long baseValue, long value) {
 		return value <= baseValue;
 	}
@@ -539,6 +573,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThanOrEqualTo(float baseValue, float value) {
 		return Float.compare(value, baseValue) <= 0;
 	}
@@ -559,6 +594,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@Pure
 	public static boolean isLessThanOrEqualTo(double baseValue, double value) {
 		return Double.compare(value, baseValue) <= 0;
 	}
@@ -578,6 +614,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static boolean isLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireNonNull(value, "value cannot be null.")
 				.compareTo(requireNonNull(baseValue, "baseValue cannot be null.")) <= 0;
@@ -605,6 +642,7 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
 	 *                                  <code>minValue</code>.
 	 */
+	@SideEffectFree
 	public static boolean inRange(int minValue, int maxValue, int value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
 				String.format("maxValue( %d ) cannot be less than minValue( %d ).", maxValue, minValue));
@@ -630,6 +668,7 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
 	 *                                  <code>minValue</code>.
 	 */
+	@SideEffectFree
 	public static boolean inRange(long minValue, long maxValue, long value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
 				String.format("maxValue( %d ) cannot be less than minValue( %d ).", maxValue, minValue));
@@ -655,6 +694,7 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
 	 *                                  <code>minValue</code>.
 	 */
+	@SideEffectFree
 	public static boolean inRange(float minValue, float maxValue, float value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
 				String.format("maxValue( %f ) cannot be less than minValue( %f ).", maxValue, minValue));
@@ -680,6 +720,7 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
 	 *                                  <code>minValue</code>.
 	 */
+	@SideEffectFree
 	public static boolean inRange(double minValue, double maxValue, double value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
 				String.format("maxValue( %f ) cannot be less than minValue( %f ).", maxValue, minValue));
@@ -707,6 +748,7 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if <code>maxValue</code> is less than
 	 *                                  <code>minValue</code>.
 	 */
+	@SideEffectFree
 	public static boolean inRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value) {
 		requireGreaterThanOrEqualTo(minValue, maxValue,
 				String.format("maxValue( %s ) cannot be less than minValue( %s ).", maxValue, minValue));
@@ -731,6 +773,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@SideEffectFree
 	public static int requireEqualTo(int baseValue, int value) {
 		return requireEqualTo(baseValue, value, null);
 	}
@@ -752,7 +795,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
-	public static int requireEqualTo(int baseValue, int value, String message) {
+	@SideEffectFree
+	public static int requireEqualTo(int baseValue, int value, @Nullable String message) {
 		if (!isEqualTo(baseValue, value))
 			throw new IllegalArgumentException(
 					(nonNull(message) ? message : String.format("value(%d) should be equal to %d.", value, baseValue)));
@@ -774,6 +818,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@SideEffectFree
 	public static long requireEqualTo(long baseValue, long value) {
 		return requireEqualTo(baseValue, value, null);
 	}
@@ -795,7 +840,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
-	public static long requireEqualTo(long baseValue, long value, String message) {
+	@SideEffectFree
+	public static long requireEqualTo(long baseValue, long value, @Nullable String message) {
 		if (!isEqualTo(baseValue, value))
 			throw new IllegalArgumentException(
 					(nonNull(message) ? message : String.format("value(%d) should be equal to %d.", value, baseValue)));
@@ -817,6 +863,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@SideEffectFree
 	public static float requireEqualTo(float baseValue, float value) {
 		return requireEqualTo(baseValue, value, null);
 	}
@@ -838,7 +885,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
-	public static float requireEqualTo(float baseValue, float value, String message) {
+	@SideEffectFree
+	public static float requireEqualTo(float baseValue, float value, @Nullable String message) {
 		if (!isEqualTo(baseValue, value))
 			throw new IllegalArgumentException(
 					(nonNull(message) ? message : String.format("value(%f) should be equal to %f.", value, baseValue)));
@@ -860,6 +908,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@SideEffectFree
 	public static double requireEqualTo(double baseValue, double value) {
 		return requireEqualTo(baseValue, value, null);
 	}
@@ -881,7 +930,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
-	public static double requireEqualTo(double baseValue, double value, String message) {
+	@SideEffectFree
+	public static double requireEqualTo(double baseValue, double value, @Nullable String message) {
 		if (!isEqualTo(baseValue, value))
 			throw new IllegalArgumentException(
 					(nonNull(message) ? message : String.format("value(%f) should be equal to %f.", value, baseValue)));
@@ -905,6 +955,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
+	@SideEffectFree
 	public static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireEqualTo(baseValue, value, null);
 	}
@@ -928,7 +979,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.2.0
 	 */
-	public static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
+	@SideEffectFree
+	public static BigDecimal requireEqualTo(BigDecimal baseValue, BigDecimal value, @Nullable String message) {
 		if (!isEqualTo(baseValue, value))
 			throw new IllegalArgumentException(
 					(nonNull(message) ? message : String.format("value(%s) should be equal to %s.", value, baseValue)));
@@ -953,6 +1005,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static int requireGreaterThan(int baseValue, int value) {
 		return requireGreaterThan(baseValue, value, null);
 	}
@@ -974,7 +1027,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static int requireGreaterThan(int baseValue, int value, String message) {
+	@SideEffectFree
+	public static int requireGreaterThan(int baseValue, int value, @Nullable String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than %d.", value, baseValue)));
@@ -996,6 +1050,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static long requireGreaterThan(long baseValue, long value) {
 		return requireGreaterThan(baseValue, value, null);
 	}
@@ -1017,7 +1072,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static long requireGreaterThan(long baseValue, long value, String message) {
+	@SideEffectFree
+	public static long requireGreaterThan(long baseValue, long value, @Nullable String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than %d.", value, baseValue)));
@@ -1039,6 +1095,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static float requireGreaterThan(float baseValue, float value) {
 		return requireGreaterThan(baseValue, value, null);
 	}
@@ -1060,7 +1117,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static float requireGreaterThan(float baseValue, float value, String message) {
+	@SideEffectFree
+	public static float requireGreaterThan(float baseValue, float value, @Nullable String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be greater than %f.", value, baseValue)));
@@ -1082,6 +1140,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static double requireGreaterThan(double baseValue, double value) {
 		return requireGreaterThan(baseValue, value, null);
 	}
@@ -1103,7 +1162,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static double requireGreaterThan(double baseValue, double value, String message) {
+	@SideEffectFree
+	public static double requireGreaterThan(double baseValue, double value, @Nullable String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be greater than %f.", value, baseValue)));
@@ -1127,6 +1187,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value) {
 		return requireGreaterThan(baseValue, value, null);
 	}
@@ -1150,7 +1211,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value, String message) {
+	@SideEffectFree
+	public static BigDecimal requireGreaterThan(BigDecimal baseValue, BigDecimal value, @Nullable String message) {
 		if (!isGreaterThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%s) should be greater than %s.", value, baseValue)));
@@ -1176,6 +1238,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static int requireGreaterThanOrEqualTo(int baseValue, int value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
 	}
@@ -1198,7 +1261,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static int requireGreaterThanOrEqualTo(int baseValue, int value, String message) {
+	@SideEffectFree
+	public static int requireGreaterThanOrEqualTo(int baseValue, int value, @Nullable String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than or equal %d.", value, baseValue)));
@@ -1221,6 +1285,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static long requireGreaterThanOrEqualTo(long baseValue, long value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
 	}
@@ -1243,7 +1308,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static long requireGreaterThanOrEqualTo(long baseValue, long value, String message) {
+	@SideEffectFree
+	public static long requireGreaterThanOrEqualTo(long baseValue, long value, @Nullable String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than or equal %d.", value, baseValue)));
@@ -1266,6 +1332,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static float requireGreaterThanOrEqualTo(float baseValue, float value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
 	}
@@ -1288,7 +1355,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static float requireGreaterThanOrEqualTo(float baseValue, float value, String message) {
+	@SideEffectFree
+	public static float requireGreaterThanOrEqualTo(float baseValue, float value, @Nullable String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be greater than or equal %f.", value, baseValue)));
@@ -1311,6 +1379,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static double requireGreaterThanOrEqualTo(double baseValue, double value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
 	}
@@ -1333,7 +1402,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static double requireGreaterThanOrEqualTo(double baseValue, double value, String message) {
+	@SideEffectFree
+	public static double requireGreaterThanOrEqualTo(double baseValue, double value, @Nullable String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be greater than or equal %f.", value, baseValue)));
@@ -1359,6 +1429,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireGreaterThanOrEqualTo(baseValue, value, null);
 	}
@@ -1384,7 +1455,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
+	@SideEffectFree
+	public static BigDecimal requireGreaterThanOrEqualTo(BigDecimal baseValue, BigDecimal value, @Nullable String message) {
 		if (!isGreaterThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%s) should be greater than or equal %s.", value, baseValue)));
@@ -1416,6 +1488,7 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
+	@SideEffectFree
 	public static int requireInRange(int minValue, int maxValue, int value) {
 		return requireInRange(minValue, maxValue, value, null);
 	}
@@ -1445,7 +1518,8 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
-	public static int requireInRange(int minValue, int maxValue, int value, String message) {
+	@SideEffectFree
+	public static int requireInRange(int minValue, int maxValue, int value, @Nullable String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
 					: String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue,
@@ -1475,6 +1549,7 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
+	@SideEffectFree
 	public static long requireInRange(long minValue, long maxValue, long value) {
 		return requireInRange(minValue, maxValue, value, null);
 	}
@@ -1504,7 +1579,8 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
-	public static long requireInRange(long minValue, long maxValue, long value, String message) {
+	@SideEffectFree
+	public static long requireInRange(long minValue, long maxValue, long value, @Nullable String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
 					: String.format("value(%d) should be more than or equal to %d and less than %d.", value, minValue,
@@ -1534,6 +1610,7 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
+	@SideEffectFree
 	public static float requireInRange(float minValue, float maxValue, float value) {
 		return requireInRange(minValue, maxValue, value, null);
 	}
@@ -1563,7 +1640,8 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
-	public static float requireInRange(float minValue, float maxValue, float value, String message) {
+	@SideEffectFree
+	public static float requireInRange(float minValue, float maxValue, float value, @Nullable String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
 					: String.format("value(%f) should be more than or equal to %f and less than %f.", value, minValue,
@@ -1593,6 +1671,7 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
+	@SideEffectFree
 	public static double requireInRange(double minValue, double maxValue, double value) {
 		return requireInRange(minValue, maxValue, value, null);
 	}
@@ -1622,7 +1701,8 @@ public final class ObjectUtils {
 	 *                                  range or if {@code maxValue} is less than
 	 *                                  {@code minValue}.
 	 */
-	public static double requireInRange(double minValue, double maxValue, double value, String message) {
+	@SideEffectFree
+	public static double requireInRange(double minValue, double maxValue, double value, @Nullable String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
 					: String.format("value(%f) should be more than or equal to %f and less than %f.", value, minValue,
@@ -1655,6 +1735,7 @@ public final class ObjectUtils {
 	 * 
 	 * @see BigDecimal
 	 */
+	@SideEffectFree
 	public static BigDecimal requireInRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value) {
 		return requireInRange(minValue, maxValue, value, null);
 	}
@@ -1688,8 +1769,9 @@ public final class ObjectUtils {
 	 * 
 	 * @see BigDecimal
 	 */
+	@SideEffectFree
 	public static BigDecimal requireInRange(BigDecimal minValue, BigDecimal maxValue, BigDecimal value,
-                                            String message) {
+											@Nullable String message) {
 		if (!inRange(minValue, maxValue, value))
 			throw new IllegalArgumentException((nonNull(message)) ? message
 					: String.format("value(%s) should be more than or equal to %s and less than %s.", value, minValue,
@@ -1711,7 +1793,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
-	public static int requireNonNegative(int value) {
+	@Pure
+	public static @NonNegative int requireNonNegative(@NonNegative int value) {
 		return requireNonNegative(value, null);
 	}
 
@@ -1729,7 +1812,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
-	public static int requireNonNegative(int value, String message) {
+	@Pure
+	public static @NonNegative int requireNonNegative(@NonNegative int value, @Nullable String message) {
 		if (isNegative(value))
 			throw new IllegalArgumentException(isNull(message) ? "value cannot be negative." : message);
 		return value;
@@ -1746,6 +1830,7 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
+	@Pure
 	public static long requireNonNegative(long value) {
 		return requireNonNegative(value, null);
 	}
@@ -1764,7 +1849,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
-	public static long requireNonNegative(long value, String message) {
+	@Pure
+	public static long requireNonNegative(long value, @Nullable String message) {
 		if (isNegative(value))
 			throw new IllegalArgumentException(isNull(message) ? "value cannot be negative." : message);
 		return value;
@@ -1781,6 +1867,7 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
+	@Pure
 	public static float requireNonNegative(float value) {
 		return requireNonNegative(value, null);
 	}
@@ -1799,7 +1886,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
-	public static float requireNonNegative(float value, String message) {
+	@Pure
+	public static float requireNonNegative(float value, @Nullable String message) {
 		if (isNegative(value))
 			throw new IllegalArgumentException(isNull(message) ? "value cannot be negative." : message);
 		return value;
@@ -1816,6 +1904,7 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative.
 	 */
+	@Pure
 	public static double requireNonNegative(double value) {
 		return requireNonNegative(value, null);
 	}
@@ -1834,7 +1923,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if {@code value} is negative
 	 */
-	public static double requireNonNegative(double value, String message) {
+	@Pure
+	public static double requireNonNegative(double value, @Nullable String message) {
 		if (isNegative(value))
 			throw new IllegalArgumentException(isNull(message) ? "value cannot be negative." : message);
 		return value;
@@ -1875,7 +1965,7 @@ public final class ObjectUtils {
 	 * 
 	 * @see BigDecimal
 	 */
-	public static BigDecimal requireNonNegative(BigDecimal value, String message) {
+	public static BigDecimal requireNonNegative(BigDecimal value, @Nullable String message) {
 		if (isNegative(value))
 			throw new IllegalArgumentException(isNull(message) ? "value cannot be negative." : message);
 		return value;
@@ -1899,6 +1989,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static int requireLessThan(int baseValue, int value) {
 		return requireLessThan(baseValue, value, null);
 	}
@@ -1920,7 +2011,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static int requireLessThan(int baseValue, int value, String message) {
+	@SideEffectFree
+	public static int requireLessThan(int baseValue, int value, @Nullable String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than %d.", value, baseValue)));
@@ -1942,6 +2034,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static long requireLessThan(long baseValue, long value) {
 		return requireLessThan(baseValue, value, null);
 	}
@@ -1963,7 +2056,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static long requireLessThan(long baseValue, long value, String message) {
+	@SideEffectFree
+	public static long requireLessThan(long baseValue, long value, @Nullable String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be greater than %d.", value, baseValue)));
@@ -1985,6 +2079,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static float requireLessThan(float baseValue, float value) {
 		return requireLessThan(baseValue, value, null);
 	}
@@ -2006,7 +2101,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static float requireLessThan(float baseValue, float value, String message) {
+	@SideEffectFree
+	public static float requireLessThan(float baseValue, float value, @Nullable String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be greater than %f.", value, baseValue)));
@@ -2028,6 +2124,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static double requireLessThan(double baseValue, double value) {
 		return requireLessThan(baseValue, value, null);
 	}
@@ -2049,7 +2146,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static double requireLessThan(double baseValue, double value, String message) {
+	@SideEffectFree
+	public static double requireLessThan(double baseValue, double value, @Nullable String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be greater than %f.", value, baseValue)));
@@ -2073,6 +2171,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value) {
 		return requireLessThan(baseValue, value, null);
 	}
@@ -2096,7 +2195,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value, String message) {
+	@SideEffectFree
+	public static BigDecimal requireLessThan(BigDecimal baseValue, BigDecimal value, @Nullable String message) {
 		if (!isLessThan(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%s) should be greater than %s.", value, baseValue)));
@@ -2122,6 +2222,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static int requireLessThanOrEqualTo(int baseValue, int value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
 	}
@@ -2144,7 +2245,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static int requireLessThanOrEqualTo(int baseValue, int value, String message) {
+	@SideEffectFree
+	public static int requireLessThanOrEqualTo(int baseValue, int value, @Nullable String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be less than %d.", value, baseValue)));
@@ -2167,6 +2269,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static long requireLessThanOrEqualTo(long baseValue, long value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
 	}
@@ -2189,7 +2292,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static long requireLessThanOrEqualTo(long baseValue, long value, String message) {
+	@SideEffectFree
+	public static long requireLessThanOrEqualTo(long baseValue, long value, @Nullable String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%d) should be less than %d.", value, baseValue)));
@@ -2212,6 +2316,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static float requireLessThanOrEqualTo(float baseValue, float value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
 	}
@@ -2234,7 +2339,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static float requireLessThanOrEqualTo(float baseValue, float value, String message) {
+	@SideEffectFree
+	public static float requireLessThanOrEqualTo(float baseValue, float value, @Nullable String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be less than %f.", value, baseValue)));
@@ -2257,6 +2363,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static double requireLessThanOrEqualTo(double baseValue, double value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
 	}
@@ -2279,7 +2386,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static double requireLessThanOrEqualTo(double baseValue, double value, String message) {
+	@SideEffectFree
+	public static double requireLessThanOrEqualTo(double baseValue, double value, @Nullable String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%f) should be less than %f.", value, baseValue)));
@@ -2305,6 +2413,7 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
+	@SideEffectFree
 	public static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value) {
 		return requireLessThanOrEqualTo(baseValue, value, null);
 	}
@@ -2330,7 +2439,8 @@ public final class ObjectUtils {
 	 * 
 	 * @since 1.1.0
 	 */
-	public static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value, String message) {
+	@SideEffectFree
+	public static BigDecimal requireLessThanOrEqualTo(BigDecimal baseValue, BigDecimal value, @Nullable String message) {
 		if (!isLessThanOrEqualTo(baseValue, value))
 			throw new IllegalArgumentException((nonNull(message) ? message
 					: String.format("value(%s) should be greater than %s.", value, baseValue)));
@@ -2338,7 +2448,7 @@ public final class ObjectUtils {
 	}
 
 	// ========================================================================
-	// SERIALIZABLES UTILS
+	// SERIALIZABLE UTILS
 	// ========================================================================
 	/**
 	 * Checks if a given instance is serializable, i.e implements the
@@ -2350,16 +2460,14 @@ public final class ObjectUtils {
 	 * @param value the instance to check for serializability
 	 * @return <code>true</code> if value is serializable or <code>false</code>
 	 *         otherwise.
-	 * 
-	 * @throws NullPointerException if value is null.
-	 * 
+	 *
 	 * @see Serializable
 	 */
-	public static <T> boolean isSerializable(T value) {
-		if (Serializable.class.isInstance(requireNonNull(value)))
-			return true;
-		return false;
-	}
+	@Pure
+	@EnsuresNonNullIf(expression = "#1", result = true)
+	public static <T> boolean isSerializable(@Nullable T value) {
+        return value instanceof Serializable;
+    }
 
 	/**
 	 * Validates that a given instance is serializable, i.e implements the
@@ -2380,7 +2488,8 @@ public final class ObjectUtils {
 	 * @see #requireSerializable(Object, String)
 	 * @see Serializable
 	 */
-	public static <T> T requireSerializable(T value) {
+	@Pure
+	public static <T> T requireSerializable(@Nullable T value) {
 		return requireSerializable(value, null);
 	}
 
@@ -2405,14 +2514,15 @@ public final class ObjectUtils {
 	 * 
 	 * @see Serializable
 	 */
-	public static <T> T requireSerializable(T value, String message) {
+	@Pure
+	public static <T> T requireSerializable(@Nullable T value, @Nullable String message) {
 		if (!isSerializable(value))
-			throw new IllegalArgumentException(isNull(message) ? value.toString() + " must be serializable." : message);
+			throw new IllegalArgumentException(isNull(message) ? value + " must be serializable." : message);
 		return value;
 	}
 
 	// ========================================================================
-	// STRINGS UTILS
+	// STRING UTILS
 	// ========================================================================
 	/**
 	 * Checks that the given <code>String</code> has characters between the given
@@ -2440,7 +2550,7 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if any of the conditions stated above are/is
 	 *                                  met.
 	 */
-	public static boolean hasCharsInRange(int minChars, int maxChars, String value) {
+	public static boolean hasCharsInRange(@NonNegative int minChars, @NonNegative int maxChars, String value) {
 		requireGreaterThan(requireNonNegative(minChars), requireNonNegative(maxChars),
 				String.format("maxChars(%d) cannot be less than or equal to minChars(%d).", maxChars, minChars));
 		return inRange(minChars, maxChars, requireNonNull(value).length());
@@ -2463,7 +2573,7 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if <code>maxChars</code> is negative.
 	 */
-	public static boolean hasLessThanChars(int maxChars, String value) {
+	public static boolean hasLessThanChars(@NonNegative int maxChars, String value) {
 		return requireNonNull(value).length() < requireNonNegative(maxChars);
 	}
 
@@ -2485,8 +2595,8 @@ public final class ObjectUtils {
 	 * 
 	 * @throws IllegalArgumentException if <code>minChars</code> is negative.
 	 */
-	public static boolean hasMoreThanChars(int minChars, String value) {
-		return isGreaterThanOrEqualTo(requireNonNegative(minChars), requireNonNull(value).length());
+	public static boolean hasMoreThanChars(@NonNegative int minChars, String value) {
+		return isGreaterThan(requireNonNegative(minChars), requireNonNull(value).length());
 	}
 
 	/**
@@ -2517,7 +2627,8 @@ public final class ObjectUtils {
 	 * 
 	 * @see #hasCharsInRange(int, int, String)
 	 */
-	public static String requireCharsInRange(int minChars, int maxChars, String value) {
+	public static String requireCharsInRange(
+			@IndexOrHigh(value = "#3") int minChars, @NonNegative int maxChars, String value) {
 		return requireCharsInRange(minChars, maxChars, value, null);
 	}
 
@@ -2554,7 +2665,8 @@ public final class ObjectUtils {
 	 * 
 	 * @see #hasCharsInRange(int, int, String)
 	 */
-	public static String requireCharsInRange(int minChars, int maxChars, String value, String message) {
+	public static String requireCharsInRange(
+			@IndexOrHigh(value = "#3") int minChars, @NonNegative int maxChars, String value, @Nullable String message) {
 		if (!hasCharsInRange(minChars, maxChars, value))
 			throw new IllegalArgumentException(nonNull(message) ? message
 					: String.format("The length of value(%d) must be greater than or equal to %d and less than %d.",
@@ -2588,7 +2700,7 @@ public final class ObjectUtils {
 	 * 
 	 * @see #hasLessThanChars(int, String)
 	 */
-	public static String requireLessThanChars(int maxChars, String value) {
+	public static String requireLessThanChars(@NonNegative int maxChars, String value) {
 		return requireLessThanChars(maxChars, value, null);
 	}
 
@@ -2621,7 +2733,7 @@ public final class ObjectUtils {
 	 * 
 	 * @see #hasLessThanChars(int, String)
 	 */
-	public static String requireLessThanChars(int maxChars, String value, String message) {
+	public static String requireLessThanChars(@NonNegative int maxChars, String value, @Nullable String message) {
 		if (!hasLessThanChars(maxChars, value))
 			throw new IllegalArgumentException(nonNull(message) ? message
 					: String.format("value's length (%d) must be less than %d.", value.length(), maxChars));
@@ -2654,7 +2766,7 @@ public final class ObjectUtils {
 	 * 
 	 * @see #hasMoreThanChars(int, String)
 	 */
-	public static String requireMoreThanChars(int minChars, String value) {
+	public static String requireMoreThanChars(@IndexFor(value = "#2") int minChars, String value) {
 		return requireMoreThanChars(minChars, value, null);
 	}
 
@@ -2688,7 +2800,8 @@ public final class ObjectUtils {
 	 * 
 	 * @see #hasMoreThanChars(int, String)
 	 */
-	public static String requireMoreThanChars(int minChars, String value, String message) {
+	public static String requireMoreThanChars(
+			@IndexFor(value = "#2") int minChars, String value, @Nullable String message) {
 		if (!hasMoreThanChars(minChars, value))
 			throw new IllegalArgumentException(nonNull(message) ? message
 					: String.format("value's length (%d) must be greater than or equal to %d.", value.length(),
@@ -2715,7 +2828,8 @@ public final class ObjectUtils {
 	 * 
 	 * @see #requireNonEmptyString(String, String)
 	 */
-	public static String requireNonEmptyString(String value) {
+	@SideEffectFree
+	public static @MinLen(value = 1) String requireNonEmptyString(@MinLen(value = 1) String value) {
 		return requireNonEmptyString(value, null);
 	}
 
@@ -2759,7 +2873,9 @@ public final class ObjectUtils {
 	 * 
 	 * @see #requireNonEmptyString(String, String, String)
 	 */
-	public static String requireNonEmptyString(String value, String name) {
+	@SideEffectFree
+	public static @MinLen(value = 1) String requireNonEmptyString(
+			@MinLen(value = 1) String value, @Nullable String name) {
 		name = (isNull(name)) ? "value" : name;
 		return requireNonEmptyString(value, name + " cannot be null.", name + " cannot be empty.");
 	}
@@ -2783,7 +2899,9 @@ public final class ObjectUtils {
 	 * @throws IllegalArgumentException if value is empty<i>(has a length of
 	 *                                  zero)</i>.
 	 */
-	public static String requireNonEmptyString(String value, String nullMessage, String emptyMessage) {
+	@SideEffectFree
+	public static @MinLen(value = 1) String requireNonEmptyString(
+			@MinLen(value = 1) String value, @Nullable String nullMessage, @Nullable String emptyMessage) {
 		// Check if messages are null and set defaults
 		nullMessage = (isNull(nullMessage)) ? "value cannot be null." : nullMessage;
 		emptyMessage = (isNull(emptyMessage)) ? "value cannot be empty." : emptyMessage;
@@ -2793,6 +2911,7 @@ public final class ObjectUtils {
 	}
 
 	// private constructor to prevent initialization
+	@SideEffectFree
 	private ObjectUtils() {
 	}
 }

@@ -2,7 +2,11 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
+checker-framework-gradle-plugin = "0.6.37"
 junit-jupiter = "5.10.0"
 
 [libraries]
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+
+[plugins]
+checker-framework = { id = "org.checkerframework", version.ref = "checker-framework-gradle-plugin" }
