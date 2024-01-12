@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/kennedykori/jutils/graph/badge.svg?token=4hqGKXW3tX)](https://codecov.io/gh/kennedykori/jutils)
 [![Download](https://api.bintray.com/packages/kori-47/kori_47/utils/images/download.svg)](https://bintray.com/kori-47/kori_47/utils/_latestVersion) 
 [![javadoc](https://javadoc.io/badge2/com.kori_47/utils/javadoc.svg)](https://javadoc.io/doc/com.kori_47/utils)
+[![semantic-release: conventionalcommits](https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 This library contains a utility class that is composed of static methods, similar to `java.util.Objects`, that can be used for checking and 
 validation of both objects and primitives. These utility methods can be classified into two main categories :-

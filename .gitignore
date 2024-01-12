@@ -11,6 +11,10 @@ build
 # Ignore IntelliJ IDEA project files
 .idea
 
+# Ignore NPM package directories
+node_modules/
+jspm_packages/
+
 # Ignore temporary files
 .netrwhist
 .~lock.*
