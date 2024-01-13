@@ -57,6 +57,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
@@ -99,4 +101,5 @@ jobs:
           GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
