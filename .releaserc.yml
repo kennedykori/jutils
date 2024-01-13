@@ -1,0 +1,76 @@
+---
+
+branches:
+  - name: main
+    channel: latest
+  - name: develop
+    channel: dev
+    prerelease: dev
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - - "@semantic-release/release-notes-generator"
+    - linkCompare: true
+      linkReferences: true
+      writerOpts:
+        commitGroupsSort:
+          - type
+          - title
+        commitSort:
+          - scope
+          - subject
+  - - "@semantic-release/changelog"
+    - changelogFile: "docs/CHANGELOG.md"
+  - - "@semantic-release/exec"
+    # TODO: Replace this with a better command
+    - prepareCmd: " ./gradlew --console=verbose jar javadocJar sourcesJar"
+  - - "@semantic-release/git"
+    - assets:
+        - "docs/CHANGELOG.md"
+      message: "release: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+  - - "@semantic-release/github"
+    - assets:
+        - path: build/libs/*.jar
+tagFormat: v${version}
+
+# ------------------------------------------------------------------------------
+# GLOBAL PLUGIN OPTIONS
+# See: https://github.com/semantic-release/semantic-release/blob/master/docs/usage/plugins
+#  .md#plugin-options-configuration
+# ------------------------------------------------------------------------------
+parserOptions:
+  noteKeywords:
+    - BREAKING CHANGE
+    - BREAKING CHANGES
+    - BREAKING
+preset: conventionalcommits
+presetConfig:
+  types:
+    - type: build
+      hidden: true
+    - type: ci
+      hidden: true
+    - type: chore
+      scope: deps
+      section: Dependency Updates
+    - type: chore
+      section: Refactors
+    - type: docs
+      hidden: true
+    - type: feat
+      section: Features
+    - type: fix
+      section: Bug Fixes
+    - type: release
+      hidden: true
+    - type: test
+      section: hidden
+releaseRules:
+  - type: chore
+    scope: deps
+    release: patch
+  - type: feat
+    release: minor
+  - type: fix
+    release: patch
+  - scope: no-release
+    release: false
