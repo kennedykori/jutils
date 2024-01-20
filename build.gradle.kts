@@ -6,9 +6,10 @@
  * User Manual available at https://docs.gradle.org/5.6.1/userguide/java_library_plugin.html
  */
 
-project.group = "io.github.kennedykori"
+val artifactID: String = "utils"
+val groupID: String = "io.github.kennedykori"
 
-project.version = "2.0.0"
+project.group = groupID
 
 plugins {
   // Apply the java-library plugin to add support for Java Library
@@ -19,10 +20,15 @@ plugins {
   checkstyle
   // Apply the maven publish plugin
   `maven-publish`
+  // Apply the signing plugin to digitally sign built files and artifacts.
+  signing
   // Checker Framework pluggable type-checking.
   // This MUST be applied after plugins that introduce Java compilation tasks,
   // typically `java` or `java-library`.
   alias(libs.plugins.checker.framework)
+  // Apply the gradle nexus plugin to automate publishing to any Nexus instance
+  // including Maven Central.
+  alias(libs.plugins.gradle.nexus.publish.plugin)
 
   alias(libs.plugins.spotless)
 }
@@ -68,17 +74,103 @@ java {
   withSourcesJar()
 }
 
-repositories {
-  // Use jcenter for resolving dependencies.
-  // You can declare any Maven/Ivy/file repository here.
-  mavenCentral()
-  mavenLocal()
+nexusPublishing {
+  repositories {
+    sonatype {
+      nexusUrl = uri("https://s01.oss.sonatype.org/service/local/")
+      snapshotRepositoryUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    }
+  }
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("utils") {
+      this.artifactId = artifactID
+
+      from(components["java"])
+
+      pom {
+        name = "$groupID:$artifactID"
+        description =
+            "Collection of utility methods and classes for checking and " +
+                "validating primitives and objects in Java."
+        developers {
+          developer {
+            id = "kennedykori"
+            name = "Kennedy Kori"
+            email = "kennedykori47@gmail.com"
+          }
+        }
+        licenses {
+          license {
+            name = "MIT License"
+            url = "https://github.com/kennedykori/jutils/blob/master/LICENSE"
+            distribution = "repo"
+          }
+        }
+        packaging = "jar"
+        scm {
+          connection = "scm:git:git@github.com:kennedykori/jutils.git"
+          developerConnection = "scm:git:git@github.com:kennedykori/jutils.git"
+          url = "https://github.com/kennedykori/jutils"
+        }
+        url = "https://github.com/kennedykori/jutils"
+      }
+
+      versionMapping {
+        usage("java-api") { fromResolutionOf("runtimeClasspath") }
+        usage("java-runtime") { fromResolutionResult() }
+      }
+    }
+  }
+
+  repositories {
+    mavenLocal()
+    maven {
+      // Repo directory relative to the build directory.
+      val localRepoDir: String = project.providers.gradleProperty("repo.local").get()
+
+      name = "localReleases"
+      url = uri(layout.buildDirectory.dir(localRepoDir))
+    }
+
+    maven {
+      val gitHubRepoURL: String = project.providers.gradleProperty("repo.github").get()
+
+      name = "GitHubPackages"
+      url = uri(gitHubRepoURL)
+
+      credentials {
+        username =
+            project.providers
+                .gradleProperty("github.username")
+                .getOrElse(System.getenv("GITHUB_USERNAME"))
+        password =
+            project.providers
+                .gradleProperty("github.token")
+                .getOrElse(System.getenv("GITHUB_TOKEN"))
+      }
+    }
+  }
+}
+
+repositories { mavenCentral() }
+
+signing {
+  val useInMemorySigning = project.providers.gradleProperty("signing.inMemory").getOrElse("false")
+  if (useInMemorySigning == "true") {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
+  }
+  sign(project.publishing.publications["utils"])
 }
 
 spotless {
   format("misc") {
     // define the files to apply `misc` to
-    target(".gitattributes", ".gitignore", ".toml")
+    target(".gitattributes", ".gitignore", "*.properties", ".toml")
 
     // define the steps to apply to those files
     trimTrailingWhitespace()
@@ -124,7 +216,7 @@ tasks.jar {
   manifest {
     attributes(
         mapOf(
-            "Automatic-Module-Name" to "io.github.kennedykori.utils",
+            "Automatic-Module-Name" to "$groupID.$artifactID",
             "Implementation-Title" to project.name,
             "Implementation-Version" to project.version,
         ),
