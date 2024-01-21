@@ -1,8 +1,7 @@
 ---
 
 branches:
-  - name: main
-    channel: latest
+  - main
   - name: develop
     channel: dev
     prerelease: dev
@@ -18,14 +17,45 @@ plugins:
         commitSort:
           - scope
           - subject
+  - - semantic-release-replace-plugin
+    - replacements:
+        - countMatches: true
+          files:
+            - gradle.properties
+          from: version=.*
+          to: version=${nextRelease.version}
+          results:
+            - file: gradle.properties
+              hasChanged: true
+              numMatches: 1
+              numReplacements: 1
+        - countMatches: true
+          files:
+            - README.md
+            - from:
+              - "<version>.*</version>"
+              - "'io.github.kennedykori:utils:.*'"
+              - '"io.github.kennedykori:utils:.*"'
+              - 'rev=".*"'
+            - to:
+              - "<version>${nextRelease.version}</version>"
+              - "'io.github.kennedykori:utils:${nextRelease.version}'"
+              - '"io.github.kennedykori:utils:${nextRelease.version}"'
+              - 'rev="${nextRelease.version}"'
+          results:
+            - file: README.md
+              hasChanged: true
+              numMatches: 4
+              numReplacements: 4
   - - "@semantic-release/changelog"
     - changelogFile: "docs/CHANGELOG.md"
   - - "@semantic-release/exec"
-    # TODO: Replace this with a better command
-    - prepareCmd: " ./gradlew --console=verbose jar javadocJar sourcesJar"
+    - publishCmd: "./gradlew publish findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository"
   - - "@semantic-release/git"
     - assets:
-        - "docs/CHANGELOG.md"
+        - docs/CHANGELOG.md
+        - gradle.properties
+        - README.md
       message: "release: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
   - - "@semantic-release/github"
     - assets:
@@ -55,6 +85,9 @@ presetConfig:
     - type: chore
       section: Refactors
     - type: docs
+      scope: javadoc
+      section: Javadoc Updates
+    - type: docs
       hidden: true
     - type: feat
       section: Features
@@ -67,6 +100,9 @@ presetConfig:
 releaseRules:
   - type: chore
     scope: deps
+    release: patch
+  - type: docs
+    scope: javadoc
     release: patch
   - type: feat
     release: minor
