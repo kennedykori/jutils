@@ -50,7 +50,7 @@ plugins:
   - - "@semantic-release/changelog"
     - changelogFile: "docs/CHANGELOG.md"
   - - "@semantic-release/exec"
-    - publishCmd: "./gradlew publish findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository"
+    - publishCmd: "./gradlew jar javadocJar sourcesJar"
   - - "@semantic-release/git"
     - assets:
         - docs/CHANGELOG.md
