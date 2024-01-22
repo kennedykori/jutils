@@ -51,7 +51,7 @@ plugins:
     - changelogFile: "docs/CHANGELOG.md"
   - - "@semantic-release/exec"
     - publishCmd: "
-        export ORG_GRADLE_PROJECT_github.token='${process.env.GITHUB_TOKEN}';
+        export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}';
         export ORG_GRADLE_PROJECT_signingKey='${process.env.GRADLE_SIGNING_KEY}';
         export ORG_GRADLE_PROJECT_signingPassword='${process.env.GRADLE_SIGNING_PASSWORD}';
         export ORG_GRADLE_PROJECT_sonatypePassword='${process.env.GRADLE_SONATYPE_PASSWORD}';
