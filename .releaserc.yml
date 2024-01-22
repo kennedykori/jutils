@@ -32,16 +32,16 @@ plugins:
         - countMatches: true
           files:
             - README.md
-            - from:
-              - "<version>.*</version>"
-              - "'io.github.kennedykori:utils:.*'"
-              - '"io.github.kennedykori:utils:.*"'
-              - 'rev=".*"'
-            - to:
-              - "<version>${nextRelease.version}</version>"
-              - "'io.github.kennedykori:utils:${nextRelease.version}'"
-              - '"io.github.kennedykori:utils:${nextRelease.version}"'
-              - 'rev="${nextRelease.version}"'
+          from:
+            - "<version>.*</version>"
+            - "'io.github.kennedykori:utils:.*'"
+            - '"io.github.kennedykori:utils:.*"'
+            - 'rev=".*"'
+          to:
+            - "<version>${nextRelease.version}</version>"
+            - "'io.github.kennedykori:utils:${nextRelease.version}'"
+            - '"io.github.kennedykori:utils:${nextRelease.version}"'
+            - 'rev="${nextRelease.version}"'
           results:
             - file: README.md
               hasChanged: true
