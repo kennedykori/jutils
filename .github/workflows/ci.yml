@@ -101,16 +101,8 @@ jobs:
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GRADLE_SIGNING_KEY: ${{ secrets.GRADLE_SIGNING_KEY }}
+          GRADLE_SIGNING_PASSWORD: ${{ secrets.GRADLE_SIGNING_PASSWORD }}
+          GRADLE_SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          GRADLE_SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         run: npx semantic-release
-
-      - name: Publish to all repositories
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          ORG_GRADLE_PROJECT_github.token: ${{ secrets.GH_TOKEN }}
-          ORG_GRADLE_PROJECT_github.username: kennedykori
-          ORG_GRADLE_PROJECT_signing.inMemory: "true"
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GRADLE_SIGNING_KEY }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GRADLE_SIGNING_PASSWORD }}
-          ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
-          ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
-        run: ./gradlew publish findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository
