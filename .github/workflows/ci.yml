@@ -94,13 +94,17 @@ jobs:
         run: npm ci
 
       - name: Create a release
-        run: npx semantic-release
         env:
           DEBUG: "semantic-release:*"
           GIT_AUTHOR_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
           GIT_AUTHOR_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
           GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
+
+      - name: Publish to all repositories
+        env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           ORG_GRADLE_PROJECT_github.token: ${{ secrets.GH_TOKEN }}
           ORG_GRADLE_PROJECT_github.username: kennedykori
@@ -109,3 +113,4 @@ jobs:
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GRADLE_SIGNING_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPE_USERNAME }}
+        run: ./gradlew publish findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository
