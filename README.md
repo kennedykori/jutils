@@ -44,7 +44,7 @@ Add the following dependency to your `pom` file:
 <dependency>
     <groupId>io.github.kennedykori</groupId>
     <artifactId>utils</artifactId>
-    <version>2.0.0-dev.1</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
@@ -52,18 +52,18 @@ Add the following dependency to your `pom` file:
 Add the following dependency to your `build.gradle`:
 
 ```groovy
-implementation 'io.github.kennedykori:utils:2.0.0-dev.1'
+implementation 'io.github.kennedykori:utils:2.0.0'
 ```
 
 Or for Kotlin DSL, add the following to your `build.gradle.kts`:
 
 ```kotlin
-implementation("io.github.kennedykori:utils:2.0.0-dev.1")
+implementation("io.github.kennedykori:utils:2.0.0")
 ```
 
 #### 3. Ivy
 ```xml
-<dependency org="io.github.kennedykori" name="utils" rev="2.0.0-dev.1"/>
+<dependency org="io.github.kennedykori" name="utils" rev="2.0.0"/>
 ```
 
 ### Building the library
