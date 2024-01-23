@@ -1,0 +1,100 @@
+branches:
+  - main
+  - name: develop
+    channel: dev
+    prerelease: dev
+plugins:
+  - '@semantic-release/commit-analyzer'
+  - - '@semantic-release/release-notes-generator'
+    - linkCompare: true
+      linkReferences: true
+      writerOpts:
+        commitGroupsSort: [ type, title ]
+        commitSort: [ scope, subject ]
+  - - semantic-release-replace-plugin
+    - replacements:
+        - countMatches: true
+          files: [ gradle.properties ]
+          from: version=.*
+          to: version=${nextRelease.version}
+          results:
+            - file: gradle.properties
+              hasChanged: true
+              numMatches: 1
+              numReplacements: 1
+        - countMatches: true
+          files: [ README.md ]
+          from:
+            - <version>.*</version>
+            - "'io.github.kennedykori:utils:.*'"
+            - '"io.github.kennedykori:utils:.*"'
+            - rev=".*"
+          to:
+            - <version>${nextRelease.version}</version>
+            - "'io.github.kennedykori:utils:${nextRelease.version}'"
+            - '"io.github.kennedykori:utils:${nextRelease.version}"'
+            - rev="${nextRelease.version}"
+          results:
+            - file: README.md
+              hasChanged: true
+              numMatches: 4
+              numReplacements: 4
+  - - '@semantic-release/changelog'
+    - changelogFile: docs/CHANGELOG.md
+  - - '@semantic-release/exec'
+    - publishCmd: " export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}'; export ORG_GRADLE_PROJECT_signingKey='${process.env.GRADLE_SIGNING_KEY}'; export ORG_GRADLE_PROJECT_signingPassword='${process.env.GRADLE_SIGNING_PASSWORD}'; export ORG_GRADLE_PROJECT_sonatypePassword='${process.env.GRADLE_SONATYPE_PASSWORD}'; export ORG_GRADLE_PROJECT_sonatypeUsername='${process.env.GRADLE_SONATYPE_USERNAME}'; ./gradlew -Pgithub.username=kennedykori -Psigning.inMemory=true publish && ./gradlew -Pgithub.username=kennedykori -Psigning.inMemory=true findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository"
+  - - '@semantic-release/git'
+    - assets: [ docs/CHANGELOG.md, gradle.properties, README.md ]
+      message: "release: ${nextRelease.version} [skip ci]
+
+
+        ${nextRelease.notes}"
+  - - '@semantic-release/github'
+    - assets:
+        - path: build/libs/*.jar
+tagFormat: v${version}
+# ------------------------------------------------------------------------------
+# GLOBAL PLUGIN OPTIONS
+# See: https://github.com/semantic-release/semantic-release/blob/master/docs/usage/plugins
+#  .md#plugin-options-configuration
+# ------------------------------------------------------------------------------
+parserOptions:
+  noteKeywords: [ BREAKING CHANGE, BREAKING CHANGES, BREAKING ]
+preset: conventionalcommits
+presetConfig:
+  types:
+    - type: build
+      hidden: true
+    - type: ci
+      hidden: true
+    - type: chore
+      scope: deps
+      section: Dependency Updates
+    - type: chore
+      section: Refactors
+    - type: docs
+      scope: javadoc
+      section: Javadoc Updates
+    - type: docs
+      hidden: true
+    - type: feat
+      section: Features
+    - type: fix
+      section: Bug Fixes
+    - type: release
+      hidden: true
+    - type: test
+      section: hidden
+releaseRules:
+  - type: chore
+    scope: deps
+    release: patch
+  - type: docs
+    scope: javadoc
+    release: patch
+  - type: feat
+    release: minor
+  - type: fix
+    release: patch
+  - scope: no-release
+    release: false

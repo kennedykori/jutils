@@ -1,84 +1,94 @@
-# Java Utils
 
-[![Build Status](https://travis-ci.org/kennedykori/JavaUtils.svg?branch=master)](https://travis-ci.org/kennedykori/JavaUtils) 
-[![codecov](https://codecov.io/gh/kennedykori/JavaUtils/branch/master/graph/badge.svg)](https://codecov.io/gh/kennedykori/JavaUtils) 
-[![Download](https://api.bintray.com/packages/kori-47/kori_47/utils/images/download.svg)](https://bintray.com/kori-47/kori_47/utils/_latestVersion) 
-[![javadoc](https://javadoc.io/badge2/com.kori_47/utils/javadoc.svg)](https://javadoc.io/doc/com.kori_47/utils)
+<h1 align="center" style="border-bottom: none; text-align: center;">🛠️🧰 Java Utils</h1>
+<h3 align="center" style="text-align: center;">Check and validate primitives and reference types 
+in Java.</h3>
+<p align="center" style="text-align: center;">
+    <a href="https://github.com/kennedykori/jutils/actions/workflows/ci.yml">
+        <img alt="Build status" src="https://github.com/kennedykori/jutils/actions/workflows/ci.yml/badge.svg"/>
+    </a>
+    <a href="https://codecov.io/gh/kennedykori/jutils">
+        <img alt="Codecov coverage status" src="https://codecov.io/gh/kennedykori/jutils/graph/badge.svg?token=4hqGKXW3tX"/>
+    </a>
+    <a href="https://github.com/semantic-release/semantic-release">
+        <img alt="Semantic Release: conventionalcommits" src="https://img.shields.io/badge/semantic--release-conventionalcommits-e10079?logo=semantic-release"/>
+    </a>
+    <a href="https://github.com/kennedykori/jutils/blob/develop/LICENSE">
+        <img alt="GitHub License" src="https://img.shields.io/github/license/kennedykori/jutils?color=blue">
+    </a>
+</p>
+<p align="center" style="text-align: center;">
+    <a href="https://central.sonatype.com/artifact/io.github.kennedykori/utils">
+        <img alt="Maven Central" src="https://img.shields.io/maven-central/v/io.github.kennedykori/utils?style=flat&logo=apachemaven&logoColor=%23C71A36&color=%23C71A36&link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.kennedykori%2Futils">
+    </a>
+    <a href="https://javadoc.io/doc/io.github.kennedykori/utils">
+        <img alt="Javadoc" src="https://javadoc.io/badge2/io.github.kennedykori/utils/javadoc.svg">
+    </a>
+</p>
 
-This library contains a utility class that is composed of static methods, similar to `java.util.Objects`, that can be used for checking and 
-validation of both objects and primitives. These utility methods can be classified into two main categories :-
- 
- * _**Methods that check if a certain condition is met**_ - These methods return a boolean value and typically have the following
-  prefixes: _has, in, is, etc._ These methods take a value or values and return `true` if the value(s) meets a certain condition _(e.g. check
-  if a number is negative)_ and  `false` otherwise.
- 
- * _**Methods that validate if a certain condition is met**_ - These methods throw a `java.lang.IllegalArgumentException` if a condition they
-  check for isn't met and are all prefixed with _require_. These methods take a value and return the value if the value meets a certain condition
-  _(e.g. validate a number isn't negative)_, otherwise, a `java.lang.IllegalArgumentException` is thrown.
+---
 
+This library contains a utility class comprised of static methods, similar to `java.util.Objects`, which can check and validate objects/references and primitives. These utility methods fall into two categories:
 
-The utility methods in this class include methods for checking and validating a `String`'s length, methods for checking and validating the negativity
-of a number, methods for checking and validating if a number is less than or greater than a given base value and methods for checking and validating if a
-number falls in a given range.
+* _**Methods that check if a condition holds**_ - These methods return a boolean value and typically have prefixes like _has_, _in_, _is_, etc. They take a value or values and return `true` if the value(s) satisfy a specific condition _(e.g., checking if a number is negative)_, and `false` otherwise.
+
+* _**Methods that validate that a condition holds**_ - These methods throw a `java.lang.IllegalArgumentException` if the condition they check for fails, and all have the prefix _require_. These methods take a value and return it if it meets a given condition _(e.g., validating that a number isn't negative)_. Otherwise, a `java.lang.IllegalArgumentException` is thrown.
+
+The utility methods in this class include methods for checking and validating a `String`'s length, methods for checking and validating if a number is negative, methods for checking and validating if a number is less than or greater than a given base value, and methods for checking and validating if a number falls within a given range.
 
 ## Get Started
-There are different ways you can use the library:-
+There are different ways to consume the library depending on your preferred dependency management tool:
 
-### Maven
-Add the following dependency to your `pom` file.
+#### 1. Maven
+Add the following dependency to your `pom` file:
 ```xml
 <dependency>
-    <groupId>com.kori_47</groupId>
+    <groupId>io.github.kennedykori</groupId>
     <artifactId>utils</artifactId>
-    <version>1.2.0</version>
-    <type>pom</type>
+    <version>2.0.0-dev.1</version>
 </dependency>
 ```
 
-### Gradle
-Make sure you have jcenter in your repositories closure.
+#### 2. Gradle
+Add the following dependency to your `build.gradle`:
 
-```gradle
-repositories {
-    jcenter()
-}
+```groovy
+implementation 'io.github.kennedykori:utils:2.0.0-dev.1'
 ```
 
-Then add the following dependency to your `build.gradle`.
+Or for Kotlin DSL, add the following to your `build.gradle.kts`:
 
-```gradle
-dependencies {
-    api 'com.kori_47:utils:1.2.0'
-}
+```kotlin
+implementation("io.github.kennedykori:utils:2.0.0-dev.1")
 ```
 
-### Ivy
+#### 3. Ivy
 ```xml
-<dependency org='com.kori_47' name='utils' rev='1.2.0'>
-    <artifact name='utils' ext='pom' ></artifactId>
-</dependency>
+<dependency org="io.github.kennedykori" name="utils" rev="2.0.0-dev.1"/>
 ```
 
 ### Building the library
-Or alternatively, you can use [gradle](https://gradle.org/) to compile and build the library. Just follow the steps bellow:
 
-* Clone the project from [github](https://github.com/kennedykori/JavaUtils).
-* CD into the project root and run:
+Alternatively, you can use [gradle](https://gradle.org/) to compile and build the library. Just
+follow the steps below:
 
-```bash
-./gradlew build
-```
-* Add the generated jar _(will be located at `build/libs` after a successful build)_, in your classpath.
-* You're good to go. :thumbsup:
+1. Clone the project from [Github](https://github.com/kennedykori/jutils).
+2. From the project root, run the following command:
+
+    ```bash
+    ./gradlew build
+    ```
+
+3. Add the generated jar _(located at `build/libs` after a successful build)_ to your classpath.
+4. You're good to go. :thumbsup:
 
 ## Usage
 
-Import the ObjectsUtils class in your code and use it's static methods to check and validate your code.
+Import the `ObjectsUtils` class in your code and use its static methods to check and validate your code.
 
 **Example 1:**
 
 ```java
-import static com.kori_47.utils.ObjectUtils.*;
+import static io.github.kennedykori.utils.ObjectUtils.*;
 
 public class Person {
 
@@ -92,14 +102,14 @@ public class Person {
 		this.age = requireInRange(18, 36, age, "Only youths are allowed.");
 	}
 	
-	// Other methods and attributes
+	// Other methods and properties
 }
 ```
 
 **Example 2:**
 
 ```java
-import static com.kori_47.utils.ObjectUtils.*;
+import static io.github.kennedykori.utils.ObjectUtils.*;
 
 public class Address {
 	
@@ -115,13 +125,14 @@ public class Address {
 		this.zipCode = requireNonNegative(zipCode);
 	}
 	
-	// Other methods and attributes
+	// Other methods and properties
 }
 ```
 
 ## API Reference
 
-You can access the documentation of this project from [here](https://javadoc.io/doc/com.kori_47/utils).
+You can find a comprehensive list of all the available functions by referring to the online library 
+documentation provided at this [link](https://javadoc.io/doc/io.github.kennedykori/utils).
 
 Alternatively, you can generate the documentation using gradle by running the following 
 command from the project root: 
@@ -132,24 +143,8 @@ command from the project root:
 
 Then open `build/docs/javadoc/index.html` in your browser of choice.
 
-## Tests
-
-To run tests, CD in to the project root and run:
-
-```bash
-./gradlew test
-```
-
-To view the test coverage report, be sure to be in the project root, and then run:
-
-```bash
-./gradlew jacocoTestReport
-```
-
-Then open `build/reports/jacoco/test/html/index.html` in your browser to view the report.
-
 ## License
 
-MIT License
+[MIT License](https://github.com/kennedykori/jutils/blob/develop/LICENSE)
 
 Copyright (c) 2019 Kennedy Kori

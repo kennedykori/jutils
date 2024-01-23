@@ -1,0 +1,29 @@
+{
+  "name": "jutils",
+  "version": "1.0.0",
+  "description": "Collection of utility methods and classes for checking and validating primitives and objects in Java",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kennedykori/jutils.git"
+  },
+  "author": "Kennedy Kori <kennedykori47@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kennedykori/jutils/issues"
+  },
+  "homepage": "https://github.com/kennedykori/jutils",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "semantic-release": "^22.0.12",
+    "semantic-release-replace-plugin": "^1.2.7"
+  }
+}
