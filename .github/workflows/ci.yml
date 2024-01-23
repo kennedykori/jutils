@@ -65,7 +65,9 @@ jobs:
           git_commit_gpgsign: true
           git_committer_email: ${{ secrets.GIT_COMMITTER_EMAIL }}
           git_committer_name: ${{ secrets.GIT_COMMITTER_NAME }}
-          git_tag_gpgsign: true
+          # Currently, signing commits leads to the CI hanging indefinitely.
+          # See https://github.com/semantic-release/semantic-release/issues/3065
+          git_tag_gpgsign: false
           git_user_signingkey: true
           gpg_private_key: ${{ secrets.GPG_KEY }}
           passphrase: ${{ secrets.GPG_KEY_PASSPHRASE }}
