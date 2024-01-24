@@ -17,11 +17,11 @@ in Java.</h3>
     </a>
 </p>
 <p align="center" style="text-align: center;">
-    <a href="https://central.sonatype.com/artifact/io.github.kennedykori/utils">
-        <img alt="Maven Central" src="https://img.shields.io/maven-central/v/io.github.kennedykori/utils?style=flat&logo=apachemaven&logoColor=%23C71A36&color=%23C71A36&link=https%3A%2F%2Fcentral.sonatype.com%2Fartifact%2Fio.github.kennedykori%2Futils">
+    <a href="https://central.sonatype.com/artifact/io.github.kennedykori/utils/2.0.0">
+        <img alt="Maven Central" src="https://img.shields.io/maven-central/v/io.github.kennedykori/utils?versionSuffix=2.0.0&style=flat&logo=apachemaven&logoColor=%23C71A36">
     </a>
-    <a href="https://javadoc.io/doc/io.github.kennedykori/utils">
-        <img alt="Javadoc" src="https://javadoc.io/badge2/io.github.kennedykori/utils/javadoc.svg">
+    <a href="https://javadoc.io/doc/io.github.kennedykori/utils/2.0.0">
+        <img alt="Javadoc" src="https://javadoc.io/badge2/io.github.kennedykori/utils/2.0.0/javadoc.svg">
     </a>
 </p>
 
