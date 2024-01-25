@@ -1,20 +1,25 @@
 branches:
   - main
   - name: develop
-    channel: dev
-    prerelease: dev
+    channel: rc
+    prerelease: rc
 plugins:
   - '@semantic-release/commit-analyzer'
   - - '@semantic-release/release-notes-generator'
     - linkCompare: true
       linkReferences: true
       writerOpts:
-        commitGroupsSort: [ type, title ]
-        commitSort: [ scope, subject ]
+        commitGroupsSort:
+          - type
+          - title
+        commitSort:
+          - scope
+          - subject
   - - semantic-release-replace-plugin
     - replacements:
         - countMatches: true
-          files: [ gradle.properties ]
+          files:
+           - gradle.properties
           from: version=.*
           to: version=${nextRelease.version}
           results:
@@ -23,7 +28,8 @@ plugins:
               numMatches: 1
               numReplacements: 1
         - countMatches: true
-          files: [ README.md ]
+          files:
+            - README.md
           from:
             - <version>.*</version>
             - "'io.github.kennedykori:utils:.*'"
@@ -42,13 +48,13 @@ plugins:
   - - '@semantic-release/changelog'
     - changelogFile: docs/CHANGELOG.md
   - - '@semantic-release/exec'
-    - publishCmd: " export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}'; export ORG_GRADLE_PROJECT_signingKey='${process.env.GRADLE_SIGNING_KEY}'; export ORG_GRADLE_PROJECT_signingPassword='${process.env.GRADLE_SIGNING_PASSWORD}'; export ORG_GRADLE_PROJECT_sonatypePassword='${process.env.GRADLE_SONATYPE_PASSWORD}'; export ORG_GRADLE_PROJECT_sonatypeUsername='${process.env.GRADLE_SONATYPE_USERNAME}'; ./gradlew -Pgithub.username=kennedykori -Psigning.inMemory=true publish && ./gradlew -Pgithub.username=kennedykori -Psigning.inMemory=true findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository"
+    - publishCmd: "export GITHUB_TOKEN='${process.env.GITHUB_TOKEN}'; export ORG_GRADLE_PROJECT_signingKey='${process.env.GRADLE_SIGNING_KEY}'; export ORG_GRADLE_PROJECT_signingPassword='${process.env.GRADLE_SIGNING_PASSWORD}'; export ORG_GRADLE_PROJECT_sonatypePassword='${process.env.GRADLE_SONATYPE_PASSWORD}'; export ORG_GRADLE_PROJECT_sonatypeUsername='${process.env.GRADLE_SONATYPE_USERNAME}'; ./gradlew -Pgithub.username=kennedykori -Psigning.inMemory=true publish && ./gradlew -Pgithub.username=kennedykori -Psigning.inMemory=true findSonatypeStagingRepository closeAndReleaseSonatypeStagingRepository"
   - - '@semantic-release/git'
-    - assets: [ docs/CHANGELOG.md, gradle.properties, README.md ]
-      message: "release: ${nextRelease.version} [skip ci]
-
-
-        ${nextRelease.notes}"
+    - assets:
+        - docs/CHANGELOG.md
+        - gradle.properties
+        - README.md
+      message: "release: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
   - - '@semantic-release/github'
     - assets:
         - path: build/libs/*.jar
@@ -59,7 +65,10 @@ tagFormat: v${version}
 #  .md#plugin-options-configuration
 # ------------------------------------------------------------------------------
 parserOptions:
-  noteKeywords: [ BREAKING CHANGE, BREAKING CHANGES, BREAKING ]
+  noteKeywords:
+    - BREAKING CHANGES
+    - BREAKING CHANGE
+    - BREAKING
 preset: conventionalcommits
 presetConfig:
   types:
