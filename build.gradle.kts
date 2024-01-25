@@ -87,6 +87,8 @@ publishing {
   publications {
     create<MavenPublication>("utils") {
       this.artifactId = artifactID
+      this.groupId = groupID
+      this.version = project.version.toString()
 
       from(components["java"])
 
