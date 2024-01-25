@@ -31,11 +31,17 @@ plugins:
           files:
             - README.md
           from:
+            - utils/.*"
+            - versionSuffix=.*&
+            - utils/.*/
             - <version>.*</version>
             - "'io.github.kennedykori:utils:.*'"
             - '"io.github.kennedykori:utils:.*"'
             - rev=".*"
           to:
+            - utils/${nextRelease.version}"
+            - versionSuffix=${nextRelease.version}&
+            - utils/${nextRelease.version}/
             - <version>${nextRelease.version}</version>
             - "'io.github.kennedykori:utils:${nextRelease.version}'"
             - '"io.github.kennedykori:utils:${nextRelease.version}"'
@@ -43,8 +49,8 @@ plugins:
           results:
             - file: README.md
               hasChanged: true
-              numMatches: 4
-              numReplacements: 4
+              numMatches: 8
+              numReplacements: 8
   - - '@semantic-release/changelog'
     - changelogFile: docs/CHANGELOG.md
   - - '@semantic-release/exec'
